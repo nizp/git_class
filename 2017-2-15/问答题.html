@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul id="ul1">
+		<li class="li1">1</li>
+		<li>2</li>
+		<li class="li1 li2">3</li>
+		<li>4</li>
+	</ul>
+	<ul id="ul2">
+		<li class="li1">1</li>
+		<li>2</li>
+		<li class="li1 li2">3</li>
+		<li>4</li>
+	</ul>
+<script type="text/javascript">
+
+	
+	var $ = (str,parent) => {
+		parent = parent || document;
+		var dian = str.charAt();
+		var aEle = parent.getElementsByTagName('*');
+		var arr = [];
+		//如果开头为#说明要选择id
+		if(dian === '#'){
+			//console.log(str.substring(1))
+			return document.getElementById(str.substring(1));
+		}else if(dian === '.'){//如果开头为.说明要选择class
+			var c = str.substring(1);//'li1 li2' != 'li1'
+			for(var i=0;i<aEle.length;i++){
+				var s = aEle[i].className.split(' ');
+				for(var j=0;j<s.length;j++){
+					if(s[j] === c){
+						arr.push(aEle[i]);
+					}
+				}	
+			}
+			return arr;
+			//console.log(arr);
+		}else{
+			return parent.getElementsByTagName(str);
+		}
+		//console.log(dian)
+	}
+	var ul = $('#ul1');//1
+	var lis = $('.li1');//2
+	var tag = $('li');//3
+//	for(var i=0;i<lis.length;i++){
+//		lis[i].style.background = 'red';
+//	}
+	
+	for(var i=0;i<$('.li1',$('#ul2')).length;i++){
+		$('.li1',$('#ul2'))[i].style.background = 'red';
+	}
+	//console.log($('.li',$('#ul2')))
+	
+	
+	
+	
+	
+//	var fn = function(){
+//		return 1;
+//	}
+//	var fn = () => {
+//		alert(1);
+//	}
+	
+//	var fn = (a,b) => {
+//		alert(a+b);
+//	};
+//	
+//	fn(1,2);
+	
+	//var f = fn();
+	
+	//alert(f);
+	
+	
+	
+</script>
+</body>
+</html>

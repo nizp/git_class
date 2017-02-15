@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+body{
+	height: 3000px;
+}
+#div1{
+	width:100px;
+	height: 100px;
+	background: skyblue;
+	position: absolute;
+	left:0;
+	top:0;
+}	
+</style>
+</head>
+<body>
+	<div id="div1"></div>
+<script type="text/javascript">
+	
+	var box = document.getElementById('div1');
+	/*
+		clientX  可视区的x轴
+			可视区：浏览器看得见的部分
+			
+		pageX   页面的x轴
+			相对于页面的:包含了滚动的距离
+			
+	*/
+	document.onmousemove = function(ev){
+//		console.log(ev.pageY);
+		box.style.left = ev.pageX-box.offsetWidth/2 + 'px';
+		box.style.top = ev.pageY-box.offsetHeight/2 + 'px';
+	}
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

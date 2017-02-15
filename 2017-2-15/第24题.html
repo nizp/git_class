@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+	/*
+		var a
+		var test = function test() { } 
+		
+		a = ...
+		var test = function test() { } 
+		
+		
+		a = 10
+		
+		//test中的a
+		
+		a = ...
+		
+		a = 100
+		
+	*/
+
+	var a = 10;
+	
+	function test() { 
+//		var a;
+	    a = 100;  
+		alert(a);  //100
+//		console.dir(window);
+//		alert(this.a);  //10//window.a
+		var a;  
+		alert(a); //100
+	}
+	//window.test();
+	test(); 
+</script>
+</body>
+</html>

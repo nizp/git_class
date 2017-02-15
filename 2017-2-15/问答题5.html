@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+div{
+	padding: 100px;
+}
+div:nth-of-type(1){
+	background: red;
+}
+#div2{
+	background: blue;
+}
+#div3{
+	background: yellow;
+}
+#div4{
+	background: gray;
+}
+</style>
+</head>
+<body id="body">
+	<div id="div1">
+		<div id="div2">
+			<div id="div3">
+				<div id="div4"></div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	
+	var div1 = document.getElementById('div1');
+	var div2 = document.getElementById('div2');
+	var div3 = document.getElementById('div3');
+	var div4 = document.getElementById('div4');
+	var body = document.getElementById('body');
+	
+//	div2.addEventListener('click',fn2);
+//	body.addEventListener('click',fn5,false);
+//	div1.addEventListener('click',fn1,false);
+//	div3.addEventListener('click',fn3,true);//3  
+////	body.addEventListener('click',fn2,false);
+	div4.addEventListener('click',fn4,true);//4
+	div4.addEventListener('click',fn4,false);//&
+	div4.addEventListener('click',function(){
+		alert('gray2');
+	},false);//&
+	div4.addEventListener('click',function(){
+		alert('gray3');
+	},true);//&
+	div4.addEventListener('click',function(){
+		alert('gray4');
+	},true);//&
+	
+//	body.addEventListener('click',fn5,false);
+//	div4.addEventListener('click',fn4,true);//4
+//	div4.addEventListener('click',function(){//&
+//		alert('gray2');
+//	});
+	
+	//黄色 灰色 灰色  灰色2 灰色2 蓝色 红色 body
+	
+	function fn1(){
+		alert('red')
+	}
+	function fn2(){
+		alert('blue')
+	}
+	function fn3(){
+		alert('yellow')
+	}
+	function fn4(){
+		alert('gray')
+	}
+	function fn5(){
+		alert('body')
+	}
+	
+	
+</script>
+</body>
+</html>

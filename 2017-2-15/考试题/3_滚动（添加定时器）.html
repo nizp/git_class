@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#scroll{
+				width: 50px;
+				height: 500px;
+				background: gray;
+				position: relative;
+				display: none;
+			}
+			#scroll span{
+				width: 50px;
+				background: red;
+				position: absolute;
+				
+			}
+			#box{
+				width: 500px;
+				height: 500px;
+				border: 1px solid black;
+				position: absolute;
+				left: 68px;
+				top: 8px;
+				overflow: hidden;
+			}
+			#content{
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="scroll">
+			<span id="span"></span>
+		</div>
+		<div id="box">
+			<div id="content">
+				北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,北京欢迎您,
+				
+				
+			</div>
+		</div>
+		<!--
+			需求：
+				1：滚动条（当内容超过可视区的时候出现滚动条，
+				并且内容越多滚动条越小）
+				2：鼠标滚轮之后滚动内容；
+				3：点击滚动条下移，上移动；
+				要求：绑定事件用事件绑定来做;
+		-->
+		<script type="text/javascript">
+			var scroll = document.getElementById('scroll');
+			var span = document.getElementById('span');
+			var box = document.getElementById('box');
+			var content = document.getElementById('content');
+			//滚轮函数
+			var addWheel = (obj,fn) => {
+				obj.addEventListener('mousewheel',fn1);
+				obj.addEventListener('DOMMouseScroll',fn1);
+				
+				function fn1(ev){
+					var down = true;
+					if(ev.wheelDelta){
+						down = ev.wheelDelta>0?true:false;
+					}else{
+						down = ev.detail<0?true:false;
+					}
+					
+					fn && fn(down);
+					ev.preventDefault();
+				}
+			}
+			
+			
+			/*
+				滚动条要不要显示 
+			*/
+			var boxH = box.offsetHeight;
+			var contentH = content.scrollHeight;
+			
+			if(boxH < contentH){ //滚动条要显示
+				scroll.style.display = 'block';
+				var scaleBar = (boxH/contentH).toFixed(1)*1;
+				var scrollH = scroll.offsetHeight;
+				span.style.height = scrollH * scaleBar + 'px';
+				
+				/*
+					拖拽
+				*/
+				span.addEventListener('mousedown',fnDown);
+				
+				function fnDown(ev){
+					var disY = ev.pageY - span.offsetTop;
+					document.addEventListener('mousemove',fnMove);
+					document.addEventListener('mouseup',fnUp);
+					function fnUp(){
+						document.removeEventListener('mousemove',fnMove);
+						document.removeEventListener('mouseup',fnUp);
+						
+					}
+					function fnMove(ev){
+						var t = ev.pageY - disY;
+						if(t < 0){
+							t = 0;
+						}else if(t > scrollH-span.offsetHeight){
+							t = scrollH-span.offsetHeight;
+						}
+						span.style.top = t + 'px';
+						
+						var scale = t/(scrollH-span.offsetHeight);
+						content.style.top = scale * (boxH-contentH) + 'px';
+						//console.log(scale);
+						
+					}
+					ev.preventDefault();
+				};
+				
+				
+				//滚轮
+				
+				addWheel(content,function(down){
+					var t = span.offsetTop;
+					if(down){
+						//向上
+						t-=5;
+					}else{
+						//向下
+						t+=5;
+					}
+					
+					if(t < 0){
+						t = 0;
+					}else if(t > scrollH-span.offsetHeight){
+						t = scrollH-span.offsetHeight;
+					}
+					span.style.top = t + 'px';
+					
+					var scale = t/(scrollH-span.offsetHeight);
+					content.style.top = scale * (boxH-contentH) + 'px';
+					
+				});
+				
+				var timer = null;
+				//点击的时候移动
+				scroll.addEventListener('mousedown',function(ev){
+					
+					timer = setInterval(function(){
+						console.log(span.getBoundingClientRect().top)
+						var y = ev.pageY;
+						/*
+							使用 getBoundingClientRect的时候，因为没有清空默认样式，span的真实top（span.offsetTop+8，span到浏览器顶部的距离）,每次-=5 相当于加等于3,所有方向是相反的,一句话，使用getBoundingClientRect的时候要清空默认样式！
+							 
+						*/
+						//getBoundingClientRect
+						var t = span.getBoundingClientRect().top;
+						console.log(y<t);
+						if(y < t){
+							//上点
+							t-=8;
+							
+						}else if(y > t+span.offsetHeight){
+							//下点
+							t+=10;
+						}else{
+							clearInterval(timer);
+						}
+						
+						if(t < 0){
+							t = 0;
+						}else if(t > scrollH-span.offsetHeight){
+							t = scrollH-span.offsetHeight;
+						}
+						span.style.top = t + 'px';
+						
+						var scale = t/(scrollH-span.offsetHeight);
+						content.style.top = scale * (boxH-contentH) + 'px';
+						
+					},30);
+					
+//					console.log(y,t);
+					
+				});
+				scroll.addEventListener('mouseup',function(){
+					clearInterval(timer);
+				});
+				
+				
+				
+				
+				
+//				console.log(scrollH)
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

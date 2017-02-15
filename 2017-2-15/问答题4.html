@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var addWheel = (obj,fn) => {
+		obj.addEventListener('mousewheel',fn1);
+		obj.addEventListener('DOMMouseScroll',fn1);
+		
+		function fn1(ev){
+			var down = true;
+			
+			if(ev.wheelDelta){
+				down = ev.wheelDelta>0?true:false;
+			}else{
+				down = ev.detail<0?true:false;
+			}
+			
+			fn && fn(down);
+			
+		}
+	}
+	
+	addWheel(document,function(down){
+		if(down){
+			alert('向上');
+		}else{
+			alert('向下');
+		}
+	});
+	
+</script>
+</body>
+</html>
