@@ -22,6 +22,8 @@
 	div.addEventListener('mousedown',fndown);
 	
 	function fndown(ev){
+		var disX = ev.pageX - div.offsetLeft;
+		var disY = ev.pageY - div.offsetTop;
 		document.addEventListener('mousemove',fnMove);
 		document.addEventListener('mouseup',fnUp);
 		ev.preventDefault();
