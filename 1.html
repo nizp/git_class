@@ -24,6 +24,10 @@
 	function fndown(ev){
 		document.addEventListener('mousemove',fnMove);
 		document.addEventListener('mouseup',fnUp);
+		function fnMove(ev){
+			div.style.left = ev.pageX - disX + 'px';
+			div.style.top = ev.pageY - disY + 'px';
+		}
 		ev.preventDefault();
 	}
 	
