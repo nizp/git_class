@@ -30,6 +30,11 @@
 			div.style.left = ev.pageX - disX + 'px';
 			div.style.top = ev.pageY - disY + 'px';
 		}
+		
+		function fnUp(){
+			document.removeEventListener('mousemove',fnMove);
+			document.removeEventListener('mouseup',fnUp);
+		}
 		ev.preventDefault();
 	}
 	
