@@ -24,6 +24,11 @@
 	function fndown(ev){
 		document.addEventListener('mousemove',fnMove);
 		document.addEventListener('mouseup',fnUp);
+		
+		function fnUp(){
+			document.removeEventListener('mousemove',fnMove);
+			document.removeEventListener('mouseup',fnUp);
+		}
 		ev.preventDefault();
 	}
 	
