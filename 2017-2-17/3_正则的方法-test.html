@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		test:检测是否正则匹配的内容.
+			如果正则成立那么返回一个布尔值。
+		
+		正则.test(string);
+		
+		\d  代表*一个*数字
+		
+		修饰符：
+			i ->  忽略大小写。
+		
+	*/
+	var str = 'abc';
+//	console.log(/a/.test(str));
+	//下面字符串中是否有数字。
+	
+	var str2 = 'bd2ns13adh31sa3dc21';
+	
+	//var str3 = 'abc/a/123';
+	
+	//console.log(/\/a\//.test(str3));
+	
+	//console.log(/\d/.test(str2));
+	
+	//在下面字符串中有没有f(不管大小还是小写);
+	var str4 = 'abcdeFg';
+	
+	var re = new RegExp('f','i');
+	
+	console.log(re.test(str4));
+	
+//	console.log(/f/i.test(str4))
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

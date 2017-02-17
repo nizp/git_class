@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		|  或者 
+		
+		一般情况下
+			
+			函数内的第一个参数是当前匹配的字符。
+			
+			函数内的第二个参数是当前匹配的索引值。
+		
+			函数内的第三个参数是当前总的字符串。
+			
+			函数内的第四个以后参数都为undefined。
+			
+		
+		注意：
+			如果使用函数，那么一定要有retrun,不然为undefind
+		
+	*/
+	var str = '中国共产党,习近平总书记说：“法轮功是邪教!”';
+	
+	str.replace(/中国共产党|习近平|法轮功|邪教/g,function($0,$1,$2,$3,$4){
+		console.log($0,$1,$2,$3,$4);
+	});
+	
+	
+	
+	
+</script>
+</body>
+</html>

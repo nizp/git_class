@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+	 	正则：
+	 		规则，没听说过，不太明白，只看了一点点
+	 		^\w+@[a-z0-9]+(\.[a-z]+){1,3}$
+	 		火星文
+	 	正则表达式：
+	 		规则，主要用来操作（擅长匹配模糊范围）字符串的，它处理起来更高效，但是维护部方便，可读性不高。
+	 		
+	 	split()
+	 	substring
+	 	substr
+	 	charAt
+	 	indexOf
+	 	lastIndexOf
+	 	slice
+	 	charCodeAt
+	 	toLowerCase
+	 	...
+	 	
+	 	1.找出下面字符串中所有的数字,并且放到一个数组中。
+	 		思路：
+	 			先循环整个字符串
+	 			查看每个字符是否是为数字
+	 				isNaN  parseInt()
+	 			如果是就把这个字符放到数组中
+	 	
+	 	2.找出下面字符串中所有的数字（也包括连续的）,并且放到一个数组中。
+	 		思路：
+	 			新建一个空的字符串，只要当前字符为数字就+=这个变量
+	 			
+	 			var temp = '';
+	 			
+	 				temp+=1
+	 				temp+=8
+	 				temp+=2
+	 				temp+=3 = > 23
+	 			
+	 			[1,8,23]
+	 			
+	 			dh1sids8a23a1
+	 			
+	 			temp += 1;
+	 			temp = ''
+	 			
+	 			['','',1,'','']
+	 			
+	 			
+	 	
+	*/
+	
+//	console.log(parseInt(''));
+//	console.log(isNaN(parseInt('')));
+	
+	var str = 'dh1sids8a23 d21 32dsaxzd89wej1kl7qw9';
+	//1,8,23,21,32,89,1,7
+	
+	var arr = [];
+	
+//	for(var i=0;i<str.length;i++){
+//		if(!isNaN(parseInt(str[i]))){
+//			arr.push(str[i]);
+//		}
+//	}
+	
+	var temp = '';
+	for(var i=0;i<str.length;i++){
+		//如果是数字
+		if(!isNaN(parseInt(str[i]))){
+			temp+=str[i];
+		}else{
+			if(temp){
+				arr.push(temp);
+				temp = '';
+			}
+			
+		}
+	}
+	if(temp){
+		arr.push(temp);
+		temp = '';
+	}
+	
+	console.log(str.match(/\d+/g));
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		字符串方法 - match:
+			将匹配到的字符放到一个数组中。
+		
+		string.match(正则);
+		
+		当匹配到的字符只有一个的时候，会显示出多个属性
+			index: 匹配字符的位置
+			input: 所有内容
+			而length为1
+			
+		量词：
+			+
+				最小是一个，最大是无限
+				
+		修饰符：
+			g   查找全局
+			
+			str.match(/\d+/g)
+			
+		正则的特性：
+			懒惰模式：让他找几个他一定不会多找
+			贪婪模式：无限制的查找
+	*/
+	var str = 'das37213dsa321hjkh321321';
+	
+	console.log(str.match(/\d+/g))
+	
+</script>
+</body>
+</html>

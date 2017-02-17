@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		|  或者 
+		
+		注意：
+			如果使用函数，那么一定要有retrun,不然为undefind
+		
+	*/
+	var str = '中国共产党,习近平总书记说：“法轮功是邪教!”';
+	
+//	console.log(str.replace(/中国共产党|习近平|法轮功|邪教/g,'*'));
+	//var num = 0;
+	console.log(str.replace(/中国共产党|习近平|法轮功|邪教/g,function($0){
+		//每匹配成功一次，就会执行这个函数
+		//num++;
+		//第一个参数就是这次匹配到的内容
+		//console.log($0);
+		var s = '';
+		for(var i=0;i<$0.length;i++){
+			s+='*';
+		}
+		return s;
+	}));
+	
+	//console.log(num)
+	
+	
+</script>
+</body>
+</html>
