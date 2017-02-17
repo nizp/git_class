@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		子项()
+		
+		面试题：
+			找出下面字符串出现次数最多的字符	
+			
+			是谁 : 最多  ->  a : 15;
+			
+		思路：
+			找到每个字符出现了多少次
+			比较哪个最多
+			
+	*/
+	var str = 'dasahadahsadahaskaahdashaadhkjahdflgaudafgada';
+	
+	var obj = {};
+	/*
+		{
+			d:1,
+			a:2,
+			s:1
+		}
+		
+		
+		obj = {
+			a:1,
+			b:4,
+			c:12,
+			d:2
+		}
+		
+		
+		
+	*/
+	
+	var max = -Infinity;
+	var name = '';
+	
+	for(var i=0;i<str.length;i++){
+		if(obj[str.charAt(i)]){
+			obj[str.charAt(i)]++;
+		}else{
+			obj[str.charAt(i)] = 1;
+		}
+	}
+	for(var attr in obj){
+		if(max < obj[attr]){
+			max = obj[attr];
+			name = attr;
+		}
+	}
+	
+	console.log(name+'重复次数最多,有'+max+'次');
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

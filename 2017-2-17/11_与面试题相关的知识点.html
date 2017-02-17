@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		子项()
+		
+		面试题：
+			找出下面字符串出现次数最多的字符	
+			
+			是谁 : 最多  ->  a : 15;
+			
+		思路：
+			找到每个字符出现了多少次
+			比较哪个最多
+			
+		\w  一个数字、字母、下划线
+		
+		\1  子项重定向 （重复\number前面一个字符）
+		
+		当有子项的时候，如果在子项的后面加个\+数字，这个\+数字的意思
+		就是重复一次前面子项中的字符，这个\+数字就叫子项重定向
+		子项重定向可以在后面加量词。
+		
+		(a)\1+
+		
+		/1/ -> /\d/ -> /\w/ 
+			
+	*/
+	
+//	alert(/\w+/.test('?'))
+	
+	
+	
+//	var str = 'dasahadahsada2haskaah1dasha4adhkja3hdflgaudafgada';
+	
+	var str = 'aaaaaaaaabbbbbcccccccc';
+//	
+//	str.replace(/(a)\1+(b)\2+(c)\3+/,function($0,$1,$2,$3){
+//		console.log($3);
+//	});
+
+//	str.replace(/(\w)\1+/g,function($0,$1){
+//		console.log($1);
+//	});
+
+//	var arr = str.split('');
+//	arr.sort();
+//	str = arr.join(''); 
+//	
+	var max = -Infinity;
+	var name = '';
+//
+	str.replace(/(\w)\1+/g,function($0,$1){
+		//console.log($0,$1);
+		if(max < $0.length){
+			max = $0.length;
+			name = $1;
+		}
+	});
+//	
+	console.log(name,max);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
