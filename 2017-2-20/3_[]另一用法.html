@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		():提权  (1+1)*2
+		[]:在中括号里任意选择一个字符。
+		[]中的简写是通过ASCII编码值来的。
+		
+		在中括号中 + ^ = 排除中括号中的内容。
+	*/
+	
+	var str = 'a1hhdjkfhiwcdciedeacbca5c';
+	//除了abc别的都要
+	
+//	console.log(str.match(/a([0-3]|[5-9])c/g));
+
+//	console.log(str.match(/a([^b])c/g));
+
+//	console.log(str.match(/a[^bc]+c/g));
+	
+	//console.log(str.match(/a([^bc]+)c/g)); //a1hca2ca7c，直到abc前算一组。
+	
+	var str = 'fdsfagdsaHaDITWaEQYaE2QJaEa2U0R3CSAM0a9dcsaca';
+	
+	//agdsaHa
+	console.log(str.match(/a[^a]+a/g));
+	
+		
+	
+	
+</script>
+</body>
+</html>

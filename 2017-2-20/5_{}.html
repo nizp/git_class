@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		量词的范围
+		{}
+		
+		最小可以没有最大1个：
+			{0,1}
+		
+		最小没有，最大无限
+			{0,}
+			
+		最小1个，最大无限
+			{1,}
+			
+		固定的次数
+			{n}
+		
+	*/
+	
+	var str = 'ab1c3abb2cabbbcabababc';
+	
+//	console.log(str.match(/ab{1,2}c/g))
+//	console.log(str.match(/\d{1,}/g));
+	console.log(str.match(/(ab){3}c/));
+	
+	
+	
+	
+</script>
+</body>
+</html>

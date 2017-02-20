@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		\d   一个数字
+		\w   一个数字、字母、下划线
+		\D   一个非数字
+		\W   一个非数字、字母、下划线
+		\n   换行
+		\s   空格
+		\S   非空格
+		\b   边界符
+			|my| |name| |is| |...|
+			不适用于中文
+		.   任意字符除了\n
+	*/
+	
+	var str = '   你        好!    ';
+//	console.log(str);
+	//开头为一个或多个空格 或者 结尾为一个或多个空格
+//	console.log(str.replace(/^\s+|\s+$/g,''));
+	
+//	console.log(str.match(/\S+/g))
+	
+	//var str2 = 'my name is nizp 18 中国';
+	var str2 = 's234\n';
+//	console.log(str2.replace(/\b/g,'|'));
+
+	
+	console.log(str2.replace(/./g,'|'))
+	
+	
+	
+</script>
+</body>
+</html>

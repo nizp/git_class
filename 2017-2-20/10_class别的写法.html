@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul>
+		<li class="li li1"></li>
+		<li></li>
+		<li class="li li1"></li>
+		<li class="li1 li"></li>
+		<li class="li1"></li>
+	</ul>
+<script type="text/javascript">
+	
+	//li      li1
+	//li1     li
+	//li1
+	
+	/*
+		要么为开头 + 空格
+		要么为空格 + li1 + $
+	*/
+	var aEle = document.getElementsByTagName('*');
+	var arr = [];
+	var name = 'li1';
+	//li1 li1 li3
+	var re = new RegExp('(^|\\s)'+name+'(\\s|$)');//注意：转义符一定要加。
+	for(var i=0;i<aEle.length;i++){
+		if(re.test(aEle[i].className)){
+			arr.push(aEle[i]);
+		}
+	}
+	console.log(arr);
+	
+//	console.log('li1 li2 li3'.match(re))
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

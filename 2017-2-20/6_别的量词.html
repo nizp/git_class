@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		最少没有，最多1个 
+			{0,1} ?
+		最少1个,最多不限
+			{1,}  +
+		最小没有，最多不限
+			{0,}  *
+		
+	*/
+	
+	var str  = 'abcaccadcacabbc';
+//	console.log(str.match(/a[b-c]?c/g))
+	console.log(str.match(/a[bc]*c/g));
+	
+	
+</script>
+</body>
+</html>

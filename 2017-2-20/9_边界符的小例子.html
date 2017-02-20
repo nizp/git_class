@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul>
+		<li class="li li2"></li>
+		<li></li>
+		<li></li>
+		<li class="li li3"></li>
+		<li class="li3 li"></li>
+	</ul>
+<script type="text/javascript">
+	/*
+		className 
+		
+		'|li| |li2|'
+		
+		边界符 + li + 边界符
+		
+	*/
+	var aEle = document.getElementsByTagName('*');
+	var arr = [];
+	var name = 'li3';   //new RegExp(字符串,'修饰符');  /a/ \/ \\n
+	var re = new RegExp('\\b'+name+'\\b');
+	for(var i=0;i<aEle.length;i++){
+		if(re.test(aEle[i].className)){
+		//if(/\bli\b/.test(aEle[i].className)){
+			arr.push(aEle[i]);
+		}
+		//console.log(aEle[i].className);
+	}
+	console.log(arr);
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		():提权  (1+1)*2
+		[]:在中括号里任意选择一个字符。
+		[]中的简写是通过ASCII编码值来的。
+		
+	补充 ：
+		*** match如果找不到返回null
+		
+		***	search如果找不到返回-1
+		
+		
+		量词是修饰*前面*一个字符（串）。
+		
+	*/
+	//a开头c结尾中间为bcd的字符
+//	var str = 'aacabcaccadcafcazc';
+	//var str = 'a0ca1ca2ca3ca4ca5ca9c';
+	//var str = 'aAcaFcaZc';
+	//var str = 'aAcaFcazcabcafca^c';
+	
+	//console.log(str.match(/a(b|c|d)c/g));
+	
+	//console.log(str.match(/a[bcd]c/g));
+	
+	//在有规律的情况下：支持范围的写法
+	//console.log(str.match(/a[a-z]c/g));
+	
+	//console.log(str.match(/a[0-9]c/g))
+	
+//	console.log(str.match(/a[A-z]c/g));//91-96为非英文（所以不推荐,但是可以用）;
+	
+//	console.log(str.match(/a[A-Za-z]c/g));//推荐使用
+
+	
+	//找到0-18;
+	//找到18-100
+	
+	//var str2 = 'a0cabca67ca60ca10ca13ca5cahjca55ca18ca100c';
+	
+	//[0-18] 不是0到18而是  0或1或8
+	/*
+		[0-9]  a(0到9 或者 1[0-8])c  10-18 
+	*/
+//	console.log(str2.match(/a([0-9]|1[0-8])c/g));
+
+	/*
+		思路：
+			18-100
+			
+			18-19
+			2-9开头（20-30-40-90-21）(21-99)
+			100
+			
+		
+			
+	*/
+//	var str = 'a18ca20ca10ca99ca87ca34ca100ca101c';
+	var str = 'a1cacca12356ca1212ca3434ca12ca341234ca34123434343434c';
+	
+//	console.log(str.match(/a(1[89]|[2-9][0-9]|100)c/g));  
+
+	//console.log(str.match(/a([\dA-Za-z]|\d+)c/g))
+	
+	/*
+		当子项在match中的时候，如果匹配出来的结果只有一个
+		那么：
+			第1个内容为整个匹配到的字符（串）
+			第2个内容为第一个子项匹配到的字符
+			第3个内容为第二个子项匹配到的字符
+			如果还有多个子项，那么以此类推
+		
+	*/
+	//console.log(str.match(/a((12)+|(34)+)c/g));
+	
+	/*
+		a34123434343434c 
+	*/
+	
+	console.log(str.match(/a((34)12\2+)c/g));
+	
+</script>
+</body>
+</html>

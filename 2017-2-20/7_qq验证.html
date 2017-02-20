@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input type="text" name="" id="txt" value="" />
+	<input type="button" name="" id="btn" value="是否QQ" />
+<script type="text/javascript">
+	/*
+		qq验证 ：
+			不能以字母和0开头 ?[1-9]
+			最小5位最多11位   ?
+		
+		[^]  排除
+		
+		如果把^放到正则开始的位置，代表开头
+		
+		计算中能够标识一段字符串是从哪里开始的到哪里结束的
+		
+		对应正则 ^开始    结束$
+			
+	*/
+	var txt = document.getElementById('txt');
+	var btn = document.getElementById('btn');
+	
+	var fn = () => {
+//		alert(1);
+		var val = txt.value;
+		
+		console.log(val.match(/[1-9]\d{4,10}/))
+		//1-9  1+4=5  1+10 = 11   [9]1234567891
+		if(/^[1-9]\d{4,10}$/.test(val)){
+			//是qq
+			alert('是qq');
+		}else{
+			//不是qq
+			alert('不是qq');
+		}
+		
+	}
+	btn.addEventListener('click',fn);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		面试题:
+			计算下面字符串中字节大小（中文占2个字节，英文占1个字节）
+		
+		思路：
+			哪个范围为中文 
+			else
+			英文
+			
+		[\u4e00-\u9fa5];中文的范围
+	*/
+	var str = '我的名字叫:chenbin'; //18;
+	
+//	console.log(/[\u4e00-\u9fa5]/.test('赑'));
+
+	var num = 0;
+	
+	for(var i=0;i<str.length;i++){
+		if(/[\u4e00-\u9fa5]/.test(str.charAt(i))){
+			num+=2;
+		}else{
+			num++;
+		}
+	}
+	
+	alert(num);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
