@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		hasOwnProperty: 
+			这个对象自身有没有这个属性。
+			
+		obj.hasOwnProperty(属性名称)	
+		
+		返回值为布尔值。是自身的就返回true，反之false
+	*/
+	
+	function Teacher(name,age) {
+		this.name = name;
+		this.age = age;
+//		this.say = function(){
+//			
+//		}
+	}
+	
+	Teacher.prototype.say = function(){
+		alert(1);
+	}
+	
+	var t1 = new Teacher('nizp',99);
+	
+	t1.say();
+	
+//	console.log(Teacher.prototype.hasOwnProperty('say'));
+
+	
+//	Object.prototype.name = function(){
+//		alert(123);
+//	}
+	
+	
+//	var obj = {
+//		name:function(){
+//			
+//		}
+//	}
+	
+	//obj.name();
+	
+	//console.log(obj.hasOwnProperty('name'));
+	
+	
+</script>
+</body>
+</html>

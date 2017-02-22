@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#box div,#box2 div{
+	width:200px;
+	height:100px;
+	border: 1px solid #000;
+	display: none;
+}
+
+#box div.show,#box2 div.show{
+	display: block;
+}
+.active{
+	background: yellow;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" id="" value="按钮一" class="active"/>
+		<input type="button" id="" value="按钮二" />
+		<input type="button" id="" value="按钮三" />
+		<div class="show">内容一</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</div>
+	<div id="box2">
+		<input type="button" id="" value="按钮一" class="active"/>
+		<input type="button" id="" value="按钮二" />
+		<input type="button" id="" value="按钮三" />
+		<div class="show">内容一</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</div>
+	
+	<input type="button" value="第一个按钮让第一个停" id="btn1">
+	<input type="button" value="第二个按钮让第一个开" id="btn2">
+	<input type="button" value="第三个按钮让第二个开" id="btn3">
+	<input type="button" value="第四个按钮开的关,关的开" id="btn4">
+<script type="text/javascript">
+	
+	/*
+		1.多个选项卡切换
+		
+		2.自动播放
+		
+		3.上面自动播放，下面不用自动播放
+		
+		4.点击第一个按钮的时候让第一个停
+	*/
+	
+	function tab(id,onOff){
+		var box = document.getElementById(id);
+		var divs = box.getElementsByTagName('div');
+		var btns = box.getElementsByTagName('input');
+		var btn1 = document.getElementById('btn1');
+		box.timer = null;
+		var num = 0;
+		
+		if(onOff){
+			box.timer = setInterval(function(){
+				num++;
+				for(var i=0;i<btns.length;i++){
+					btns[i].className = divs[i].className =  '';
+				}
+				btns[num%=3].className = 'active';
+				divs[num%=3].className = 'show';
+				
+			},1000);
+			
+			btn1.onclick = function(){
+				clearInterval(box.timer);
+			}
+		}
+		
+		for(var i=0;i<btns.length;i++){
+			btns[i].index = i;
+			btns[i].onclick = function(){
+				for(var i=0;i<btns.length;i++){
+					btns[i].className = divs[i].className =  '';
+				}
+				this.className = 'active';
+				divs[this.index].className = 'show';
+			};
+		}
+	}
+	
+	tab('box',true);
+	tab('box2');
+	
+	
+</script>
+</body>
+</html>
