@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	
+	/*
+		简单类型的赋值就是赋值。
+		复合类型的赋值为赋址。
+		
+		
+		目的：把arr中的*简单类型*赋值给arr2
+		解决办法：
+			循环数组中的每一位，把每个简单类型赋值给arr2即可。
+			
+			对象通过for in的方式去赋值给obj2.
+		
+	*/
+	
+//	var num = 10;
+//	
+//	var num2 = num;
+//	
+//	num2++;
+//	
+//	alert(num);
+
+//	var arr = [1,2,3,4];
+//	
+//	var arr2 = [];
+//	
+//	for(var i=0;i<arr.length;i++){
+//		arr2.push(arr[i]);
+//	}
+//	
+//	
+//	arr2.push(5);
+//	
+//	console.log(arr);
+
+	
+	var obj = {
+		init:1,
+		fnMove:2,
+		fnUp:3
+	};
+	
+	var obj2 = {};
+	
+	for(var attr in obj){
+		obj2[attr] = obj[attr];
+	}
+	
+	
+	
+	obj2.init++;
+	
+	console.log(obj.init)
+	
+	
+	
+</script>
+</body>
+</html>
