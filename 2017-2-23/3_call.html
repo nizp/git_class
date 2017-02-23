@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		当函数在声明的时候，函数会自带一些方法或者属性。
+		其中有个方法叫call还有个方法apply   他们最大的用处就是改变this指向
+		
+		fn.call(改变this,实参)
+			实参：有几个形参就对应几个实参
+				  从第二个参数起，就是实参
+				  
+		
+		fn.apply(改变this,数组);
+			第二个参数为数组，数组中放的就是实参的集合。
+			
+		
+		call可以有无限多个参数，而apply只有2个参数
+	*/
+	function fn(a,b,c,d){
+		alert(a+b+c+d);
+		alert(this);
+	}
+	
+	fn.apply(document,[1,2,3,4]);
+	
+	
+	//var arr = [1,2,3,4];
+	
+//	arr.forEach(function(){
+//		alert(this);
+//	},document);
+	
+	
+	//fn(1,2);
+//	fn.call(document,1,2,3,4);
+	
+	console.dir(fn);
+</script>
+</body>
+</html>

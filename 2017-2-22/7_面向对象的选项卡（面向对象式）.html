@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#box div,#box2 div{
+	width:200px;
+	height:100px;
+	border: 1px solid #000;
+	display: none;
+}
+
+#box div.show,#box2 div.show{
+	display: block;
+}
+.active{
+	background: yellow;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<input type="button" id="" value="按钮一" class="active"/>
+		<input type="button" id="" value="按钮二" />
+		<input type="button" id="" value="按钮三" />
+		<div class="show">内容一</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</div>
+	<div id="box2">
+		<input type="button" id="" value="按钮一" class="active"/>
+		<input type="button" id="" value="按钮二" />
+		<input type="button" id="" value="按钮三" />
+		<div class="show">内容一</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</div>
+	
+	<input type="button" value="第一个按钮让第一个停" id="btn1">
+	<input type="button" value="第二个按钮让第一个开" id="btn2">
+	<input type="button" value="第三个按钮让第二个开" id="btn3">
+	<input type="button" value="第四个按钮开的关,关的开" id="btn4">
+	
+<script type="text/javascript">
+	/*
+		面向对象的三大核心：
+			封装、继承、多态
+			
+		js的面向对象：
+			抽象、封装、继承
+			
+		面向对象注重是功能
+		
+		
+	*/
+	function Tab(id){
+		this.box = document.getElementById(id);
+		this.divs = this.box.getElementsByTagName('div');
+		this.btns = this.box.getElementsByTagName('input');
+		this.timer = null;
+		this.num = 0;
+	}
+	
+	Tab.prototype.init = function(){
+		var that = this;
+		for(var i=0;i<this.btns.length;i++){
+			this.btns[i].index = i;
+			this.btns[i].addEventListener('click',function(){
+				that.num = this.index;
+				that.clickFn(this.index);
+			}); 
+		}
+	}
+	
+	Tab.prototype.clickFn = function(index){
+		for(var i=0;i<this.btns.length;i++){
+			this.btns[i].className = this.divs[i].className =  '';
+		}
+		this.btns[index].className = 'active';
+		this.divs[index].className = 'show';
+	}
+	
+	Tab.prototype.play = function(){
+		var _this = this;
+		clearInterval(this.timer);
+		this.timer = setInterval(function(){
+			_this.num ++;
+			_this.clickFn(_this.num%=3);
+		},1000);
+	}
+	
+	Tab.prototype.stop = function(){
+		clearInterval(this.timer);
+		this.timer = null;
+	}
+	
+	Tab.prototype.isAutoPlay = function(){
+		return !!this.timer;   // 1 !1 !false true
+	}
+
+	var t = new Tab('box');//{}
+	var t2 = new Tab('box2');//{}
+	
+	t.play();
+	
+	t2.init();
+	
+	var btn1 = document.getElementById('btn1');
+	var btn2 = document.getElementById('btn2');
+	var btn3 = document.getElementById('btn3');
+	btn1.onclick = function(){
+		t.stop();
+	}
+	btn2.onclick = function(){
+		t.play();
+	}
+	btn3.onclick = function(){
+		t2.play();
+	}
+	btn4.onclick = function(){
+		if(t.isAutoPlay()){
+			t.stop();
+		}else{
+			t.play();
+		}
+		
+		if(t2.isAutoPlay()){
+			t2.stop();
+		}else{
+			t2.play();
+		}
+	}
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

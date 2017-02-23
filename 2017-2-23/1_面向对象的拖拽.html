@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#div1{
+	width: 100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	top:0;
+	left:0;
+}	
+</style>
+</head>
+<body>
+	<div id="div1"></div>
+<script type="text/javascript">
+	
+	function Drag(id){
+		this.box = document.getElementById(id);
+		this.disX = 0;
+		this.disY = 0;
+	}
+	
+	Drag.prototype.init = function(){
+		var _this = this;
+		this.box.addEventListener('mousedown',function(ev){
+			_this.fnDown(ev);
+		});
+	}
+	
+	Drag.prototype.fnDown = function(ev){
+		this.disX = ev.pageX - this.box.offsetLeft;
+		this.disY = ev.pageY - this.box.offsetTop;
+		var _this = this;
+		var Move = function(ev){
+			_this.fnMove(ev);
+		}
+		var Up = function(ev){
+			_this.fnUp(ev,Move,Up);
+		}
+		document.addEventListener('mousemove',Move);
+		document.addEventListener('mouseup',Up);
+		
+		ev.preventDefault();
+	}
+	
+	Drag.prototype.fnMove = function(ev){
+		this.box.style.left = ev.pageX - this.disX + 'px';
+		this.box.style.top = ev.pageY - this.disY + 'px';
+	}
+	
+	Drag.prototype.fnUp = function(ev,move,up){
+		document.removeEventListener('mousemove',move);
+		document.removeEventListener('mouseup',up);
+	}
+	
+	
+	
+	
+	
+	
+	
+	var d = new Drag('div1');
+	d.init();
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

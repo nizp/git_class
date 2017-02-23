@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	function A(){}
+	A.prototype.say = function(){
+		alert(1);
+	}
+	
+	/*
+		a.say -> A.prototype.say 
+		
+		a -> obj []
+		A.prototype -> obj []
+	*/
+	
+	var a = new A;
+	
+	//console.log(a == A.prototype)
+//	a.say();
+	
+	
+	/*
+		b.say -> a.say -> 
+	*/
+	
+	function B(){}
+	
+	B.prototype = a;
+//	
+	var b = new B;
+//	
+	b.say();
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

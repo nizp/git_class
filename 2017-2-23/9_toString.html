@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		toString:
+			将某种类型转成字符串。
+			所有的内置对象都有toString
+			
+		在平时，只要使用alert系统就会自动的调用toString方法
+		
+		自己构造的对象也有toString，这个toString是通过原型与原型链的查找，找到的是Object的toString。
+		
+		还可以转进制   Number('要转的数字').toString(多少进制)
+		
+		
+		对象身上的toString可以判断数据的类型是什么，Object.prototype.toString
+		可以转所有的，但是Array的别的都能转，就自己转不了
+		
+		
+	*/
+	
+	var str = '1234';
+	var arr = [1,2,3,4];
+//	console.log(str.toString())
+
+//	Array.prototype.toString = function(){
+//		return '调用alert真的是调用了这个方法！';
+//	}
+
+	//console.log(arr.toString());
+	
+//	alert(arr);
+
+//	console.dir(Number)
+	
+//	function Fn(){}
+//	
+//	var f = new Fn;
+	
+	//console.dir(f)
+	
+	//console.log(Number('255').toString(16))
+	
+	
+	var arr = [1,2,3];
+	var str = '';
+	
+//	console.log(arr instanceof Array);
+
+	var obj = {name:'momo'};
+	
+	function isArray(data){
+		var toStr = Object.prototype.toString;
+//		if(toStr.call(data) === '[object Array]'){
+//			return true;
+//		}else{
+//			return false;
+//		}
+//		
+		return toStr.call(data) === '[object Array]'?true:false;
+		
+	}
+	
+	console.log(isArray(arr));
+	
+	
+//	alert(obj.toString())
+//	console.log(obj.toString())  //[object Object] ->最右边的字符为这个数据的类型
+//	console.log(Object.prototype.toString.call(arr))
+
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

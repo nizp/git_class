@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		constructor:
+			查看某个对象是由哪个构造函数构造出来的。
+		
+		constructor非常容易被修改，如果使用对象赋值的情况下，constructor会被修改
+		这个时候去查看对象的构造函数是不准确的。
+		
+		解决：
+			手动修改constructor指向。
+			
+	*/
+	
+	function Teacher(name,age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	Teacher.prototype = {
+		constructor:Teacher,
+		say:function(){
+			alert(123);
+		}
+	}
+	
+	
+	var t1 = new Teacher();
+	
+
+	t1.say();
+	
+	console.log(t1.constructor)
+	
+	
+	
+</script>
+</body>
+</html>
