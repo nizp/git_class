@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	var obj = {
+		name:'nizp',
+		settings:{
+			name:'孙国庆',
+			fn:function(){
+				alert(this.name);
+			}
+		},
+		fn:function(){
+			alert(this.name);
+		}
+	}
+	
+//	obj.fn();
+	
+	obj.settings.fn();
+	
+</script>
+</body>
+</html>

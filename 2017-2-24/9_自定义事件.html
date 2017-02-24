@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	document.onclick = function(){
+//		alert(1);
+//	}
+//	document.onclick = function(){
+//		alert(2);
+//	}
+
+//	document.addEventListener('click',function(){
+//		alert(1);
+//	})
+//	document.addEventListener('click',function(){
+//		alert(2);
+//	})
+
+	/*
+		addEventListener('事件名1',function(){}) 
+		addEventListener('事件名1',function2(){}) 
+		
+		{
+			点击:[
+				function(){},
+				function2(){}
+			],
+			事件名2:[
+				function(){},
+			]
+		}	
+		
+	*/
+	
+	addEvent(document,'点击',function(){
+		alert('这个点击事件OK了');
+		console.log(document.zdy['上滚'])
+	});
+	
+	addEvent(document,'点击',function(){
+		alert('另外一个事件也出来吧');
+	});
+	
+	console.log(document.zdy);
+	
+	
+	
+//	addEvent(document,'上滚',function(){
+//		
+//	});
+	
+//	console.log(document.zdy)
+	
+	/*
+		映射：
+			当绑定同一个事件多个函数的时候，相当于把每次绑定的函数push到
+			对应事件的数组中。
+		
+		触发器：
+			
+			当指定的系统事件被触发的时候，就循环整个事件绑定对应的函数，依次执行
+		
+		document
+		
+		obj.zdy = {
+			事件名:[fn]
+		}
+		obj.zdy = {
+			事件名:[fn,fn2]
+		}
+		
+		addEvent(obj,'事件名',fn)
+		addEvent(obj,'事件名',fn2)
+		
+	*/
+	
+	function addEvent(obj,events,fn){
+		//给绑定的对象加个 {} //为了好管理
+		//如果这个对象下面有这个属性,接下来的事件函数都放在这个对象下，如果没有，就创建一个{}
+		obj.zdy = obj.zdy || {};
+		
+		/*
+			看看这个zdy对象下面有没有这个事件名
+			如果有，就在这个事件名的数组中push本次绑定的函数。
+			如果没有，就在zdy对象下创建一个属性名为事件名，值为数组的空白数组
+			
+			document.zdy = {
+				'点击':[function(){}]
+			}
+			
+		*/
+		obj.zdy[events] = obj.zdy[events] || [];
+		
+		//把本次绑定的函数push到对应的事件名数组中。
+		obj.zdy[events].push(fn);
+	}
+	
+	
+	function Events(obj,events){
+		var e = '';
+		switch(events){
+			case '点击':
+				e = 'onclick';
+			break;
+			case '移入':
+				e = 'onmouseover'
+			break;
+		}
+		obj[e] = function(){
+			trigger(obj,events);
+		}
+	}
+	Events(document,'点击');
+//	document.onclick = function(){
+//		trigger(document,'点击');
+//	}
+	
+	
+	
+	//触发器
+	
+	function trigger(obj,events){
+		//某个对象有没有绑定这个事件函数，如果没有，返回null
+		if(!obj.zdy[events]){return null}
+		//如果不进if，说明某个对象下是有事件函数。
+		for(var i=0;i<obj.zdy[events].length;i++){
+			//依次执行绑定的事件函数。
+			obj.zdy[events][i]();
+		}
+	}
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	top:0;
+	left:0;
+}
+#div2{
+	width:100px;
+	height: 100px;
+	background: blue;
+	position: absolute;
+	top:0;
+	left:100px;
+}
+</style>
+</head>
+<body>
+	<div id="div"></div>
+	<div id="div2"></div>
+<script type="text/javascript">
+	/*
+		什么是组件?
+			如果重复重写一个模块，那么开发成本较大。
+			
+			复用率高，的模块封装起来，重复调用，能够达到快速开发的目的。
+			
+			组件的特点
+				方法、配置、事件 
+				
+			传参(接口)、配置参数、组件事件
+			
+		
+	*/
+	
+	function Drag(id){
+		this.box = document.getElementById(id);
+		this.disX = 0;
+		this.disY = 0;
+		
+		this.settings = {
+			dow:function(){},
+			mov:function(){},
+			uP:function(){}
+		}
+		
+	}
+	Drag.prototype.init = function(obj){//将一堆参数变成一个参数
+		for(var attr in obj){
+			this.settings[attr] = obj[attr];
+		}
+		var _this = this;
+		this.box.addEventListener('mousedown',function(ev){
+			_this.fnDown(ev);
+		});
+	}
+	
+	Drag.prototype.fnDown = function(ev){
+		this.settings.dow.call(this);
+		var _this = this;
+		this.disX = ev.pageX - this.box.offsetLeft;
+		this.disY = ev.pageY - this.box.offsetTop;
+		var Move = function(ev){
+			_this.fnMove(ev);
+		}
+		var Up = function(ev){
+			_this.fnUp(ev,Move,Up);
+		}
+	
+		document.addEventListener('mousemove',Move);
+		document.addEventListener('mouseup',Up);
+		
+		ev.preventDefault();
+	}
+	Drag.prototype.fnMove = function(ev){
+		this.box.style.left = ev.pageX - this.disX + 'px';
+		this.box.style.top = ev.pageY - this.disY + 'px';
+		this.settings.mov.call(this);
+	}
+	Drag.prototype.fnUp = function(ev,move,up){
+		this.settings.uP.call(this);
+		document.removeEventListener('mousemove',move);
+		document.removeEventListener('mouseup',up);
+	}
+	
+	var d = new Drag('div');
+	var d2 = new Drag('div2');
+	d.init({
+		uP:function(){
+			this.box.style.background = 'red';
+		},
+		dow:function(){
+			this.box.style.background = 'yellow';
+		}
+	});
+	d2.init();
+</script>
+</body>
+</html>

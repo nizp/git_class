@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+	/*
+		有call优先call
+		new 就是obj
+		开了定时器，window
+		事件中，this触发事件的元素
+		直接调用，window
+		某个对象方法调用。 这个对象
+		闭包走window
+	*/
+	
+//	function fn(){
+//		alert(this); //window
+//	}
+//	
+//	fn();
+	
+	//new运算符的this 指向实例化对象
+//	function fn(){
+//		alert(this);//[object Object]
+//	}
+//	
+//	new fn;
+
+//	document.onclick = click;
+//	
+//	function click(){
+//		alert(this);//document
+//	}
+
+//	document.onclick = function(){
+//		click();//window
+//	};
+//	
+//	function click(){
+//		alert(this);
+//	}
+
+//	document.onclick = function(){
+//		function fn1(){
+//			click();//window
+//		}
+//		fn1();
+//	};
+//	
+//	function click(){
+//		alert(this);
+//	}
+
+//	document.fn1 = function (){
+//		//click();
+//		alert(this);//document
+//	}
+//	document.onclick = function(){
+//		document.fn1();//window
+//	};
+//	
+//	function click(){
+//		alert(this);
+//	}
+
+	//eval()
+//	function fn(){
+//		alert(this);//window
+//	}
+//	document.onclick = function(){
+//		setTimeout('fn()',1000);//不要那么写
+//	};
+
+	
+	//new -> 定时器 -> 事件 -> 直接调   遇到了函数this就有可能改变
+	
+//	document.onclick = function(){
+//		
+//		setTimeout(function(){
+//			new fn;
+//		},1000);
+//		
+//		function fn(){
+//			alert(this);
+//		}
+//	
+//	}	
+
+	//window.name
+//	var obj = {
+//		name:'nizp',
+//		fn:function(){
+//			alert(this.name); //""
+//		}
+//	}
+//	
+//	setTimeout(obj.fn,1000);
+
+	
+	
+//	var _this = this;
+//	document.onclick = function(){
+//		setTimeout(function(){
+//			fn.call(document); //document  加了new会报错。
+//		},1000);
+//		
+//		function fn(){
+////			alert(this);//document
+//			alert(_this);//window
+//		}
+//	}	
+
+
+	
+//	var arr = [1,2,3,4];
+//	
+//	arr.fn = function(){
+//		alert(this);//arr本身
+//	}
+//	
+//	arr.fn();
+	
+//	document.onclick = () => {
+//		alert(this);//window  所以箭头函数不要绑在事件上
+//	}
+//	
+
+	
+//	document.onclick =function(){
+//		(function(){
+//			alert(this);//window
+//		})();
+//	};
+	
+	
+	
+	
+	
+//	console.dir(window);
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	top:0;
+	left:0;
+}	
+#div2{
+	width:100px;
+	height: 100px;
+	background: blue;
+	position: absolute;
+	top:0;
+	left:100px;
+}
+</style>
+</head>
+<body>
+	<div id="div"></div>
+	<div id="div2"></div>
+<script type="text/javascript">
+	/*
+		继承：
+			类式：
+				
+			拷贝:
+				1.属性继承
+					调用父类.call
+				2.方法继承
+					for in
+			对象:
+				
+	*/
+	
+	function Drag(id){
+		this.box = document.getElementById(id);
+		this.disX = 0;
+		this.disY = 0;
+//		alert(1);
+//		alert(2);
+//		alert(3);
+		
+	}
+	Drag.prototype.init = function(){
+		var _this = this;
+		this.box.addEventListener('mousedown',function(ev){
+			_this.fnDown(ev);
+		});
+	}
+	
+	Drag.prototype.fnDown = function(ev){
+		var _this = this;
+		this.disX = ev.pageX - this.box.offsetLeft;
+		this.disY = ev.pageY - this.box.offsetTop;
+		var Move = function(ev){
+			_this.fnMove(ev);
+		}
+		var Up = function(ev){
+			_this.fnUp(ev,Move,Up);
+		}
+		document.addEventListener('mousemove',Move);
+		document.addEventListener('mouseup',Up);
+		
+		ev.preventDefault();
+	}
+	Drag.prototype.fnMove = function(ev){
+		this.box.style.left = ev.pageX - this.disX + 'px';
+		this.box.style.top = ev.pageY - this.disY + 'px';
+	}
+	Drag.prototype.fnUp = function(ev,move,up){
+		document.removeEventListener('mousemove',move);
+		document.removeEventListener('mouseup',up);
+	}
+	
+	
+	function Drag2(id){
+		Drag.call(this,id);
+	}
+	
+	function Paohui(){}
+	Paohui.prototype = Drag.prototype;
+	var ph = new Paohui();// {}
+	Drag2.prototype = ph;//new Drag('div2');
+	Drag2.prototype.constructor = Drag2;
+	
+	/*
+		 
+		d2.init -> Drag2.prototype
+		
+		Drag2.prototype ->  ph ({})
+		
+		ph.init -> Paohui.prototype
+		
+		Paohui.prototype -> Drag.prototype 
+		 
+	*/
+	
+	
+	var d = new Drag('div');
+	var d2 = new Drag2('div2');
+	d.init();
+	d2.init();
+	
+	
+	
+	var obj = {
+		name:'leo',
+		num:0,
+		arr:[1,2,3]
+	}
+	
+
+	var obj2 = deepClone(obj);
+	
+	function deepClone(obj){
+		var o = obj.push?[]:{};
+		for(var attr in obj){
+			if(typeof obj[attr] === 'object'){
+				o[attr] = deepClone(obj[attr]);
+			}else{
+				o[attr] = obj[attr];
+			}
+		}
+		return o;
+	}
+	
+	
+	obj2.arr.push(6);
+	
+	console.log(obj.arr);
+	
+	
+	//obj2.num = 3;
+	
+	//alert(obj.num);
+	
+	
+	//特殊格式的json是可以for循环的。
+//	var obj3 = {
+//		0:'你好',
+//		1:'世界',
+//		2:'早安',
+//		length:3
+//	}
+//	
+//	for(var i=0;i<obj3.length;i++){
+//		alert(obj3[i]);
+//	}
+	
+	
+//	var str = 'abc';
+//	console.log( typeof str );	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

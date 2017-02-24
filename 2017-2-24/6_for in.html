@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+	/*
+		 有配置走配置，没配置走默认
+	*/
+	var obj = {  //配置参数
+		name:'孙国庆',
+//		age:18
+	};
+	
+	var obj2 = { //默认参数
+		name:'刘宇',
+		age:16
+	}
+	
+	for(var attr in obj){
+		obj2[attr] = obj[attr];
+	}
+	
+	console.log(obj2);
+	
+	
+</script>
+</body>
+</html>
