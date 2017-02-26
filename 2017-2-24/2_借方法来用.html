@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul id="ul">
+		<li>4</li>
+		<li>3</li>
+		<li>5</li>
+		<li>6</li>
+		<li>2</li>
+		<li>1</li>
+	</ul>
+<script type="text/javascript">
+	var ul = document.getElementById('ul');
+//	var lis = document.getElementsByTagName('li');//动态的
+	var lis = document.querySelectorAll('li');//静态的
+	//
+	//Array.from
+	
+//	var lis2 = Array.from(lis);
+	//var slice = Array.prototype.slice; //不会修改原数组
+	
+	//lis2 = slice.call(lis);
+	
+//	lis2 = [].slice.call(lis);
+//	
+//	lis2.forEach(function(el,index){
+//		el.onclick = function(){
+//			alert(index);
+//		}
+//	});
+	//123456   
+	for(var i=0;i<lis.length;i++){
+		ul.appendChild(lis[i]);
+	}
+	
+</script>
+</body>
+</html>
