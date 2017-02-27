@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}	
+#div{
+	width:100px;
+	height: 100px;
+	background: deepskyblue;
+	top:0;
+	left:0;
+	position: absolute;
+}
+
+</style>
+</head>
+<body>
+	<div id="div">
+		
+	</div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	var num = 0;
+	var n = 100;
+	
+	$(document).on('mousewheel',function(ev){
+		if(ev.originalEvent.wheelDelta > 0){
+			//上
+			num-=n;
+//			console.log(num)
+		}else{
+			//下
+			num+=n;
+			console.log(num)
+		}
+		$('#div').css('top',num);
+	});
+
+	
+</script>
+</body>
+</html>

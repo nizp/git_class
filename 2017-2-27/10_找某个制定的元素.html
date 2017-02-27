@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul>
+		<li class="li1">1</li>
+		<li class="li2">2</li>
+		<li class="li3">3</li>
+		<li class="li4">4</li>
+		<li class="li5">5</li>
+	</ul>
+<script src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	
+	/*
+		:gt(index)
+			找到相同元素 大于某个index值
+		
+		:lt(index)
+			找到相同元素 小于某个index值
+			
+		:eq(index)
+			找到相同元素 指定某个index值
+		
+	*/
+	$('li:first').css('background','red');
+	$('li:eq(1)').css('background','green');
+	$('li:gt(1)').css('background','pink');
+	$('li:last').css('background','yellow');
+	
+	$('li:lt(1)').css('background','deepskyblue');
+	
+</script>
+</body>
+</html>

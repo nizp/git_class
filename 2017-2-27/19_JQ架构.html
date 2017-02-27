@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		window 
+		
+		当前环境下的window是不是undefined，如果是说明当前文件没有运行在浏览器中，否则是浏览器
+		
+		typeof window !== 'undefined'?window:this
+		
+		global,factory
+		
+		function fn(global,factory)
+			console.log(global);
+			
+			
+			factory(global);
+			
+			
+		fn(window,function(global,noGlobal){
+			console.log(123);
+		})
+		
+	*/
+	
+	
+	(function(global,factory){
+		factory(global);
+		//一定是this不但为this还有window
+	})(typeof window !== 'undefined'?window:this,function(global,noGlobal){
+		
+		alert(global);
+		
+		console.log('这是一段非常恶心的代码');
+	});
+	
+
+	/*
+		在低版本浏览器下面，undefined是可以被修改的。 
+	*/
+	
+//	var undefined = 10;
+//	
+//	alert(undefined);
+	
+//	function fn(name){
+//		alert(name);
+//	}
+//	
+//	fn();
+	
+	
+	
+</script>
+</body>
+</html>

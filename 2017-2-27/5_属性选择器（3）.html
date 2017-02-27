@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div class="div">1</div>
+	<div class="div1">2</div>
+	<div class="div-box">3</div>
+	<div class="div_box">4</div>
+	<div class="name-div">5</div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>	
+<script type="text/javascript">
+
+	/*
+		属性：[key $= value]:找到只要value值结尾的所有元素
+			 [key ^= value]:找到只要value值开头的所有元素
+			
+			
+			
+		$('#div')
+		$('.li')
+	*/
+//	$('div[class$="div"]').css('background','red');
+	$('div[class^="div"]').css('background','red');
+	
+</script>
+</body>
+</html>

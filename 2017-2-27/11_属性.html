@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+.active{
+	background: red;
+}	
+</style>
+</head>
+<body>
+	<div id="div1" style="width:10px;height: 10px;"></div>
+	<input type="checkbox" name="" id="" value="" />
+	<input type="checkbox" name="" id="" value="" />
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		在jq中调用某个方法，一般来说
+			1个参数一般表示获取
+			2个参数一般表示设置
+			可以用{}的方式写批量设置
+			
+		attr:（注意:判断checked的时候返回的是checked或者undefined）
+			在行间设置属性。
+			
+		prop:
+			专门用来处理checked类似的情况的（返回值为布尔值）
+			
+		get/set/Attribute()
+	*/
+	
+	//$('#div1').attr('index',1);
+	
+//	$('#div1').attr({
+//		'index':1,
+//		'data':2
+//	});
+
+	$('#div1').attr('class','active');
+	
+	//alert($('#div1').attr('index'));
+	
+	//obj.checked == true
+	$('#div1').click(function(){
+		//console.log($(':checkbox').attr('checked'))
+		console.log($(':checkbox:first').prop('checked'))
+//		if($(':checkbox').attr('checked') == 'checked'){
+		if($(':checkbox').prop('checked')){	
+			$(':checkbox').attr('checked',false);
+		}else{
+			$(':checkbox').attr('checked',true);
+		}
+	});
+	
+	
+	
+</script>
+
+
+</body>
+</html>

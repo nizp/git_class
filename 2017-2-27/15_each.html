@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<ul>
+	<li>11</li>
+	<li>22</li>
+	<li>33</li>
+	<li>444</li>
+	<li>555</li>
+</ul>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	/*
+		循环:
+			$(ele).each(function(索引,元素){
+				
+			})
+	*/
+	
+//	$('li').click(function(){
+////		alert($(this).text())
+//	});
+//
+//	
+//	$('li').each(function(index,ele){
+////		ele.onclick = function(){
+////			alert(ele.innerHTML);
+////		}
+//		
+//		$(ele).click(function(){
+//			console.log(index)
+//			alert($(ele).text());
+//		});
+//	});
+
+	
+	var arr = ['第一个内容','第二个内容','第三个内容','第四个内容','第四个内容'];
+	
+	
+	$('li').each(function(index,ele){
+		//ele 不是JQ对象，是原生的对象，如果要使用JQ的方法，那么要用$(包一下)
+		$(ele).click(function(){
+			$(ele).text(arr[index]);
+		});
+	});
+	
+	
+
+//	var lis = document.getElementsByTagName('li');
+//	var li = [].slice.call(lis); //类数组转数组   Array.from(lis)
+//	li.forEach(function(ele,index){
+//		ele.onclick = function(){
+//			this.innerHTML = arr[index];
+//		}
+//	})
+	
+	
+	
+	
+	
+
+		
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input type="button" id="btn" value="按钮" />
+	<div id="div" style="width:100px;height: 100px;background: red;display: none;">
+		
+	</div>
+<script type="text/javascript">
+	/*
+		Jquery：
+			js的类库（面向对象写的），咋们是用。
+			
+			各种浏览器都兼容，可以使用很多便利的方法来写js
+			
+			吃的少，干的多。
+			
+			jq版本：
+				1字开头的
+					1.72 ...
+					是兼容了ie低版本的（没有新特性）。
+				3字开头的
+					不兼容IE低版本，有些新的特性
+					
+					后缀不带min的版本为学习版 如：jquery-3.1.1.js
+					
+					后缀带min的版本为压缩版 如：jquery-3.1.1.min.js
+					
+			http://www.jquery123.com/ 中文学习文档	
+			
+			http://www.jb51.net/shouce/jquery1.82/ 学习的API文档
+			
+			
+			用JQ的时候，实现某个效果*思路和以前写原生一样*，只是写法不一样
+			
+			
+			#
+			.
+			type="button"
+			class *= "li"
+			class != "li"
+			class $= "li"
+			class ^= "li"
+			li:even
+			li:odd
+			li:gt
+			li:lt
+			li:eq
+			li:first-of-type
+			li:last-of-type
+			[class="li"]:last
+			li:first
+			li:last	
+			
+	*/
+	
+</script>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+//	$(document).click(function(){
+//		$('#div').animate({
+//		width:200
+//		}).animate({
+//			height:200
+//		})
+//	});
+
+//	var btn = document.getElementById('btn');
+//	var div = document.getElementById('div');
+//	btn.onOff = false;
+//	btn.onclick = function(){
+//		if(btn.onOff){
+//			div.style.display = 'none';
+//		}else{
+//			div.style.display = 'block';
+//		}
+//		btn.onOff = !btn.onOff;
+//	}
+
+
+	$('#btn').click(function(){
+		$('#div').toggle(500);
+		$('#div').css('background','yellow');
+	});
+	
+</script>
+</body>
+</html>

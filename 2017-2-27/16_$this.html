@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<ul>
+	<li>11</li>
+	<li>22</li>
+	<li>33</li>
+	<li>444</li>
+	<li>555</li>
+</ul>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+	 	$(this)
+	 	
+	 		JQ中可以写原生
+	 		但是原生不能写JQ,因为原生对象不是JQ对象
+	*/
+	
+	var arr = ['第一个内容','第二个内容','第三个内容','第四个内容','第四个内容'];
+	
+	
+	$('li').each(function(index,ele){
+		$(ele).click(function(){
+			//$(this).text(arr[index]);
+			this.innerHTML = arr[index];
+		});
+	});
+	
+	
+//	var lis = document.getElementsByTagName('li');
+//	
+//	alert(lis.text());
+	
+
+//	$('li').click(function(){
+//		$(this).text(arr[$(this).index()]);
+//	})
+	
+	
+	
+		
+	
+</script>
+</body>
+</html>

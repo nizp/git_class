@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+	(function(golbal,factory){
+		factory(golbal);
+	})(typeof window !== 'undefined'?window:this,function(golbal,noGolbal){
+		
+		var version = "3.1.1",
+		
+		jQuery = function(selector){
+			//无new化操作 //既想在外面调用的时候不new,还想自己不调用自己
+			return new jQuery.init(selector);
+		}
+		
+		jQuery.prototype = {
+			constructor:jQuery,
+			css:function(){
+				console.log(1)
+			}
+		}
+		
+		
+		//jQuery.fn就相当于是个名字    创建这个构造函数就是个“炮灰”，为了防止递归用的
+		jQuery.init = jQuery.prototype.fn = function(selector){
+			
+		}
+		
+		//意思jQ有的方法 jQuery.fn都有
+		jQuery.init.prototype = jQuery.prototype;
+		
+		//给外面提供接口调用
+		window.$ = window.jQuery = jQuery;
+		
+	});
+	
+	
+//	var $ = new jQuery();
+
+//	console.log($())
+	
+	//$().css();
+	
+//	console.log();
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

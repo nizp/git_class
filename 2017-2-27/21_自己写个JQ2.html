@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		既想调用的时候不用new，又想不递归循环自己？ 
+	*/
+	
+	(function(){
+		function jQuery(selector){
+			//无new化操作。
+			return new jQuery.fn(selector);
+		}
+		
+		jQuery.prototype.css = function(){
+			console.log(1);
+		}
+		
+		jQuery.fn = jQuery.prototype.fn = function(selector){
+			
+		}
+		
+		jQuery.prototype.fn.prototype = jQuery.prototype;
+		
+		window.$ = jQuery;
+		
+	})();
+	
+
+	
+	var jQuery = 10;
+	
+	console.log($)
+	
+	var li = $('li');
+	
+//	console.log(li);
+	
+	li.css();
+	
+	//var $ = new jQuery();
+	
+//	$.css();
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<ul>
+	<li>11</li>
+	<li>22</li>
+	<li>33</li>
+	<li>444</li>
+	<li>555</li>
+</ul>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		css()
+			参数：
+				字符串：1个为获取
+				对象:批量化设置
+				
+				2个
+					设置。
+				
+	*/
+//	console.log($('li').css('width','200px'));
+	
+	console.log($('li').css({
+		'width':200,
+		'height':200,
+		'background':'greenyellow',
+		'marginTop':10
+	}));
+	
+	
+</script>
+</body>
+</html>
