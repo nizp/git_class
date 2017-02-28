@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul id="ul"></ul>
+<script src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	/*
+		创建元素
+			var li = document.createElement('li');
+			
+			var li = $('<li>123</li>');
+		
+			'<div>'+
+			'</div>'
+			
+			字符串模板：
+				`字符串，可以换行，传数据的时候${要填的数据}`
+			`<div>
+				${num}
+			</div>`
+		
+		添加：
+			append() 尾部添加
+			appendTo() 尾部添加  方便链式操作
+			
+		
+	*/
+	var num = 0;
+//	$(document).click(function(){
+//		var li = $(`<li>
+//					 	<div>
+//					 		<span> ${num} </span>
+//					 	</div>
+//				  	</li>`);
+//		num++;
+////		$('#ul').append(li);
+//		
+//	});
+	
+	$(document).click(function(){
+		$(`<li>
+		 	<div>
+		 		<span> ${num} </span>
+		 	</div>
+	  	</li>`).appendTo('#ul').css('width','100px');
+		num++;
+//		$('#ul').append(li);
+		
+	});
+	
+</script>
+</body>
+</html>

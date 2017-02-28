@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+.active{
+	background: yellowgreen;
+}
+#box div{
+	width:100px;
+	height: 100px;
+	border: 1px solid #000;
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+
+</style>
+</head>
+<body>
+	<div id="box">
+		
+		<div class="show">1</div>
+		<div>2</div>
+		<div>3</div>
+		<input type="button" id="" value="按钮一"  class="active"/>
+		<input type="button" id="" value="按钮二" />
+		<input type="button" id="" value="按钮三" />
+	</div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>	
+<script type="text/javascript">
+	
+	/*
+		添加class   addClass(class名)
+		
+		删除class   removeClass(class名)
+		
+		$(this)  ->  一般触发事件的元素
+		
+		index() ->  能够自动匹配*当前的元素在兄弟节点中的索引位置*。
+		
+			一般用index的时候，最好在index(精确匹配要找的元素)
+		
+		
+		get(num)与eq(num)的区别：
+		
+			相同点：
+				都是找索引对应的元素
+			
+			不同点:
+				get是将JQ对象转原生，这个时候就用不了JQ的方法了（原生元素）
+				eq是JQ元素
+				
+		siblings:以当前元素为基准，别的所有兄弟元素，所以一般使用需要在siblings(给个精确的范围)
+		
+			
+		
+	*/
+	
+//	$(':button').click(function(){
+//		//console.log($(this).index('input'))
+//		$(':button').removeClass('active');//大清洗
+//		$(this).addClass('active');//给当前元素加class
+//		$('#box div').removeClass('show');//又是个大清洗
+//		
+//		$('#box div').eq($(this).index('input')).addClass('show');
+//		
+//	});
+	
+	
+
+	$(':button').click(function(){
+		$(this).addClass('active').siblings('input').removeClass('active');
+//		$('#box div').eq($(this).index()).addClass('show').siblings('div').removeClass('show');
+//		console.log($(this).siblings('input'))
+		
+		$('#box div').eq($(this).index('input')).show().siblings('div').hide();;
+		
+		//$('#box div').eq($(this).index()).addClass('show');
+		
+	});
+	
+	
+</script>
+</body>
+</html>

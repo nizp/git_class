@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	console.log(jQuery)
+
+	/*
+		函数是一个特殊的对象，他能加属性
+		
+		在"use strict";下this指向undefined
+		
+		所以需要通过typeof window !== 'undefined'?window:this直接找window
+		
+	*/
+	
+	
+	(function(global,factory){
+		factory(global);
+	})(typeof window !== 'undefined'?window:this,function(global,noGlobal){
+
+		function jQuery(selector){
+			return new jQuery.tzy(selector);
+		}
+	
+		jQuery.prototype = {
+			constructor:jQuery,
+			css:function(){
+				console.log(1);
+			},
+			html:function(){
+				
+			}
+		}
+		jQuery.tzy = function(selector){
+			
+		}
+		
+		jQuery.tzy.prototype = jQuery.prototype;
+		
+		//函数与函数赋值只是赋值，不是赋址。
+		global.$ = global.jQuery = jQuery;
+	});
+
+	
+	/*
+		目的：
+			1.不用new就能使用这个对象
+			2.通过这个对象可以调用一些方法.
+	*/
+//	window.$ = 5;
+
+//	var j = $('li');
+	
+//	console.dir(window);
+	
+//	j.css();
+	
+	
+//	var a = 10;
+//	window.a = 20;
+//	alert(a);
+
+	
+	/*
+		Array   []
+		Object  {}
+		String  ''
+		
+		typeof function(){}  function  
+		
+		new Function(){}  function 
+		
+	*/
+
+//	function fn(){}
+//	
+//	var a = fn;
+//	
+//	//window.a = 5
+//	
+//	a = 5;
+
+	var a = 5;
+	var b = a;
+	
+//	b = 1;
+	
+//	alert(a == b);
+//	
+//	
+//	var f = new Function();
+//	
+//	var f2 = f;
+//	
+//	f2 = 3;
+//	
+//	console.log(f)
+	
+	
+	
+	
+	
+	//console.log(fn)
+	
+	
+
+	
+	
+	
+</script>
+</body>
+</html>

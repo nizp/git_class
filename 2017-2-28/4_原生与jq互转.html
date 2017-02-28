@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<textarea name="" rows="5" cols="20" id="tex"></textarea>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		如果原生要用jQ，那么用$()包一下，就让原生对象变成了JQ对象
+		
+		JQ对象转原生对象用get(index),转完之后就可以用原生的方法了
+		或者直接用下标[index];
+	*/
+	var lis = document.getElementsByTagName('li');
+	
+//	$(lis).css({
+//		height:100,
+//		width:100
+//	});
+	
+	
+//	for(var i=0;i<lis.length;i++){
+//		lis[i].style.width = '200px';
+//		
+//	}
+
+	$(document).click(function(){
+		//console.log($('#tex').scrollHeight())
+		
+		//console.log($('#tex').get(0).scrollHeight)
+		
+		console.log($('#tex')[0].scrollHeight);
+		
+	});
+
+	
+	
+	
+</script>
+</body>
+</html>

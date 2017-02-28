@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul>
+		<li class="li1">1</li>
+		<li style="width:100px">2</li>
+		<li>3</li>
+		<li class="li1">4</li>
+		<li class="li-box">5</li>
+	</ul>
+<!--<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>-->
+<script src="jq1.72.js" type="text/javascript" charset="utf-8"></script>
+<script src="sizzle.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+//	console.log(jQuery)
+
+	/*
+		函数是一个特殊的对象，他能加属性
+		
+		在"use strict";下this指向undefined
+		
+		所以需要通过typeof window !== 'undefined'?window:this直接找window
+		
+	*/
+	
+//	
+	(function(global,factory){
+		factory(global);
+	})(typeof window !== 'undefined'?window:this,function(global,noGlobal){
+
+		function jQuery(selector){
+			return new jQuery.tzy(selector);
+		}
+	
+		jQuery.prototype = {
+			constructor:jQuery,
+			css:function(){
+				//要借用Object的toString
+				var toStr = Object.prototype.toString;
+				//如果css只传了1个参数
+				if(arguments.length === 1){
+					//传入的这个参数是字符串，说明要查看
+					if(typeof arguments[0] === 'string'){
+						
+						//this[0]  this为对象，但是对象中有值（arr数组中拿过来）
+						return getComputedStyle(this[0])[arguments[0]]
+						
+						//如果传入的参数为对象，那么说明想批量设置
+					}else if(toStr.call(arguments[0]) === '[object Object]'){
+						//循环查找到的所有元素，然后每个都赋值多条样式。
+							for(var i=0;i<this.length;i++){
+								for(var attr in arguments[0]){
+									this[i].style[attr] = arguments[0][attr];
+								}
+							}
+						
+					}
+					//如果传入2个参数，说明是设置
+				}else if(arguments.length === 2){
+					//循环所有找到的元素，然后赋值。
+					for(var i=0;i<this.length;i++){
+						this[i].style[arguments[0]] = arguments[1];
+					}
+				}
+				
+				//目的是为了链式操作
+				return this;
+			},
+			html:function(){
+				
+			}
+		}
+		jQuery.tzy = function(selector){
+			if(typeof selector === 'function'){
+				document.addEventListener('DOMContentLoaded',selector);
+			}else{
+				//字符串就等同于选择器
+				//借用Sizzle
+				var arr = Sizzle(selector);
+				
+				//将Sizzle找到的元素赋值给this
+				for(var i=0;i<arr.length;i++){
+					this[i] = arr[i];
+				}
+//				console.log(this)
+				
+				//因为是对象，没有length属性，
+				//所以不能for循环，那么通过赋值length，
+				//让对象变成了可以使用for循环的特殊对象
+				this.length = arr.length;
+			}
+		}
+		
+		jQuery.tzy.prototype = jQuery.prototype;
+		
+		//函数与函数赋值只是赋值，不是赋址。
+		global.$ = global.jQuery = jQuery;
+	});
+
+	
+	
+//	$(function(){
+//		
+//		$('li')//.css('background','red');
+//	});
+//	
+	/*
+		css('width')
+		css({});
+		.css('width')
+	*/
+	//console.log();
+	
+//	$('li').css();
+	
+//	console.log($('li').css('height'));
+	
+	
+	
+	$('li').css({
+		'width':'200px',
+		'height':'200px',
+		'background':'red',
+		'marginTop':'10px'
+	});
+	
+	$('li').css('background','deepskyblue').css('background','yellow');
+	
+	//console.log($('li'))
+	
+	//console.log(Sizzle('li[class^="li"]'))
+	
+	
+	
+	
+</script>
+</body>
+</html>

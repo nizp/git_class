@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul id="ul">
+		<li>0</li>
+	</ul>
+<script src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	/*
+		要添加的元素.insertAfter(添加到谁的后面)
+		要添加的元素.insertBefore(添加到谁的前面)
+		
+		添加到谁的前面.before(要添加的元素):原生的insertBefore
+		添加到谁的后面.after(要添加的元素):添加到某个元素的后面
+		
+		
+	*/
+	var num = 1;
+	$(document).click(function(){
+		
+		var li = $(`<li>${num}</li>`)
+		num++;
+		
+//		$(li).insertBefore($('li').eq(0))
+
+//		$(li).insertAfter($('li').eq(0))
+		
+//		$('li').eq(0).before(li) //前堆
+		
+		$('li').eq(0).after(li);//后堆
+	});
+	
+</script>
+</body>
+</html>

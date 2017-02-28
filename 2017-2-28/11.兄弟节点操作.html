@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta charset = 'utf-8' />
+  <style>
+    ul {width: 200px;}
+    ul li {color: #666;background-color: #eee;font-weight:bold; font-size: 14x; height: 30px; line-height: 30px; padding: 0 20px;list-style:none;}
+    ul .focus {font-size: 22px; background-color: #555;color:#fff;}
+    ul .near {font-size:18px; background-color: #ccc;color:blue;}
+    ul .none {background:#333;color:#fff;}
+    ul .side {background:orange;}
+  </style>
+
+ </head>
+  
+ <body>
+
+  <ul id="ul1">
+    <li class="none">这是首行</li>
+    <li>111111</li>
+    <li>222222</li>
+    <li>333333</li>
+    <li>444444</li>
+    <li>555555</li>
+    <li>666666</li>
+    <li>111111</li>
+    <li>222222</li>
+    <li>333333</li>
+    <li>444444</li>
+    <li>555555</li>
+    <li class="none">这是末行</li>
+  </ul>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	var lis = $('li');
+	
+	
+	lis.mouseover(function(){
+		//移入的是第一个或者是最后一个
+		if(!$(this).prev().length || !$(this).next().length){
+			$(this).addClass('side');
+		}else{
+			//当前这个变，上个下个变
+			$(this).addClass('focus');
+			$(this).next().addClass('near');
+			$(this).prev().addClass('near');	
+		}
+		//最后一个和第一个清空
+		lis.first().removeClass('near').addClass('none');
+		lis.last().removeClass('near').addClass('none');
+	});
+	
+	lis.mouseout(function(){
+		lis.attr('class','');
+		lis.first().addClass('none');
+		lis.last().addClass('none');
+	});
+	
+	
+</script>
+ </body>
+</html>
