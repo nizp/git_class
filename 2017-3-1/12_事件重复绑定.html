@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+	#div1{
+		width:100px;
+		height: 100px;
+		background: dodgerblue;
+	}
+	#div2{
+		width:50px;
+		height: 50px;
+		background: yellow;
+	}
+</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$('#div1').on('click',function(){
+		console.log(1)
+		$('#div2').off().on('click',function(){
+			console.log(2)
+			return false;
+		});
+	});
+
+	/*
+		在原生事件绑定的时候，如果出现事件套事件的情况，子事件又要用到父事件的
+		变量时，那么这个变量要放到父事件的外面（可以是全局，也可以挂在某个对象上）
+		
+		子事件函数，要放在父事件函数之外。
+	*/
+	
+//	var a = 10;
+//	
+//	div1.addEventListener('click',function(){
+//		a++;
+//		console.log(111);
+//		div2.removeEventListener('click',fn2)
+//		div2.addEventListener('click',fn2);
+//	});
+//	function fn2(ev){
+//		console.log(a);
+		//ev.cancelBubble = true;
+//	}
+//
+</script>
+</body>
+</html>

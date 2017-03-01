@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#red{
+	width:100px;
+	height: 100px;
+	background: red;
+}
+#blue{
+	width:100px;
+	height: 100px;
+	background: blue;
+}
+</style>
+</head>
+<body>
+	<input type="button" id="btn" value="按钮" />
+	<div id="red"></div>
+	<hr />
+	<div id="blue">
+		<p>23121321</p>
+	</div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		clone：
+			如果要克隆元素的事件，需要在clone(true);
+	*/
+	
+	$('#blue').click(function(){
+		alert(1);
+	})
+	
+	$('#btn').click(function(){
+		var b = $('#blue').clone(true);
+		
+		$('#red').replaceWith(b);
+		
+	});
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

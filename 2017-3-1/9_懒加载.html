@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+img{
+	opacity: 0;
+}	
+</style>
+</head>
+<body>
+	<ul id="ul">
+		
+	</ul>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	for(var i=1;i<=5;i++){
+		var $lis = $(`<li><img _src="images/${i}.jpg" height="250"></li>`);
+		$('#ul').append($lis);
+	}
+	
+	$(window).scroll(function(){
+		$('img').each(function(index,ele){
+			if($(ele).offset().top <= $(window).innerHeight()+$(document).scrollTop()){
+				if($(ele).attr('_src')){
+					$(ele).attr('src',$(ele).attr('_src'));
+					$(ele).removeAttr('_src');
+					$(ele).animate({
+						opacity:1
+					},1000);
+				}
+			}
+		});
+	});
+	
+</script>
+</body>
+</html>

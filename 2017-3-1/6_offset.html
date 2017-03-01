@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+*{
+	padding: 0;
+	margin: 0;
+	font-size: 12px;
+	font-family: "微软雅黑";
+}
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	padding: 10px;
+	position: absolute;
+	top:100px;
+}
+
+#box{
+	position: relative;
+	top:200px;
+}
+
+</style>
+</head>
+<body>
+	
+	<div id="box">
+		<div id="div"></div>
+	</div>
+	
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		 offset():绝对位置(当前元素到页面顶部)，返回的是一个对象属性top/left
+		 
+		 position():类似原生offsetLeft/Top
+		 
+	*/
+	
+	$(window).scroll(function(){
+		//console.log($('#div').offset())
+		
+		console.log($('#div').position().top);
+	})
+	
+	
+	
+</script>
+</body>
+</html>

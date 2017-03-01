@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+	#div1{
+		width:100px;
+		height: 100px;
+		background: dodgerblue;
+	}
+	#div2{
+		width:50px;
+		height: 50px;
+		background: yellow;
+	}
+</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		jQ给事件绑定函数二次封装了ev对象，常规的属性或者方法都能使用，
+		如果不能使用，可以调ev.originalEvent（原生的事件对象）
+	*/
+	
+//	div1.onclick = function(ev){
+//		console.log(ev);
+//	}
+	$('#div1').click(function(){
+		//console.log(ev.clientX);
+		alert(1)
+	});
+	
+	$('#div2').click(function(ev){
+		alert(2);
+		return false;//可以阻止冒泡
+//		ev.originalEvent.cancelBubble = true;
+		//ev.stopPropagation();//阻止冒泡
+		//ev.cancelBubble = true; //因为JQ没有封装，所以用不了
+	})
+
+//	$('#div1').on('touchstart',function(ev){
+////		console.log(ev.changedTouches[0])
+//		console.log(ev.originalEvent.changedTouches[0]);
+//	})
+	
+</script>
+</body>
+</html>

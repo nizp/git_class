@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+	<div id="div1" index="1"></div>
+	
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		div.index = 1
+		div.setAttribute('key','vlaue')
+		<div id="div1" index="1"></div>
+		data-set
+	*/
+	$(document).click(function(){
+		//$('#div1').removeAttr('index');
+		$('#div1')[0].dataset.index = 0;//设置
+		
+		console.log($('#div1')[0].dataset.index);//获取
+	});
+</script>	
+</body>
+</html>

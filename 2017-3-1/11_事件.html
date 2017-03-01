@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="div1">
+		<ul>
+			<li>1</li>
+			<li class="li2">2</li>
+			<li class="li1">3</li>
+			<li>4</li>
+		</ul>
+	</div>
+	
+	<!--<form action="http://www.miaov.com" method="post">
+		<input type="text">
+		<input type="submit" value="提交"/>
+	</form>-->
+	
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		JQ中的事件都是事件绑定。 
+		
+		click()
+		mouseover
+		mouseout
+		mousemove
+		....
+		
+		滚轮JQ是没有的
+		
+		on('事件名','放选择器',fn)  //事件委托    deleget是如何实现的?
+		
+		on('事件名','放选择器',数据,fn)  通过ev.data,可以拿到数据
+		
+		阻止submit提交，可以用 $("form").on("submit", false)
+		
+		.on('事件名','元素1,元素2',function(ev){
+			可以让不同的元素执行一个函数
+		})
+		
+		tirgger:触发器。
+		
+		
+		bind  绑定
+		unbind  解除
+		
+		on的方式绑定事件函数，要用off(可以指定解除某个事件绑定函数)来解除。
+		
+		用JQ小心事件重复绑定
+		
+	*/
+	
+	
+//	$('#div1').on('click','.li1',function(){
+//		
+//		$(this).css('background','red');
+//		console.log()
+//		
+//	})
+	
+//	var arr = ['111','222','3333','44444'];
+//	
+//	$('#div1').on('click','li',arr,function(ev){
+//		//console.log(ev.data);
+//		$(this).text(ev.data[$(this).index('li')]);
+//	})
+
+		
+//	$("form").on("submit", false)
+	
+	
+//	$('#div1').on('click','.li1,.li2',function(ev){
+//		alert(1);
+//	})
+
+	
+//	$('.li1').on('click',function(ev){
+//		alert(1);
+//	})
+//	$('.li1').on('click.fn1',function(ev){
+//		alert(11111);
+//	});
+//	
+//	$('.li2').on('click',function(ev){
+//		alert(2);
+//		$('.li1').trigger('click.fn1');
+//	});
+
+
+
+//	$('.li1').bind('click',fn1)
+//	
+//	function fn1(){
+//		alert(1);
+//		$('.li1').unbind('click',fn1)
+//	}
+	
+//	$('.li1').on('click.fn1',fn1);
+//	$('.li1').on('click',function(){
+//		alert(2222);
+//	});
+//	
+//	function fn1(){
+//		alert(1);
+//		$('.li1').off('click.fn1');
+//	}
+	
+	
+	
+	
+	
+	
+//	$(document).click(function(){
+//		alert(1);
+//	})
+//	
+//	$(document).click(function(){
+//		alert(2);
+//	})
+	
+	
+</script>
+</body>
+</html>

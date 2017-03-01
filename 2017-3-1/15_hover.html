@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+	#div1{
+		width:100px;
+		height: 100px;
+		background: dodgerblue;
+	}
+	#div2{
+		width:50px;
+		height: 50px;
+		background: yellow;
+	}
+</style>
+</head>
+<body style="height: 3000px;">
+<div id="div1">
+		<div id="div2"></div>
+	</div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		hover：
+			移入移出
+			
+		第一个参数:
+			移入
+		第二个参数:
+			移出
+		
+		并不是onmouseover 而是 onmouseenter
+			
+	*/
+	$('#div1').hover(function(){
+		alert('我来了');
+	},function(){
+		alert('我走了');
+	});
+	
+	
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	padding: 10px;
+	border: 10px solid #000;
+	margin:5px;
+}
+</style>
+</head>
+<body>
+	<div id="div"></div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		宽高 
+			height();  //不带单位、padding、border的 
+			width();  //不带单位的
+			传参之后可以设置。
+			
+			innerHeight/innerWidth  带padding，不带border 
+			如果是设置，会计算padding值  200 -> padding:10 -> 180  
+			
+			outerWidth/outerHeight  带padding,border
+			
+			小技巧:如果在outerWidth(写true)，那么会计算margin值
+			
+	*/
+	
+//	console.log($('#div').height())
+	
+//	console.log($('#div').innerHeight(200))
+
+//	console.log($('#div').outerHeight(true))
+	
+	console.log($(window).innerWidth());
+	
+</script>
+</body>
+</html>
