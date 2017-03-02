@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="author" content="Reddy.Huang"/>
+    <title>表单验证</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .form-wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 600px;
+            height: 500px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            box-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px inset, rgba(0, 0, 0, 0.03) 0px -1px 0px inset, rgba(0, 0, 0, 0.15) 0 15px 10px, rgba(0, 0, 0, 0.3) 0 8px 36px;
+        }
+        .form-wrapper label {
+            margin: 30px 100px 0;
+            line-height: 32px;
+        }
+        .form-wrapper input {
+            position: absolute;
+            left: 170px;
+            box-sizing: border-box;
+            padding: 0 10px;
+            width: 210px;
+            height: 30px;
+            line-height: 32px;
+            border: 1px solid #bcb5b5;
+            border-radius: 3px;
+            transition: .5s;
+        }
+        .form-wrapper input.right {
+            border: 1px solid #50e93b;
+            box-shadow: 0 0 4px 2px #90e388;
+        }
+        .form-wrapper input.wrong {
+            border: 1px solid #e93336;
+            box-shadow: 0 0 4px 2px #e3807a;
+        }
+        .form-wrapper .item-wrapper {
+            margin: 30px 0;
+        }
+        #submit {
+            position: absolute;
+            bottom: 50px;
+            left: 150px;
+            margin: 0 20px;
+            color: #060606;
+            background-color: #e3e3e3;
+            border: 1px solid #e9eef3;
+            border-radius: 5px;
+            transition: .7s;
+            cursor: not-allowed;
+        }
+        #submit.active {
+            color: #fff;
+            background-color: #32b9ff;
+            border: 1px solid cornflowerblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+        <form action="http://www.miaov.com/" id="form">
+            <div class="item-wrapper"><label for="qq">QQ号</label><input type="text" id="qq" value="" placeholder="10000" _name="qq"></div>
+            <div class="item-wrapper"><label for="email">邮箱</label><input type="text" id="email" _name="email" value="" placeholder="google@gmail.com"></div>
+            <div class="item-wrapper"><label for="birthday">生日</label><input type="text" id="birthday" value=""  _name="birthday" placeholder="1994-09-27"></div>
+            <div class="item-wrapper"><label for="phone">手机</label><input type="text" id="phone" value="" _name="phone" placeholder="18527272727"></div>
+            <div class="item-wrapper"><label for="IDCard">身份证</label><input type="text" id="IDCard" _name="IDCard" value="" placeholder="110105196812272168"></div>
+            <div class="item-wrapper">
+            	<label for="url">网址</label>
+            	<input type="text" _name="url" id="url" value="" placeholder="https://www.google.com">
+            </div>
+             <!--<div class="item-wrapper">
+            	<label for="name">姓名</label>
+            	<input type="text" id="name" value="" placeholder="张三">
+            </div>-->
+            <input type="submit" value="注册" id="submit">
+        </form>
+    </div>
+<script>
+	function FormVal(id){
+		this.form = document.getElementById(id);
+		this.inputs = document.getElementsByTagName('input');
+		this.btn = document.getElementById('submit');
+		this.re = {
+			qq:/^[1-9]\d{4,10}$/,
+			email:/^[A-Za-z]\w{1,15}@[0-9a-z]{2,5}\.com$/,
+			birthday:/\d+\D+\d+\D+\d+\D?/,
+			phone:/^1[34578]\d{9}$/,
+			IDCard:/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/,
+			url:/^((ht|f)tps?):\/\/[\w\-]+(\.[\w\-]+)+([\w\-\.,@?^=%&:\/~\+#]*[\w\-\@?^=%&\/~\+#])?$/
+		};
+		this.succ = 0; //统计成功的个数
+		this.num = 0; //需要统计的个数
+	}
+	
+	FormVal.prototype = {
+		constructor:FormVal,
+		//初始化，加事件
+		init:function(callback){
+			this.cb = callback;
+			var _this = this;
+			for(var i=0;i<this.inputs.length;i++){
+				if(this.inputs[i].getAttribute('_name')){//找到需要验证的输入框
+					this.num++;//统计需要验证的个数
+					//给每个input加验证
+					this.inputs[i].addEventListener('input',function(){
+						_this.formReg(this);//一个验证
+					});
+				}
+			}
+			//点击按钮
+			this.form.addEventListener('submit',function(ev){
+				//如果验证成功的个数 不等于 需要验证的个数，那么点击按钮的时候就不能跳转页面
+				if(_this.succ != _this.num){
+					ev.preventDefault();
+				}
+			});
+		},
+		formReg:function(that){
+			//this.re['qq'] = /^[1-9]\d{4,10}$/
+			if(this.re[that.id].test(that.value)){  //成功 第一关
+				if(this.cb){//第二关，精确匹配的过没过
+					 if(this.cb(that)){
+					 	that.className = 'right';
+						that.onff = true;
+					 }else{
+					 	that.className = 'wrong';
+						that.onff = false;
+					 }
+				}else{
+					that.className = 'right';
+					that.onff = true;
+				}
+			}else{//验证失败的
+				that.className = 'wrong';
+				that.onff = false;
+			}
+			//统计验证成功的个数
+			this.addNum();
+			
+			//如果验证成功的个数 等于 需要验证的个数，点击按钮就亮了
+			if(this.succ == this.num){
+				//说明全部验证成功
+				this.btn.className = 'active';
+			}else{
+				this.btn.className = '';
+			}
+		},
+		addNum:function(){
+			//当调用这个方法的时候，统计成功的个数。
+			this.succ = 0;
+			for(var i=0;i<this.inputs.length;i++){
+				if(this.inputs[i].getAttribute('_name')){
+					if(this.inputs[i].onff){
+						this.succ++;
+					}
+				}
+			}
+		}
+	}
+	var f = new FormVal('form');
+	f.init(function(that){
+//		console.log(that.id)
+		switch(that.id){
+			case 'birthday'://如果传的是birthday，生日这里需要精确匹配
+				var val = that.value;
+				val.replace(/(\d+)\D+(\d+)\D+(\d+)\D?/,function($0,$1,$2,$3){
+					val = $1 +'-'+ $2 +'-'+ $3
+				});
+				var arr = val.split('-');//拿到年月日的这3组数字。
+				
+				/*
+					1.填写的日期有没有比现在还大
+					2.填写的日期到底有没有
+				*/
+				
+				var newDate = +new Date; //现在的时间戳
+				var oldDate = new Date();
+				//设置新的时间，为了判断设置的时间有没有比当前的时间大，精确匹配设置的时间有没有。
+				oldDate.setFullYear(arr[0],arr[1]-1,arr[2]);
+				
+				if(oldDate.getTime() > newDate){
+					return false;
+				}else{
+					var y = oldDate.getFullYear();
+					var m = oldDate.getMonth()+1;
+					var d = oldDate.getDate();
+					
+					if(y == arr[0] && m == arr[1] && d == arr[2]){
+						return true;//如果时间是对应的，说明有这个时间
+					}else{
+						return false;//用户瞎写的时间
+					}
+				}
+			break;
+			default:
+				return true;
+			break;
+		}
+	});
+	
+	
+</script>
+</body>
+</html>

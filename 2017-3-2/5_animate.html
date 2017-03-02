@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+li{
+	background: red;
+	margin: 10px;
+	width:100px;
+}
+</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	
+	/*
+		没触发一次运动函数，都把运动放入运动队列中（相等于是数组），当前一个
+		运动结束，出了队列，下个运动才会执行。
+		
+		.stop();
+			停止。
+		只要用JQ的运动，就最好在animate添加一个stop()
+		
+	*/
+	
+	$('li').hover(function(){
+		$(this).stop().animate({
+			width:200
+		});
+	},function(){
+		$(this).stop().animate({
+			width:100
+		});
+	})
+	
+	
+	
+</script>
+</body>
+</html>

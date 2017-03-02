@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+}	
+</style>
+</head>
+<body>
+	<input type="button" name="" id="" value="点击" />
+	<div id="div"></div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		运动的默认快慢为normal
+		慢：slow
+		快: fast
+		
+		toggle  显示就隐藏，隐藏就显示
+		
+	*/
+//	var onOff = true;
+	$(':button').click(function(){
+//		if(onOff){
+//			$('#div').hide('fast');  //一般直接隐藏这样写：hide(0)
+//		}else{
+//			$('#div').show('slow');
+//		}
+//		onOff = !onOff;
+		$('#div').toggle(300);
+	});
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	top:60px;
+	position: absolute;
+	left:0;
+}	
+</style>
+</head>
+<body>
+	<input type="button" name="" id="" value="点击" />
+	<div id="div"></div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		运动的默认快慢为normal
+		慢：slow
+		快: fast
+		
+		https://greensock.com/tweenmax  一个厉害的运动框架
+		
+		animate:
+			第一个参数：
+				运动的样式
+			第二个参数:
+				运动的总时间。
+			第三个参数:（还可以写运动方式：默认为swing，可以设置：linear）
+				回调函数
+			
+			
+	*/
+//	$(':button').click(function(){
+//		$('#div').animate({
+//			width:500
+//		},3000,'linear',function(){
+//			$('#div').animate({
+//				height:600
+//			});
+//		});
+//	});
+
+	//step
+
+	
+	$(':button').click(function(){
+		$('#div').animate({
+			width:200
+		},{
+			duration:4000,
+			complete:function(){
+				$('#div').animate({
+					height:300
+				})
+			},
+			step:function(a,b){ //当前运动的位置，b可以得到一个对象，对象中有关本次运动的细节信息now
+				console.log(b);
+			}
+		});
+	});
+	
+	
+</script>
+</body>
+</html>

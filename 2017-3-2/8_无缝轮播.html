@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+body,ul,li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+ul{
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+a {
+	text-decoration: none;
+}
+#box {
+	width: 470px;
+	margin: 100px auto;
+	height: 150px;
+	overflow: hidden;
+	border: 5px solid #666;
+	position: relative;
+}
+
+.a {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #000;
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	font: 14px/20px "宋体";
+	text-align: center;
+	background: red;
+	opacity: .4;
+	color: #fff;
+	font-weight: bold;
+}
+
+.left {
+	left: 5px;
+}
+
+.right {
+	right: 5px;
+}
+img{
+	vertical-align: top;
+}
+nav {
+	position: absolute;
+	left: 50%;
+	bottom: 5px;
+	margin-left: -75px;
+}
+nav a {
+	width: 20px;
+	height: 20px;
+	background: red;
+	border-radius: 50%;
+	float: left;
+	margin: 5px;
+	line-height:20px;
+	text-align: center;
+	color: #fff;
+	/*opacity: .5;*/
+}
+.active{
+	background:green;
+}
+nav a:hover {
+	opacity: 1;
+}
+</style>
+</head>
+<body>
+<div id="box">
+	<ul>
+		<li><img src="img/1.jpg"/></li>
+		<li><img src="img/2.jpg"/></li>
+		<li><img src="img/3.jpg"/></li>
+		<li><img src="img/4.jpg"/></li>
+		<li><img src="img/5.jpg"/></li>
+	</ul>
+	<a href="javascript:;" class="left a">&lt;</a>
+	<a href="javascript:;" class="right a">&gt;</a>
+	<nav>
+		<a href="javascript:;" class="active">1</a>
+		<a href="javascript:;">2</a>
+		<a href="javascript:;">3</a>
+		<a href="javascript:;">4</a>
+		<a href="javascript:;">5</a>
+	</nav>
+</div>	
+<script src="jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	var iH = $('li').eq(0).height();
+	var num = 0;
+	var aAll = $('nav').find('a');
+	
+	$('.right').click(function(){
+		num++;
+		//$('nav').find('a').eq(num).addClass('active').siblings('a').removeClass('active');
+		//console.log(num)
+		tab();
+	});
+	
+	
+		$('.left').click(function(){
+			num--;
+			//console.log(num)
+			tab();
+			
+		});
+	
+	
+	function tab(){
+		if(num == $('li').size()-1){
+			$('li').last().css({position:'static'});
+		}
+		if(num == 0){
+			$('li').eq(0).css({position:'static'})
+		}
+		
+		
+		if(num == $('li').size()-1){
+			$('li').eq(0).css({
+				position:'relative',
+				top:iH * $('li').size()
+			});
+			
+		}
+		
+		if(num > $('li').size()){
+			$('li').eq(0).css({position:'static'});
+			$('ul').css({top:0});
+			num = 1;
+			//alert(1)
+		}
+		
+		if(num == -1){
+			$('li').last().css({
+				position:'relative',
+				top:-iH * $('li').size()
+			});
+		}
+		if(num < -1){
+			$('li').last().css({position:'static'});
+			$('ul').css({top:-iH*($('li').size()-1)});
+			num = $('li').size()-2
+			//alert(1)
+		}
+		
+		
+		
+		/*
+			num% aAll.length
+		*/
+		
+		
+		aAll.eq(num% aAll.length).addClass('active').siblings('a').removeClass('active');
+		
+		$('ul').stop().animate({
+			top:-iH*num
+		},{
+			easing:'linear',
+			duration:400
+		});
+	}
+	
+	
+	$('nav').find('a').click(function(){
+		num = $(this).index();
+		tab();
+	});
+</script>	
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style type="text/css">
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	top:0;
+	left:0
+}	
+#div2{
+	width:100px;
+	height: 100px;
+	background: yellow;
+	position: absolute;
+	top:0;
+	left:100px;
+}
+</style>
+</head>
+<body>
+	<div id="div">dsadsadsa</div>
+	<div id="div2">dsadsadsa</div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+//	$('#div').mousedown(function(ev){
+//		var disX = ev.pageX - $(this).offset().left;
+//		var disY = ev.pageY - $(this).offset().top;
+//		$(document).mousemove(function(ev){
+//			$('#div').css({
+//				left:ev.pageX - disX,
+//				top:ev.pageY - disY
+//			})
+//		});
+//		$(document).mouseup(function(){
+//			$(this).off();
+//		});
+//		return false;
+//	})
+
+	function Drag(id){
+		this.box = $(id);
+		this.disX = 0;
+		this.disY = 0;
+		var _this = this;
+		this.box.on('mousedown',function(ev){
+			//console.log()
+			_this.box = $(this);
+			_this.fnDown(ev);
+		})
+	};
+	
+	Drag.prototype = {
+		constructor:Drag,
+		fnDown:function(ev){
+			var _this = this;
+//			console.log(this.box);
+			this.disX = ev.pageX - this.box.offset().left;
+			this.disY = ev.pageY - this.box.offset().top;
+			$(document).on('mousemove',function(ev){
+				_this.fnMove(ev);
+				return false;
+			});
+			$(document).on('mouseup',function(ev){
+				_this.fnUp();
+			});
+		},
+		fnMove:function(ev){
+			this.box.css({
+				left:ev.pageX - this.disX,
+				top:ev.pageY - this.disY
+			})
+		},
+		fnUp:function(){
+			$(document).off();
+		}
+	}
+	
+	var d = new Drag('div');
+
+</script>
+</body>
+</html>

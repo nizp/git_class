@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		把右边的值给左边，一般使用，不用加布尔值。
+		如果要深度拷贝（克隆），这个时候第一个参数就为true
+	*/
+	var arr = [1,2,3,4,5,[1]];
+	
+	var obj = {
+		"name":"momo",
+		"age":1000,
+		arr:[1,2,3]
+	}
+	
+//	var arr2 = [];
+//	$.extend(true,arr2,arr);
+
+//	var arr2 = $.extend(true,[],arr);
+//	
+//	arr2[5].push(2);
+//	
+//	console.log(arr2);
+
+	var obj2 = $.extend(true,{},obj);
+	
+//	obj2.name = '任教主';
+
+	obj2.arr.push('1');
+	
+	console.log(obj2);
+	
+</script>
+</body>
+</html>

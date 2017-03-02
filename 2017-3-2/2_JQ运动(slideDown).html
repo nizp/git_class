@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#div{
+	width:100px;
+	height: 100px;
+	background: red;
+	/*display: none;*/
+}	
+</style>
+</head>
+<body>
+	<input type="button" name="" id="" value="点击" />
+	<div id="div"></div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		运动的默认快慢为normal
+		慢：slow
+		快: fast
+		
+	*/
+	$(':button').click(function(){
+//		$('#div').slideDown('fast');
+//		$('#div').slideUp('fast');
+		$('#div').slideToggle('fast')
+	});
+	
+</script>
+</body>
+</html>

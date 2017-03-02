@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+#div{
+	width:100px;	
+	height: 40px;
+	background: red;
+}
+</style>
+</head>
+<body>
+	<div id="div"></div>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	/*
+		.stop(true,true)
+		
+		第一个true：是否取消以列队动画，将本次动画执行完，才执行下个动画
+		
+		第二个true:是否当前动画立即完成
+		
+		delay(time):
+			使当面队列的下次运动延迟多少时间。
+			
+		finish():
+			没有运动方式，直接到达目标点。
+		
+	*/
+	$(document).click(function(){
+		$('#div').stop().animate({
+			width:400
+		})//.delay(3000);
+
+		$('#div').animate({
+			height:100
+		})//.finish();
+	})
+	
+</script>
+</body>
+</html>

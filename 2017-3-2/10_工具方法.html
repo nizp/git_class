@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		
+		$. 
+			工具方法
+		$.each 一般来说，既可以用JQ元素也可以用原生元素(不但能被数组使用还能给对象使用)
+		
+		$('li').each()
+		
+		$.type()  返回当前数据是什么类型
+		$.isFunction() 返回当前数据是不是函数
+		$.isNumeric()
+		$.isArray()
+		$.isEmptyObject() 是不是null与空白对象  true/false
+		$.isPlainObject()  是不是一个{},不能是空对象，也不能是数组
+		
+	*/
+	
+	var arr = [1,2,3,4,5];
+	var obj = {
+		name:'leo',
+		age:99
+	}
+	
+	
+	
+//	
+//	$.each(obj,function(key,value){
+//		alert(ele)
+//	})
+
+//	console.log($.type(arr));
+	
+	//console.log($.isFunction(function(){}))
+	
+//	console.log($.isEmptyObject({"leo":"boss"}))
+	
+	console.log($.isPlainObject(null))
+	
+	
+</script>
+</body>
+</html>

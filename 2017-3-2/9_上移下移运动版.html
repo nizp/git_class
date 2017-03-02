@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+		<style>
+			ul{
+				position: relative;
+			}
+			li{
+				padding: 10px;
+				transition:.5s top;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul id="oUl">
+			<li>
+				<span>啦啦啦啦 1</span>
+				<input type="button" value="上移" class="pre">
+				<input type="button" value="下移" class="next">
+			</li>
+			<li>
+				<span>哈哈哈哈 2</span>
+				<input type="button" value="上移" class="pre">
+				<input type="button" value="下移" class="next">
+			</li>
+			<li>
+				<span>嘿嘿额和 3</span>
+				<input type="button" value="上移" class="pre">
+				<input type="button" value="下移" class="next">
+			</li>
+			<li>
+				<span>呱呱呱呱 4</span>
+				<input type="button" value="上移" class="pre">
+				<input type="button" value="下移" class="next">
+			</li>
+			<li>
+				<span>哥哥哥哥 5</span>
+				<input type="button" value="上移" class="pre">
+				<input type="button" value="下移" class="next">
+			</li>
+		</ul>
+<script src="jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	var $up = $(':button[value="下移"]'); 
+	
+	var pos = [];
+	$('li').each(function(index,ele){
+		pos[index] = {
+			top:Math.floor($(ele).offset().top),
+			left:$(ele).offset().left
+		}
+		$(ele).css({
+			top:Math.floor($(ele).offset().top),
+			left:$(ele).offset().left
+		})
+	});
+	
+	$('li').css({
+		position:'absolute'
+	});
+	
+	$up.click(function(){
+		
+		if($(this).closest('li').next()){
+			var _this = $(this);
+			var lis = $(this).closest('li');
+			var index = lis.index('li');
+			lis.animate({
+				top:pos[index+1].top
+			},500,'linear');
+			
+			lis.next().animate({
+				top:pos[index].top
+			},500,'linear',function(){
+				setTimeout(function(){
+					lis.insertAfter(lis.next());
+				},510);
+			});
+		}
+	});
+	
+//	$('li').each(function(index,ele){
+//		if(index == 2){
+//			return; //相当于continue   return false 类似于break;
+//		}
+//		alert(index)
+//	});
+</script>	
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="author" content="Reddy.Huang"/>
+    <title>表单验证</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <style>
+        .form-wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 600px;
+            height: 500px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            box-shadow: rgba(255, 255, 255, 0.9) 0px 1px 0px inset, rgba(0, 0, 0, 0.03) 0px -1px 0px inset, rgba(0, 0, 0, 0.15) 0 15px 10px, rgba(0, 0, 0, 0.3) 0 8px 36px;
+        }
+        .form-wrapper label {
+            margin: 30px 100px 0;
+            line-height: 32px;
+        }
+        .form-wrapper input {
+            position: absolute;
+            left: 170px;
+            box-sizing: border-box;
+            padding: 0 10px;
+            width: 210px;
+            height: 30px;
+            line-height: 32px;
+            border: 1px solid #bcb5b5;
+            border-radius: 3px;
+            transition: .5s;
+        }
+        .form-wrapper input.right {
+            border: 1px solid #50e93b;
+            box-shadow: 0 0 4px 2px #90e388;
+        }
+        .form-wrapper input.wrong {
+            border: 1px solid #e93336;
+            box-shadow: 0 0 4px 2px #e3807a;
+        }
+        .form-wrapper .item-wrapper {
+            margin: 30px 0;
+        }
+        #submit {
+            position: absolute;
+            bottom: 50px;
+            left: 150px;
+            margin: 0 20px;
+            color: #060606;
+            background-color: #e3e3e3;
+            border: 1px solid #e9eef3;
+            border-radius: 5px;
+            transition: .7s;
+            cursor: not-allowed;
+        }
+        #submit.active {
+            color: #fff;
+            background-color: #32b9ff;
+            border: 1px solid cornflowerblue;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+        <form action="" id="form">
+            <div class="item-wrapper"><label for="qq">QQ号</label><input type="text" id="qq" value="" placeholder="10000"></div>
+            <div class="item-wrapper"><label for="email">邮箱</label><input type="text" id="email" value="" placeholder="google@gmail.com"></div>
+            <div class="item-wrapper"><label for="birthday">生日</label><input type="text" id="birthday" value="" placeholder="1994-09-27"></div>
+            <div class="item-wrapper"><label for="phone">手机</label><input type="text" id="phone" value="" placeholder="18527272727"></div>
+            <div class="item-wrapper"><label for="IDCard">身份证</label><input type="text" id="IDCard" value="" placeholder="110105196812272168"></div>
+            <div class="item-wrapper"><label for="url">网址</label><input type="text" id="url" value="" placeholder="https://www.google.com"></div>
+            <input type="submit" value="注册" id="submit">
+        </form>
+    </div>
+    <script>
+        "use strict";
+        class FormCheck {
+            constructor(domArr, submit) {
+                window.addEventListener('load', this.init(domArr, submit));
+                submit.addEventListener('click', (ev) => {
+                    ev.preventDefault();
+                    this.sbm();
+                });
+            }
+            init(domArr, submit) {
+                for (let obj of domArr) {
+                    obj.addEventListener('input', () => {
+                        this.check(obj);
+                        this.checkSubmitStatus(submit);
+                    });
+                    obj.addEventListener('blur', () => {
+                        this.check(obj);
+                        this.checkSubmitStatus(submit);
+                    });
+                }
+            }
+            check(obj) {
+                let v = obj.value,
+                    c = obj.classList;
+                let switchStatus = (k) => {
+                    if (k) {
+                        c.add('right');
+                        c.remove('wrong');
+                        obj.isRight = true;
+                    }
+                    else {
+                        c.add('wrong');
+                        c.remove('right');
+                        obj.isRight = false;
+                    }
+                };
+                let actions = {
+                    qq() {
+                        /^[1-9]\d{4,10}$/.test(v) ? switchStatus(true) : switchStatus(false);
+                    },
+                    email() {
+                        /(^[a-z0-9]\w{0,14}[a-z0-9]|^[a-z0-9]$)@[a-z0-9]{2,10}\.[a-z0-9]{2,5}$/.test(v) ? switchStatus(true) : switchStatus(false);
+                    },
+                    birthday() {
+                        //   /^[1-2]\d{3}[\\年-\.](0?[1-9]|1[0-2])[\\月-\.](0?[1-9]|[1-2][0-9]|3[0-1])/
+                        let r = /(\d+)(?:\\|年|-|\.)(\d+)(?:\\|月|-|\.)(\d+)/;
+                        if (!r.test(v)){
+                            switchStatus(false);
+                        } else {
+                            v.replace(r, ($0, $1, $2, $3) => {
+                                this.dateTest($1, $2, $3) ? switchStatus(true) : switchStatus(false);
+                            });
+                        }
+                    },
+                    phone() {
+                        /^1[35678]\d{9}$/.test(v) ? switchStatus(true) : switchStatus(false);
+                    },
+                    IDCard() {
+                        // 简单模拟，忽略地区、加权校验位 仅对日期做判断
+                        let r = /^[1-9]\d{5}(\d{4})(\d{2})(\d{2})\d{3}[0-9xX]$/;
+                        if (!r.test(v)) {
+                            switchStatus(false);
+                        }
+                        else {
+                            v.replace(r, ($0, $1, $2, $3) => {
+                                this.dateTest($1, $2, $3) ? switchStatus(true) : switchStatus(false);
+                            });
+                        }
+                    },
+                    url() {
+                        /^(http|https|ftp):\/\/\S+\.\S+/.test(v) ? switchStatus(true) : switchStatus(false);
+                    }
+                };
+                if (typeof actions[obj.id] !== 'function') {
+                    throw ('Invalid action.');
+                }
+                return actions[obj.id].bind(this)();
+            }
+            dateTest(y, m, d) {
+                let now = new Date();
+                let sd = new Date(y, m-1, d, 0, 0, 0);
+                let setD = {
+                    y: sd.getFullYear(),
+                    m: sd.getMonth() + 1,
+                    d: sd.getDate()
+                };
+                return (setD.y == y && setD.m == m && setD.d == d && sd < now) ? true : false;
+            }
+            checkSubmitStatus(submit) {
+                if (domArr.every((obj) => obj.isRight)) {
+                    submit.classList.add('active');
+                    submit.ischecked = true;
+                }else {
+                    submit.classList.remove('active');
+                    submit.ischecked = false;
+                }
+            }
+            sbm() {
+                if (!submit.ischecked) return;
+                alert('提交成功！')
+            }
+        }
+
+        let submit = document.getElementById('submit'),
+            qq = document.getElementById('qq'),
+            email = document.getElementById('email'),
+            birthday = document.getElementById('birthday'),
+            phone = document.getElementById('phone'),
+            IDCard = document.getElementById('IDCard'),
+            url = document.getElementById('url');
+        let domArr = [qq, email, birthday, phone, IDCard, url];
+
+
+        new FormCheck(domArr, submit);
+
+    </script>
+</body>
+</html>
