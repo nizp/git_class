@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<input type="button" value="提交"/>
+	<!--</form>-->
+<script type="text/javascript">
+	
+	/*
+		
+		打电话模型：
+			1.有一个电话
+			2.输入号码
+			3.拨号-按绿色的按钮
+			4.等待
+			5.通话
+			
+		ajax交互模型:
+			1.创建ajax对象
+			2.填写请求信息（请求的方式,请求地址,是否异步）
+			3.发送请求
+			4.等待服务器响应
+			5.会话
+			
+	*/
+	
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		
+		var val = user.value;
+		
+		var ajax = new XMLHttpRequest(); //相当于买了个电话。1.创建一个ajax对象
+		
+		/*
+			ajax.open();
+			3个参数:
+				第一个参数：
+					用什么方式去请求  get post
+				
+				第二个参数:
+					请求的地址
+				
+				第三个参数:
+					是否异步（默认为true）
+					同步就设置为false
+				
+				
+		*/
+		ajax.open('get','php/get.php?user='+val);//3个参数  相当于拨号
+		
+		//发送请求。通过send可以将本次请求发送给后端
+		ajax.send();//相当于发送
+		
+		ajax.onload = function(){//等待服务器返回相应的数据。
+			//相当于通话
+			// ajax.responseText 收到会话结果。
+			span.innerHTML = ajax.responseText;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

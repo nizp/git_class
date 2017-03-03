@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<input type="button" value="提交"/>
+	<!--</form>-->
+<script type="text/javascript">
+	
+	/*
+		get方式请求：
+			通过url地址栏信息，进行传输。
+			
+		从安全角度来说：
+			不安全
+		
+		只要不是发送特别大数据或者不是个人隐私方面的数据，都直接可以用get。
+		
+		传输数据的大小也是有限的。
+		
+		因为每个浏览器的url长度是不一样的，所以传输数据的体积也会被限制。
+		
+		
+	*/
+	
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		
+		var val = user.value;
+		
+		var ajax = new XMLHttpRequest(); //相当于买了个电话。1.创建一个ajax对象
+		
+		/*
+			ajax.open();
+			3个参数:
+				第一个参数：
+					用什么方式去请求  get post
+				
+				第二个参数:
+					请求的地址
+				
+				第三个参数:
+					是否异步（默认为true）
+					同步就设置为false
+				
+			
+			get方式在填写地址栏的时候，就要把传给后端的数据绑在填写的地址身上。
+			
+			在URL地址栏解析数据的时候，IE下中文乱码，要通过encodeURI将中文转成地址栏编码格式才能正常请求。
+			
+		*/
+		//user=leo
+		//如果涉及到在IE下传输中文，那么需要用encodeURI去转一下，不然解析会出问题
+		ajax.open('get','php/get.php?user='+encodeURI(val));//3个参数  相当于拨号
+		
+		//发送请求。通过send可以将本次请求发送给后端
+		ajax.send();//相当于发送
+		
+		ajax.onload = function(){//等待服务器返回相应的数据。
+			//相当于通话
+			// ajax.responseText 收到会话结果。
+			span.innerHTML = ajax.responseText;
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
