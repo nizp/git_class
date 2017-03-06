@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	
+	var data = {"name":"小明","age":18};
+	
+	var str = '{name}说:今年我有{age}岁了!';
+	
+	str = str.replace(/{(\w+)}/g,function($0,$1){
+		return data[$1];
+	})
+	
+	console.log(str);
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

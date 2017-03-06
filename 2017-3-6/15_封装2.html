@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script type="text/javascript">
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		ajax(
+			'get','php/get_json.php',
+			'user='+user.value,
+			'json',
+			function(data){
+				span.innerHTML = data.msg;
+			},
+			function(data){
+				alert(data);
+			}
+		);
+	}
+	
+	function ajax(methed,url,data,dataType,succ,fail){
+		var ajax = new XMLHttpRequest();
+		if(methed == 'get'){
+			ajax.open(methed,url+'?'+data);
+			ajax.send();
+		}else{
+			ajax.open(methed,url);
+			ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+			ajax.send(data);
+		}
+		ajax.onreadystatechange = function(){
+			if(ajax.readyState == 4){
+				if(ajax.status >= 200 && ajax.status <= 207){
+					if(succ && typeof succ === 'function'){
+						if(dataType === 'json'){
+							succ(JSON.parse(ajax.responseText));
+						}else if(dataType === 'xml'){
+							succ(ajax.responseXML);
+						}else if(dataType === 'string'){
+							succ(ajax.responseText);
+						}
+					}
+				}else{
+					if(fail && typeof fail === 'function'){
+						fail(ajax.status);
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
+</script>
+</body>
+</html>

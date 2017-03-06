@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script type="text/javascript">
+	/*
+		onreadystatechange：跟onload类似（所有浏览器都兼容）
+		对于ajax每步操作完成都有相应的数字返回，可以拿来做检测判断
+		
+		0-4
+		除了第一步是检测不到的，别的都能检测
+		
+		ajax.readyState
+		
+		0-3其实不重要，重要的是4,4代表整个请求完成
+		
+		ajax.status  是否成功    2字开头
+		ajax.readyState 请求是否完成   4
+		
+		0: 请求未初始化
+		1: 服务器连接已建立
+		2: 请求已接收
+		3: 请求处理中
+		4: 请求已完成，且响应已就绪
+		
+		onload（低版本IE不兼容）  只能看到第5步  数字4。
+		
+		
+		$.ajax({
+			
+		});
+
+	*/
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		
+		var ajax = new XMLHttpRequest();
+		
+		ajax.open('get','php/get.php?user='+user.value);
+		
+		ajax.send();
+		
+		ajax.onreadystatechange = function(){
+			if(ajax.readyState == 4){
+				alert(ajax.readyState);
+			}
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

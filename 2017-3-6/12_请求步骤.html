@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script type="text/javascript">
+	/*
+		
+		对于ajax每步操作完成都有相应的数字返回，可以拿来做检测判断
+		
+		0-4
+		除了第一步是检测不到的，别的都能检测
+		
+		ajax.readyState
+		
+		0-3其实不重要，重要的是4,4代表整个请求完成
+		
+		ajax.status  是否成功    2字开头
+		ajax.readyState 请求是否完成   4
+		
+		
+		
+	*/
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		var ajax = new XMLHttpRequest();
+		
+		ajax.open('get','php/get.php?user='+encodeURI(this.value));
+		
+		ajax.send('user='+this.value);
+		
+		//等待结束
+		ajax.onload = function(){
+			
+			//console.log(ajax.status)
+			
+			alert(ajax.readyState);
+			
+			if(ajax.status >= 200 && ajax.status <= 207){
+				span.innerHTML = ajax.responseText;
+			}else{
+				alert(ajax.status);
+			}
+			
+			//接收到服务器端的数据，但是成功还是失败是看不到的
+//			
+//			
+//			console.log(ajax.responseText);
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+<script type="text/javascript">
+	
+	/*
+		eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码 
+		
+		在代码本身没错，但是报错的情况下，用括号包一下。
+		
+		注意：
+			eval容易被注入病毒。慎用!
+			
+		new Function('参数','字符串'); 也是可以将字符串执行成js代码。
+		
+		直接new内置对象，性能略低。
+		
+	*/
+//	eval('alert(123)');
+
+	var str = "{'name':'leo'}";
+	
+//	(function(){})
+	
+	
+//	console.log(eval('('+str+')'));
+
+
+//	(new Function('a,b','alert(a+b)'))(1,2);
+
+//	new Array -> []  
+//	new Function() -> function(){return}  ()
+//	
+	
+//	var a = (function(){return '1+1'})();
+	
+//	console.log(a);
+
+	var json = (new Function('','return'+str))();
+
+//	
+//	console.log(json)
+	
+	
+	
+//	txt.onblur = function(){
+//		eval(this.value);
+//	}
+	
+	
+</script>
+</body>
+</html>

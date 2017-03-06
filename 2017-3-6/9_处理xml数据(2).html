@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" id="btn" value="点击查询" />
+	
+	<ul id="ul">
+		
+	</ul>
+	
+<script type="text/javascript">
+	/*
+		如果解析xml:
+			ajax.responsXML来解析XML数据 -> 自动就转了DOM结构，可以通过DOM的获取方式去获取数据。
+		
+		在IE下，children是不支持的，用tagName来获取。
+		
+		IE11-10  textContent
+		
+		IE7-9  text
+		
+		chrome innerHTML
+		
+	*/
+	
+	var btn = document.getElementById('btn'),
+	ul = document.getElementById('ul');
+	
+	btn.onclick = function(){
+		
+		var ajax = new XMLHttpRequest();
+		
+		ajax.open('get','php/data.xml');
+		
+		ajax.send();
+		
+		ajax.onload = function(){
+			var content = ajax.responseXML.getElementsByTagName('content')[0];
+			var person = content.getElementsByTagName('person');
+			
+			for(var i=0;i<person.length;i++){
+				var name = person[i].getElementsByTagName('name')[0];
+				var age = person[i].getElementsByTagName('age')[0];
+				var sex = person[i].getElementsByTagName('sex')[0];
+				var info = person[i].getElementsByTagName('info')[0];
+				ul.innerHTML += `<li>名字叫:${name.innerHTML},今年有${age.innerHTML}岁了,性别是:${sex.innerHTML},ta说:${info.innerHTML}</li>`;
+			}
+//			console.log(conttent.children);
+		}
+	}	
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="txt" id="txt" value="" />
+	<input type="button" id="btn" value="点击查询" />
+	
+	<ul id="ul">
+	</ul>
+	
+<script type="text/javascript">
+	
+	/*
+		http://localhost/2017-3-6/php/ajax.php?user=小明
+		当拿到接口的时候，一定要先看下数据，确定数据的格式，如果碰到中文为乱码，可以尝试输出到页面，一般都能转出来。
+	*/
+	var btn = document.getElementById('btn'),
+	txt = document.getElementById('txt'),
+	ul = document.getElementById('ul');
+	
+	btn.onclick = function(){
+		var val = txt.value;
+		var ajax = new XMLHttpRequest();
+		ajax.open('get','php/ajax.php?user='+encodeURI(val));
+		ajax.send();
+		ajax.onload = function(){
+			var data = JSON.parse(ajax.responseText);
+			if(data.code){
+				ul.innerHTML = `<li>${data.data}</li>`;
+				setTimeout(function(){
+					window.location.href = 'php/ajax_error.php';
+				},2000);
+					
+			}else{
+				ul.innerHTML = `<li>他的名字叫:${data.data.name},今年${data.data.age},爱好是${data.data.hobby},他经常说:${data.data.info}</li>`;
+			}
+			
+//			console.log(data);
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

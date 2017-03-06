@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script type="text/javascript">
+	/*
+		同步：
+			同步在send发送后，需要等待服务器处理完毕（在完毕前不会执行后续的代码）
+		提交请求->等待服务器处理->处理完毕返回 这个期间客户端浏览器不能干任何事
+		
+		异步: 请求通过事件触发->服务器处理（这是浏览器仍然可以作其他事情）->处理完毕
+			同步在send发送后，不需要等待服务器处理完毕（在完毕前会执行后续的代码）	
+	*/
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		var ajax = new XMLHttpRequest();
+		
+		ajax.open('get','php/get_async.php?user='+encodeURI(this.value),false);
+		
+		ajax.send();
+		
+//		ajax.onload = function(){
+//			
+////			console.log(ajax.responseText);
+//		}
+		span.innerHTML = ajax.responseText;
+		console.log(ajax.responseText);
+		//span.innerHTML = ajax.responseText;
+//		
+		alert('11111111111111111');
+//		console.log(123456);
+	}
+	
+	
+</script>
+</body>
+</html>

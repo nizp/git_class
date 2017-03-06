@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script type="text/javascript">
+	/*
+		状态码:
+			表示网页服务器HTTP响应状态
+		
+		最常用的：
+			2字开头的  200-207    成功
+			
+			4字开头的就是报错
+			
+			5字开头的，服务器错误
+			
+			ajax.status可以获取到状态码，通过状态码就能知道本次请求是否真的被服务器接受（是否成功）。
+		
+	*/
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		var ajax = new XMLHttpRequest();
+		
+		ajax.open('get','php/get1.php?user='+encodeURI(this.value));
+		
+		ajax.send('user='+this.value);
+		
+		//等待结束
+		ajax.onload = function(){
+			
+			//console.log(ajax.status)
+			
+			if(ajax.status >= 200 && ajax.status <= 207){
+				span.innerHTML = ajax.responseText;
+			}else{
+				alert(ajax.status);
+			}
+			
+			//接收到服务器端的数据，但是成功还是失败是看不到的
+//			
+//			
+//			console.log(ajax.responseText);
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

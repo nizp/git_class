@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script type="text/javascript">
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		var ajax = new XMLHttpRequest();
+		
+		//ajax.open('get','php/get.php?user='+encodeURI(this.value));
+		ajax.open('post','php/post.php');
+		
+		ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		
+		ajax.send('user='+this.value);
+		
+		ajax.onload = function(){
+			span.innerHTML = ajax.responseText;
+			
+			console.log(ajax.responseText);
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" id="btn" value="点击查询" />
+	
+	<ul id="ul">
+		
+	</ul>
+	
+<script type="text/javascript">
+	/*
+		如果解析xml:
+			ajax.responsXML来解析XML数据 -> 自动就转了DOM结构，可以通过DOM的获取方式去获取数据。
+		
+		在IE下，children是不支持的，用tagName来获取。
+		
+		IE11-10  textContent
+		
+		IE7-9  text
+		
+		chrome innerHTML
+		
+	*/
+	
+	function AddXml(){
+		this.btn = document.getElementById('btn');
+		this.ul = document.getElementById('ul');
+	}
+	AddXml.prototype.init = function(){
+		var _this = this;
+		this.btn.addEventListener('click',function(){
+			_this.ajax('php/data.xml',function(data){
+				_this.render(data);
+			});
+		});
+	}
+	//ajax 获取xml格式的步骤
+	AddXml.prototype.ajax = function(url,callBack){
+		var ajax = new XMLHttpRequest();
+		ajax.open('get',url);
+		ajax.send();
+		ajax.onload = function(){
+			callBack && callBack(ajax.responseXML);
+		}
+	}
+	//给浏览器版本号渲染
+	AddXml.prototype.render = function(data){
+		if(this.navigat('msie 10')|| this.navigat('rv:11')){
+			this.browser(data,'textContent');
+		}else if(this.navigat('msie 9')){
+			this.browser(data,'text');
+		}else{
+			this.browser(data,'innerHTML');
+		}
+	}
+	//渲染的模子
+	AddXml.prototype.browser = function(data,val){
+		var content = data.getElementsByTagName('content')[0];
+		var person = content.getElementsByTagName('person');
+		for(var i=0;i<person.length;i++){
+			var name = person[i].getElementsByTagName('name')[0];
+			var age = person[i].getElementsByTagName('age')[0];
+			var sex = person[i].getElementsByTagName('sex')[0];
+			var info = person[i].getElementsByTagName('info')[0];
+			this.ul.innerHTML += '<li>名字叫:'+name[val]+',今年有'+age[val]+'岁了,性别是:'+sex[val]+',ta说:'+info[val]+'</li>';
+		}
+	}
+	//判断浏览器的
+	AddXml.prototype.navigat = function(str){ //查看浏览器的是什么牌子的
+		var navg = window.navigator.userAgent.toLowerCase();
+		if(navg.indexOf(str)!=-1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	var add = new AddXml();
+	add.init();
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

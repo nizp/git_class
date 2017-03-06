@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script type="text/javascript">
+	/*
+		会不会ajax，这个技术如何实现的并不是重点，重点在于，拿到数据之后如何处理数据
+		
+		var arr = [1,2,3,4,5];
+		
+		通过这5步拿到这些数据
+		
+	*/
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		var ajax = new XMLHttpRequest();
+		
+		ajax.open('get','php/get_json.php?user='+encodeURI(this.value));
+		
+		
+		ajax.send();
+		
+		ajax.onload = function(){
+			//span.innerHTML = ajax.responseText;
+			// var json =JSON.parse(ajax.responseText);
+			 
+			
+//			var json = eval('('+ajax.responseText+')');
+			var json = (new Function('','return'+ajax.responseText))();
+			//code:0说明可以注册，code:1说明失败
+			if(json.code){ //0
+				user.style.border = '1px solid red';
+			}else{
+				user.style.border = '1px solid green';
+			}
+			
+			span.innerHTML = json.msg;
+//			console.log(JSON.parse(ajax.responseText));
+		}
+	}
+	
+	
+</script>
+</body>
+</html>
