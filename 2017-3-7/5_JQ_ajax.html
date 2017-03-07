@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+//		$.ajax({
+//			type: "POST",
+//			url:'php/post.php',
+//			data:{
+//				'user':user.value
+//			},
+//			success:function(data){
+//				console.log(data);
+//			}
+//		});
+
+		/*
+		 	url:请求的地址
+		 	type:就是请求方式
+		 	dataType：返回的格式 ||
+		 	success:成功
+		 	error:失败
+		 	data:传输给后端的数据
+		 	async:true  异步
+		*/
+
+		$.ajax({
+			url:'php/get_json.php',
+			data:{
+				user:user.value
+			},
+			dataType:'json',
+			success:function(data){
+				console.log(data)
+			},
+			error:function(data){
+				console.log(data)
+			}
+		});
+	}
+	
+</script>
+</body>
+</html>

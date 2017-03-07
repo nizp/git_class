@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	//name=任教主&age=18
+	
+	var data = {
+		name:'任教主',
+		age:18
+	}
+	var arr = [];
+	
+	for(var attr in data){
+		arr.push(attr+'='+data[attr]);
+	}
+
+	console.log(arr.join('&'));
+	
+	
+</script>
+</body>
+</html>

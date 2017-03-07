@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script type="text/javascript">
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+		ajax(
+			'GET',
+			'php/get_json.php',
+			'user='+user.value,
+			'json',
+			function(data){
+				if(data.code){
+					user.style.border = '1px solid red';
+				}else{
+					user.style.border = '1px solid green';
+				}
+				span.innerHTML = data.msg;
+			}
+		);
+	}
+	
+	/*
+		methed  : get||post
+		url: url
+		data: 传给后端的数据
+		dataType：返回什么数据，可以有json,string,xml
+		succ:成功以后干嘛
+		fail:失败以后干嘛
+		
+		localhost:php/get_json.php?user=leo
+		
+	*/
+	
+	function ajax(methed,url,data,dataType,succ,fail){
+		
+		var ajax = new XMLHttpRequest();
+		
+		switch(methed.toLowerCase()){
+			case 'get':
+				ajax.open(methed,url+'?'+data);
+				ajax.send();
+			break;
+			case 'post':
+				ajax.open(methed,url);
+				ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+				ajax.send(data);
+			break;
+			default:
+				ajax.open('get',url+'?'+data);
+				ajax.send();
+			break;
+		}
+		
+		ajax.onreadystatechange = function(){
+			if(ajax.readyState === 4){
+				if(ajax.status >= 200 && ajax.status <= 207){
+					if(succ && typeof succ === 'function'){
+						switch(dataType){
+							case 'json':
+								succ(JSON.parse(ajax.responseText));
+							break;
+							case 'xml':
+								succ(ajax.responseXML);
+							break;
+							case 'str':
+								succ(ajax.responseText);
+							break;	
+						}
+					}
+				}else{
+					if(fail && typeof fail === 'function'){
+						fail(ajax.status);
+					}
+				}
+			}
+		}	
+	}
+
+	
+</script>
+</body>
+</html>

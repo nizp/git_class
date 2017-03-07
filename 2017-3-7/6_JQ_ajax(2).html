@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<form action="php/get.php" method="get">-->
+		用户名:<input type="text" name="user" id="user"/><span id="span"></span><br>
+		密 码 :<input type="password"/>
+		<!--<input type="submit" value="提交"/>-->
+	</form>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	var user = document.getElementById('user');
+	var span = document.getElementById('span');
+	
+	user.onblur = function(){
+//		$.get({
+//			url:'php/get_json.php',
+//			data:{
+//				user:$(user).val()
+//			},
+//			success:function(data){
+//				console.log(data)
+//			}
+//		});
+//		$.post({
+//			url:'php/post.php',
+//			data:{
+//				user:$(user).val()
+//			},
+//			success:function(data){
+//				console.log(data)
+//			}
+//		});
+	}
+	
+</script>
+</body>
+</html>
