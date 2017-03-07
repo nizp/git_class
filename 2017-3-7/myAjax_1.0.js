@@ -18,7 +18,7 @@ function ajax(json){
 		
 		switch(settings.methed.toLowerCase()){
 			case 'get':
-				ajax.open(settings.methed,settings.url+'?'+settings.data);
+				ajax.open(settings.methed,settings.url+'?'+settings.data+'&'+new Date().getTime());
 				ajax.send();
 			break;
 			case 'post':
@@ -37,7 +37,8 @@ function ajax(json){
 				if(ajax.status >= 200 && ajax.status <= 207){
 					switch(settings.dataType){
 						case 'json':
-							settings.success(JSON.parse(ajax.responseText));
+							//settings.success(JSON.parse(ajax.responseText));
+							settings.success(eval('('+ajax.responseText+')'))					
 						break;
 						case 'xml':
 							settings.success(ajax.responseXML);

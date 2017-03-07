@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div1{
+	width:640px;
+	height: 5px;
+}
+#div2{
+	transition:.1s;
+	width:0;
+	height: 2px;
+	background:lightseagreen;
+	opacity: 1;
+}
+</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2"></div>
+	</div>
+	<!--<form action="post_file.php" method="post" enctype="multipart/form-data">-->
+		<input type="file" name="file" id="File"/>
+		<input type="button" value="上传" id="btn"/>
+		<!--<input type="submit" value="上传"/>-->
+	<!--</form>-->
+	
+<script type="text/javascript">
+	/*
+		post:除了用户信息以外，上传需要使用 
+		
+		在使用file的时候，前端传递的数据在file这个元素下，有个属性
+		files，第0个File里面的内容，就是选择上传的数据。
+		
+		new FormData  专门将对象数据，转成二进制数据。
+		只有一个方法。append(key,val),如果要拼接多个字段，继续append即可。
+		
+		上传的进度通过ajax.upload.onprogress,可以监控每次上传的进度。
+		
+		在这个事件对象下，有个属性叫loaded（本次上传多少）
+		total(总大小是多少)
+		
+:
+	*/
+	
+	var File = document.getElementById('File');
+	btn.onclick = function(){
+		
+//		console.dir(File.files[0])
+		
+		var ajax = new XMLHttpRequest();
+		
+		ajax.open('post','post_file.php');
+		
+		var formData = new FormData();
+		
+		formData.append('file',File.files[0]);
+		
+//		formData.append('user','leo');  //假设还有别的字段要拼接。
+		
+		ajax.upload.onprogress = function(ev){
+			div2.style.width = (ev.loaded / ev.total)*640 + 'px';
+			div2.style.opacity = 1 - (ev.loaded / ev.total);
+			
+			if((ev.loaded / ev.total) == 1){
+				div2.style.transition = '';
+				div2.style.width = 0;
+				setTimeout(function(){
+					div2.style.opacity = 1;
+				},500);
+			}
+		}
+		
+//		console.dir(ajax)
+		
+		ajax.send(formData);
+		
+		ajax.onload = function(){
+			
+			console.log(ajax.responseText);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>
