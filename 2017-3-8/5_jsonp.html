@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		1.需要动态创建script标签，按需请求数据。
+		
+		2.必须*全局*用一个函数去接受这个数据
+		
+		3.数据一定要是函数名 + 数据的格式
+	*/
+	
+//	fn1([1,2,3,4]);
+	
+	
+	function fn1(data){
+		console.log(data);
+	}
+	
+	document.onclick = function(){
+		var oS = document.createElement('script');
+		oS.src = 'http://192.168.2.22/1.js';
+		document.getElementsByTagName('head')[0].appendChild(oS);
+	}
+	
+	
+	
+</script>
+</body>
+</html>

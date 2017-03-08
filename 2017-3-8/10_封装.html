@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" />
+	<ul id="ul">
+		
+	</ul>
+
+<script type="text/javascript">
+	//https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=miaov&cb=fn1
+	//https://api.douban.com/v2/book/search?q=摆渡人&callback=funct2
+	txt.onkeyup = function(){
+		jsonp({
+			url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+//			url:'https://api.douban.com/v2/book/search',
+//			data:{
+//				q:'javascript数据结构与算法'
+//			},
+			data:{
+				wd:txt.value
+			},
+			success:function(data){
+				console.log(data);
+//				ul.innerHTML = '';
+//				data.s.forEach(function(e,i){
+//					var li = document.createElement('li');
+//					li.innerHTML = e;
+//					ul.appendChild(li);
+//				});
+	},
+	callback:'cb'
+		
+		});
+	}
+	
+
+	
+	function jsonp(json){
+		
+		var opt = {
+			url:json.url || '',
+			data:json.data||{},
+			success:json.success || function(){},
+			callback:json.callback || 'callback'
+		}
+		var arr = [];
+		//创建一个随机的函数名。
+		var fnName = 'miaov'+Math.random();
+		fnName = fnName.replace('0.','')+'_'+ (+new Date());
+		
+		window[fnName] = function(data){
+			opt.success(data);
+		};
+		
+		opt.data[opt.callback] = fnName;
+		
+		/*
+			{
+				wd:123
+				cb:fn1
+			}
+			
+		*/
+		
+		for(var attr in opt.data){
+			arr.push(attr +'='+ encodeURI(opt.data[attr]));
+		}
+		//wd=miaov&cb=fn1
+		opt.data = arr.join('&');
+//		console.log(opt.url+'?'+'cb=fn1&'+opt.data);
+		var oS = document.createElement('script');
+		oS.src = opt.url + '?' + opt.data;
+//		oS.src = opt.url+'?'+opt.callback+'='+fnName+'&'+opt.data;
+		document.getElementsByTagName('head')[0].appendChild(oS);
+		document.getElementsByTagName('head')[0].removeChild(oS);
+	}
+	
+	
+	
+	
+
+	
+</script>
+</body>
+</html>

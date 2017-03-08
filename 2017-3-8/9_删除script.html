@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt" />
+	<ul id="ul">
+		
+	</ul>
+<script type="text/javascript">
+	
+	/*
+		创建之后直接删除是可以的，因为创建就等同于发送了一次请求，
+		不管服务器处理多长时间，只要回调，就会传入数据到回调函数中。
+		
+		就算删除，这次请求也发送了（也是异步的），不会影响数据的接受。
+	*/
+	
+	var oS = null;
+	
+	function fn1(data){
+		setTimeout(function(){
+			console.log(data);
+		},5000)
+	};	
+	
+	txt.onkeyup = function(){
+		oS = document.createElement('script');
+		oS.src = 'http://localhost/2017-3-8/php/3.data.php?callback=fn1&num=number';
+		document.getElementsByTagName('head')[0].appendChild(oS);
+		document.getElementsByTagName('head')[0].removeChild(oS);
+	}
+	
+	
+
+	
+</script>
+</body>
+</html>

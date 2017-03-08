@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		跨域（源）：
+			不同源就跨域。
+		
+		同源:同域名、协议、端口
+		
+		1.设置请求头
+		2.服务器代理
+		3.ifreame
+		4.flash
+		5.jsonp
+		
+	*/
+	
+	document.onclick = function(){
+		var ajax = new XMLHttpRequest();
+		
+//		ajax.open('get','http://192.168.2.22/1.php');
+		ajax.open('get','php/2.get.php');
+		
+//		http://www.kaola.com/getSuggestKeyword.html?query=猫&size=10
+
+		//http://localhost/
+		
+		ajax.send();
+		
+		ajax.onload = function(){
+			console.log(ajax.responseText)
+//			document.write()
+		}
+	}
+	
+	
+</script>
+</body>
+</html>

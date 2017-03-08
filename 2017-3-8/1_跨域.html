@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		安全：
+			一切上网的安全问题都基于一种规则（约定），同源策略。
+			
+			同源策略，它是由Netscape提出的一个著名的安全策略。
+		
+			
+			同源:
+				同:相同
+				源:协议、端口、域名
+			
+			http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html
+			
+			协议:
+				file:本地
+				http/https(加了安全证书)
+				ftp:文件共享协议
+				
+			端口:(访问某个服务器的入口)
+				服务器默认端口号:80
+				一般设置端口0-177之前
+			
+			域名:
+				给ip的取个别名
+				比如：百度ip 119.75.217.109
+				
+			跨域：
+				只要不同源就跨域（源）。（不同域名，不同协议，不同端口）
+				
+		
+		解决跨域的方式很多：
+			1.通过在高版本浏览器中创建XMLHttpRequest，配合后端，在头部添加权限
+				Access-Control-Allow-Origin:'*'
+				
+			2.通过服务器代理的方式可以解决跨域请求。
+				某个后端文件与自身服务器同源，后端文件能够访问第三方数据，
+				这个时候访问自身的后端文件，就等同于自身能够访问第三方数据实现跨源请求。
+		
+	*/
+	
+//	console.log(window.navigator.userAgent)
+
+	document.onclick = function(){
+		var ajax = new XMLHttpRequest();
+		
+//		ajax.open('get','http://192.168.2.22/1.php');
+		ajax.open('get','php/2.get.php');
+		
+//		http://www.kaola.com/getSuggestKeyword.html?query=猫&size=10
+
+		//http://localhost/
+		
+		ajax.send();
+		
+		ajax.onload = function(){
+			document.write(ajax.responseText)
+		}
+	}
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+<script type="text/javascript">
+	
+	document.onclick = function(){
+		var oS = document.createElement('script');
+		oS.src = 'http://localhost/2017-3-8/php/3.data.php?callback=fn2';
+		document.getElementsByTagName('head')[0].appendChild(oS);
+	}
+	
+</script>
+<script type="text/javascript">
+	
+	function fn2(b){
+		console.log(b);
+	}	
+
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<img src="http://tupian.qqjay.com/u/2013/1127/19_222949_14.jpg"/>-->
+	<!--<link rel="stylesheet" type="text/css" href="http://bdimg.share.baidu.com/static/api/css/share_style1_24.css"/>-->
+	<script src="http://www.qqjay.com/images/v2013/jquery.js"></script>
+<script type="text/javascript">
+	/*
+		json + padding = jsonp  "{}" "[]" 
+		
+		什么元素可以不用跨域就能访问到别人的东西？
+		
+		img src="http://www.baidu.com/tuku"
+		
+		link  href="http://bdimg.share.baidu.com/static/api/css/share_style1_24.css"
+		
+		script
+		
+		以上每个标签使用的时候，都会将请求过来的数据转成相应的数据，而上面这几个标签
+		都是能够跨域并且请求成功的。
+		
+		jsonp的运行方式。
+			我们可以通过script标签来将外域中的内容尽可能的转成js代码。
+			
+		script中提前写好的src为同步操作。
+		
+		通过动态创建script，实现按需加载，这种方式为异步操作。
+	*/
+	
+//	$(function(){
+//		$('body').css({background:'yellow'})
+//	})
+
+	var a = 10;
+	function fn(b){
+		console.log(b.age);
+	}
+	
+</script>
+<script src="http://192.168.2.22/1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	b = {age:17};
+	fn(b);
+	
+	document.onclick = function(){
+		console.log(arr);
+	}
+	
+//	console.log(b);
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<script type="text/javascript">
+	
+</script>
+</head>
+<body>
+	<input type="button" id="btn1" value="找数字" />
+	<input type="button" id="btn2" value="找字母" />
+<script type="text/javascript">
+	
+	function fn2(data){
+		console.log(data);
+	}	
+	function fn1(data){
+		console.log(data);
+	}	
+	
+	btn1.onclick = function(){
+		var oS = document.createElement('script');
+		oS.src = 'http://localhost/2017-3-8/php/3.data.php?callback=fn2&num=number';
+		document.getElementsByTagName('head')[0].appendChild(oS);
+	}
+	
+	btn2.onclick = function(){
+		var oS = document.createElement('script');
+		oS.src = 'http://localhost/2017-3-8/php/3.data.php?callback=fn1';
+		document.getElementsByTagName('head')[0].appendChild(oS);
+	}
+	
+	
+	
+
+	
+</script>
+</body>
+</html>
