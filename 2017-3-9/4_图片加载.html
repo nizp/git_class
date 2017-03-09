@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  <style>
+    body{
+      transition: 1s 1s;
+    }
+    #d1{
+      width: 600px;
+      height: 4px;
+    }
+    #d2{
+      width:0;
+      height: 4px;
+      background:rgb(179,197,136);
+      transition:.5s;
+    }
+  </style>
+  </head>
+  <body>
+    <div id="d1">
+      <div id="d2">
+        
+      </div>
+    </div>
+    <script type="text/javascript">
+      /*
+        onload  -> 加载成功
+        onerror -> 加载失败
+      */
+      // let img = document.createElement('img');
+      // img.src = 'http://www.wookmark.com/images/thumbs/638267_wookmark.png';
+      // img.onload = function(){
+      //   console.log(1);
+      // }
+      // img.onerror = function(){
+      //   console.log(2);
+      // }
+      
+      var arr = [
+        'http:\/\/www.wookmark.com\/images\/original\/638537_wookmark.png',
+        'http:\/\/www.wookmark.com\/images\/original\/638538_wookmark.jpg',
+        'http:\/\/www.wookmark.com\/images\/original\/638542_wookmark.png',
+        'http:\/\/www.wookmark.com\/images\/original\/638558_wookmark.jpg',
+        'http:\/\/www.wookmark.com\/images\/original\/638999_wookmark.jpg'
+      ];
+      
+      let num = 0;
+      for(var i=0;i<arr.length;i++){
+        let img = document.createElement('img');
+        img.src = arr[i];
+        img.onload = function(){
+          num++;
+          d2.style.width = 600*(num/arr.length)+'px';
+          if(num === arr.length){
+            // alert('加载完成!');
+            d2.style.opacity = 0;
+            document.body.style.background = 'green';
+          }
+        }
+        img.onerror = function(){
+          img.onload();
+        }
+      }
+      
+      
+      
+      
+      
+    </script>
+  </body>
+</html>

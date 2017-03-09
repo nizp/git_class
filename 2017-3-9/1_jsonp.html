@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<input type="text" name="txt" id="txt" value="" />
+<ul id="ul">
+	
+</ul>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=s&json=1&p=3&sid=1462_21125_18560_22037&req=2&csor=1&cb=jQuery1102009695199228510698_1489027791376&_=1489027791379
+		ctrl + \ 收起展开
+		
+		$.ajax({dataType:'jsonp','callback=?'})
+		
+		callback的问号代表走默认（随机的时间戳函数名）
+		
+		$.get()
+		$.getJSON()
+		
+		
+	*/
+	$('#txt').keyup(function(){
+		$.ajax({
+			url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?&cb=?',
+			data:{
+				wd:$('#txt').val()
+			},
+			dataType:'jsonp',
+			success:function(data){
+				$('#ul').html('');
+				$.each(data.s,(index,ele) => {
+					$('<li>'+ele+'</li>').appendTo($('#ul')).click(function(){
+						window.open('https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=1&rsv_idx=1&tn=baidu&wd='+ele);
+					});
+				});
+			}
+		})
+	});
+	
+	
+	
+	
+
+</script>
+</body>
+</html>
