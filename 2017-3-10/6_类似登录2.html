@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  <style>
+    .hide{
+      display: none;
+    }
+  </style>
+  </head>
+  <body>
+    <div>
+      用户名:<input type="text" id="txt"/>
+      <input type="button" value="登录" id="btn"/>
+      <span id="title" class="hide">欢迎回来!</span>
+    </div>
+    
+    <script type="text/javascript">
+    
+      let btn = document.getElementById('btn'),
+      txt = document.getElementById('txt'),
+      title = document.getElementById('title');
+      
+      let arr = ['yaoniansong','孙国庆','赖晴','王镇'];
+      function callback(){
+        var onOff = true;
+        for(var i=0;i<arr.length;i++){
+          if(arr[i] === getCookie('name')){
+            onOff = false;
+            return true;
+          }
+        }
+        if(onOff){
+          return false;
+        }
+      }
+      
+      /*
+      callback相当于请求一个接口，
+      返回一个布尔值，true代表有这个人
+      */
+      if(callback()){
+        btn.className = 'hide';
+        title.className = '';
+        title.innerHTML = getCookie('name') + '欢迎回来哟！亲！';
+      }else{
+        btn.className = '';
+        title.className = 'hide';
+      }
+      
+      btn.onclick = function(){
+        setCookie('name',txt.value);
+        window.location.reload();
+      }
+
+      function setCookie(key,value,time){
+        if(time){
+          var date = new Date();
+          date.setDate(date.getDate()+time);
+          document.cookie = key+'='+value+';expires='+date;
+        }else{
+          document.cookie = key+'='+value;
+        }
+      }
+      
+      function getCookie(name){
+        let arr = document.cookie.split('; ');
+        let valSting = '';
+        arr.forEach((e,i)=>{
+          let key = e.split('=')[0];
+          let val = e.split('=')[1];
+          if(key == name){
+            valSting = val;
+          }
+        });
+        return valSting;
+      }
+      
+      //删除cookie就是设置一个cookie，让它的生命周期-1
+      function removeCookie(key,value){
+        setCookie(key,value,-1);
+      }
+      
+      
+    </script>
+  </body>
+</html>

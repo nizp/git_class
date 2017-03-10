@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      document.cookie = 'age=18';
+      document.cookie = 'job=前端';
+      document.cookie = 'sex=不男不女';
+      //获取的时候，是将整个域名下的所以cookie值获取出来,每个之间用;空格分割
+      // console.log(document.cookie);
+      // console.log(getCookie('name'));
+      
+      function getCookie(name){
+        let arr = document.cookie.split('; ');
+        let valSting = '';
+        arr.forEach((e,i)=>{
+          let key = e.split('=')[0];
+          let val = e.split('=')[1];
+          if(key == name){
+            valSting = val;
+          }
+        });
+        return valSting;
+      }
+    </script>
+  </body>
+</html>

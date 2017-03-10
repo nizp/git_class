@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<script type="text/javascript">
+  /*
+    cookie:
+      储存在用户本地终端上的数据（简单理解为，一个特殊的自定义属性，浏览器能跟踪到）
+      主要用来辨别用户身份、进行 session 跟踪的一个数据。
+      大多数浏览器体积很小，可以说字字千金，最新的chrome/Safari貌似没有cookie限制
+      *每个域名*一般都有大小限制，多数浏览器为50个左右。
+      要在服务器环境下使用。
+      浏览器与浏览器之间，cookie不共享。
+      生命周期：
+        默认情况下，生命周期为关闭浏览器之前。（关闭浏览器生命结束）
+      设置生命周期：
+        可以通过expires来设置生命周期
+        
+   */
+  // document.zdy = 10;
+  // document.cookie = '10';
+  // document.cookie = '20';
+  
+  // document.cookie = 'name=leo';
+  
+  function setCookie(key,value,time){
+    if(time){
+      var date = new Date();
+      date.setDate(date.getDate()+time);
+      document.cookie = key+'='+value+';expires='+date;
+    }else{
+      document.cookie = key+'='+value;
+    }
+  }
+
+  
+ setCookie('name','王皓');
+  
+  
+  
+  
+  
+  
+  // console.log(document.zdy)
+  
+  
+</script>
+</body>
+</html>

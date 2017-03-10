@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      document.cookie = 'age=18';
+      document.cookie = 'job=前端';
+      document.cookie = 'sex=不男不女';
+      //获取的时候，是将整个域名下的所以cookie值获取出来,每个之间用;空格分割
+      function setCookie(key,value,time){
+        if(time){
+          var date = new Date();
+          date.setDate(date.getDate()+time);
+          document.cookie = key+'='+value+';expires='+date;
+        }else{
+          document.cookie = key+'='+value;
+        }
+      }
+      
+      function getCookie(name){
+        let arr = document.cookie.split('; ');
+        let valSting = '';
+        arr.forEach((e,i)=>{
+          let key = e.split('=')[0];
+          let val = e.split('=')[1];
+          if(key == name){
+            valSting = val;
+          }
+        });
+        return valSting;
+      }
+      
+      //删除cookie就是设置一个cookie，让它的生命周期-1
+      function removeCookie(key,value){
+        setCookie(key,value,-1);
+      }
+      setCookie('name','王皓');
+      
+      document.onclick = function(){
+        removeCookie('name','王皓');
+      }
+      
+      
+      
+    </script>
+  </body>
+</html>
