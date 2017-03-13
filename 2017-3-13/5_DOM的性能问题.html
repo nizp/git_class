@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="div"></div>
+<script type="text/javascript">
+	/*
+		DOM操作是比较消耗性能的。
+		
+		chrome：368.543ms  385.294ms   297.957ms   290  1.5ms  5.494ms
+		
+		IE ：17,833.875   18,337.366     17833   8.798  60
+		
+		模板引擎：为了快而生。比传统的字符串拼接还快（里面注入了算法）
+		
+		
+	*/
+	
+	var div = document.getElementById('div');
+
+	
+	console.time('计时器');
+	for(var i=0;i<500;i++){
+		var span = document.createElement('span');
+		span.innerHTML = '1';
+		div.appendChild(span);
+	}
+	console.timeEnd('计时器');
+	
+//	console.time('计时器');
+//	for(var i=0;i<500;i++){
+//		html += '<span>111</span>';
+//	}
+//	div.innerHTML = html;
+//	console.timeEnd('计时器');	var html = '';
+</script>
+</body>
+</html>

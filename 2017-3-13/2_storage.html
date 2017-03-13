@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	/*
+		本地存储 :
+			localStorage
+				设置：setItem
+				获取: getItem
+				删除: removeItem
+				清空: 一次性clear
+		
+		生命周期：
+			只要不删除就一直存在
+		
+		走域名：
+			每个域名一般有5M，还是会根据浏览器的不同而变化。
+			
+		非IE浏览器可以支持本地访问，而IE必须要在服务器上打开才能有效。
+		
+		当操作本地存储的数据时在兄弟页面中触发。
+		
+		手动删除的时候会在当前页面触发storage事件，别的操作都不会触发。
+				
+	*/
+	
+	
+	localStorage.setItem('name','lisi');
+	
+	
+	document.onclick = function(){
+		localStorage.setItem('name','教主');
+	}
+	
+	
+	window.addEventListener('storage',function(){
+		console.log('我是第一个页面');
+	});
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	/*
+		本地存储 :
+			localStorage
+				设置：setItem
+				获取: getItem
+				删除: removeItem
+				清空: 一次性clear
+		
+		生命周期：
+			只要不删除就一直存在
+		
+		走域名：
+			每个域名一般有5M，还是会根据浏览器的不同而变化。
+			
+		非IE浏览器可以支持本地访问，而IE必须要在服务器上打开才能有效。
+				
+	*/
+	localStorage.setItem('name','ys');
+//	localStorage.setItem('age',18);
+//	localStorage.setItem('sex','蓝');
+//	
+//	localStorage.clear();
+	
+//	localStorage.removeItem('age');
+	console.log(localStorage.getItem('name'));
+//	console.log(localStorage)
+	
+</script>
+</body>
+</html>

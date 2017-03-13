@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	width:800px;
+	list-style: none;
+}
+li{
+	width:140px;
+	height: 249px;
+	border: 1px solid #000;
+	float: left;
+	margin: 10px;
+}
+img{
+	width:140px;
+	height: 200px;
+	display: block;
+	border: none;
+}
+p{
+	height: 40px;
+}
+a{
+	display: block;
+	width:140px;
+	height: 249px;
+	text-decoration: none;
+	font:12px/40px "";
+	text-align: center;
+	
+}
+</style>
+</head>
+<body>
+	<input type="text" id="tex">
+	<input type="button" value="搜索" id="btn">
+	<div id="box">
+		
+		<!--<ul>-->
+			<!--<li>
+				<a href="" >
+					<img src="https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p2404553168.jpg"/>
+				<p>
+					金刚狼-殊死一战
+					<strong>8.6</strong>
+				</p>	
+				</a>
+			</li>-->
+		<!--</ul>-->
+	</div>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="template.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/html" id="test">
+	<h4><%=title%>:共有<%=total%>条</h4>
+	<ul>
+		<%for(var i=0;i<subjects.length;i++){%>
+			<li title="<%=subjects[i].title%>">
+				<a href="<%=subjects[i].alt%>" target="_blank">
+					<img src="<%=subjects[i].images.large%>"/>
+					<p>
+						<%=subjects[i].title.substring(0,8)%>
+						<strong>
+							<%if(subjects[i].rating.average != 0){%>
+								<%=subjects[i].rating.average%>
+							<%}%>
+						</strong>
+					</p>	
+				</a>
+			</li>
+		<%}%>
+	</ul>
+	
+</script>
+<script type="text/javascript">
+	
+//	https://api.douban.com/v2/movie/search?q=金刚狼&callback=fn
+	
+	const  $tex = $('#tex'),
+	$btn = $('#btn'),
+	$box = $('#box'),
+	$ul = $('ul');
+	
+	/*
+		images.large 
+		
+		title
+		
+		rating.average
+		
+		alt
+ 
+	*/
+	
+	$btn.click(function(){
+		$.ajax({
+			url:'https://api.douban.com/v2/movie/search?callback=?',
+			dataType:'jsonp',
+			data:{
+				q:$tex.val()
+			},
+			success:function(data){
+				var html = template('test',data);
+				$box.html(html);
+//				console.log(data);
+			}
+		})
+	});
+	
+	
+</script>
+</body>
+</html>
