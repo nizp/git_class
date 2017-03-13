@@ -1,0 +1,21 @@
+h2{
+	width:200px;
+	text-align: center;
+}
+ul{
+	list-style: none;
+	padding: 0;
+}
+li{
+	width:200px;
+	height: 50px;
+	border: 1px solid #000;
+	text-align: center;
+	font:20px/50px '';
+	cursor: pointer;
+}
+#gouwuche{
+	position: absolute;
+	right:5px;
+	top:8px;
+}

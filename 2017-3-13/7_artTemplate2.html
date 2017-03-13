@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<div id="box"></div>
+<script src="template_min.js" type="text/javascript" charset="utf-8"></script>	
+<script type="text/html" id="temp">
+	<h2>{{title}}</h2>
+	<ul>
+		{{each list}}
+			{{if list[$index] == '王皓'}}
+				 <li style="background: red;">{{list[$index]}}</li>
+			{{else}}
+				 <li>{{list[$index]}}</li>
+			{{/if}}
+		{{/each}}
+	</ul>
+</script>
+<script type="text/javascript">
+	/*
+		第一步：
+			<script type="text/html" id="xx">
+				
+		第二步:
+			在页面中写一个空的容器。 也要写id
+			
+		第三步:
+			
+			var html = template('temp', 数据);
+			
+		第四步:
+			box.innerHTML = html;
+			
+		<%=输入%>	
+		
+		<%for(){%>
+			
+		<%}%>
+		
+		<%=title%>  {{title}}
+			
+	*/
+	var obj = {
+		title:'“活跃”的同学名单',
+		list:['王镇','王皓','王建鹏','高老板','孙原原']
+	}
+	
+	var box = document.getElementById('box');
+	var html = template('temp', obj);
+	box.innerHTML = html;
+	
+	
+	
+	
+</script>
+</body>
+</html>
