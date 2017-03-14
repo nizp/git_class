@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	
+	/*
+		ajax的数据jsonp用不了
+		
+		url来请求，不安全，体积还小
+		
+		
+		AJAX只是局部刷新,所以页面的后退按钮是没有用的.
+		AJAX的安全问题。
+			AJAX技术给用户带来很好的用户体验的同时也对IT企业带来了新的安全威胁，Ajax技术就如同对企业数据建立了一个直接通道。这使得开发者在不经意间会暴露比以前更多的数据和服务器逻辑。Ajax的逻辑可以对客户端的安全扫描技术隐藏起来，允许黑客从远端服务器上建立新的攻击。还有Ajax也难以避免一些已知的安全弱点，诸如跨站点脚步攻击、SQL注入攻击和基于Credentials的安全漏洞等等。
+			
+		http://www.cnblogs.com/SanMaoSpace/archive/2013/06/15/3137180.html
+		
+		而jsonp的数据ajax可以用。
+		
+		
+	*/
+	
+	
+//	{
+//		"count": 20, 
+//		"start": 0,
+//		"total": 10,
+//		"subjects": []
+//	}
+
+	/*
+		var data = ajax.responseText 
+		
+		fn({
+			"count": 20, 
+			"start": 0,
+			"total": 10,
+			"subjects": []
+		})
+		
+	*/
+	
+	
+	//console.log(data)
+	
+	function fn(data){
+		console.log(data)
+	}
+	
+	fn({
+		"count": 20, 
+		"start": 0,
+		"total": 10,
+		"subjects": []
+	});
+	
+	
+	
+	
+</script>
+	
+</body>
+</html>
