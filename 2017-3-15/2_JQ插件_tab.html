@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+*{
+	margin: 0;
+	padding: 0;
+}
+.active{
+	background: yellow;
+}
+#box{
+	
+}
+#box div{
+	width:150px;
+	height: 150px;
+	border:1px solid #000;
+	display: none;
+}
+#box div.show{
+	display: block;
+}
+</style>
+</head>
+<body>
+	<div id="box">
+		<!--<input type="button" value="新闻" class="active"/>
+		<input type="button" value="科技" />
+		<input type="button" value="军事" />
+		<div class="show">新闻111111</div>
+		<div>科技11111</div>
+		<div>军事11111</div>-->
+	</div>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	
+	
+	function Tab(that){
+		//定义了默认的参数
+		this.opt = {
+			nav:['新闻','军事','科技'],
+			content:['韩媒称315晚会引韩企担忧 怕遭报复式曝光','美军认定两最新武器是其严重威胁：中国全都造出来了','人工智能又聪明了点：它现在能“举一反三”学打游戏'],
+			events:'click'
+		}
+		this.box = that;
+	}
+	
+	//用对象管理Tab小方法。
+	$.extend(Tab.prototype,{
+		init:function(opt){
+			$.extend(this.opt,opt); //有配置走配置，没配置走默认。
+			
+			this.addNav();
+			
+			this.addContent();
+			
+			this.events();
+		},
+		//创建nav
+		addNav:function(){
+			const _this = this;
+			let act = '';
+			$.each(this.opt.nav,function(i,e){
+				act = (i==0)?'active':'';
+				_this.box.append(`<input type="button" value="${e}" class="${act}"/>`);
+			});
+		},
+		addContent:function(){
+			const _this = this;
+			let act = '';
+			$.each(this.opt.content,function(i,e){
+				act = (i==0)?'show':'';
+				_this.box.append(`<div class="${act}">${e}</div>`);
+			});
+		},
+		events:function(){
+			const _this = this;
+			this.box.find('input').on(this.opt.events,function(){
+				_this.change($(this));
+			});
+		},
+		change:function(btn){
+			btn.addClass('active').siblings('input').removeClass('active');
+			this.box.find('div').eq(btn.index()).addClass('show').siblings('div').removeClass('show');
+		}
+	});
+
+	$.fn.extend({
+		tabs:function(opt){
+			var t = new Tab(this); //#box
+//			console.log(t.constructor);
+			
+			t.init(opt);//外面传进来的配置的参数
+			return this;
+		}
+	});
+
+	
+	$('#box').tabs({
+		nav:['生活','电影','旅游'],
+		events:'mouseover'
+	});
+	
+	
+	
+</script>	
+</body>
+</html>

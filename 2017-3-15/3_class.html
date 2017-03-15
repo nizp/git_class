@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	function Person(name,age){
+//		this.name = name;
+//		this.age = age;
+//	}
+//	
+//	Person.prototype.say = function(){
+//		alert(this.name);
+//	}
+//	
+//	var p = new Person('谢东乾');
+//	var p2 = new Person('赖晴');
+//	p.say();
+//	p2.say();
+//	
+//	console.log(p.say == p2.say);
+
+	
+	
+	class Person {//没括号
+		constructor(name,age){//等同于构造函数的参数，constructor放属性。
+			this.name = name;
+			this.age = age;
+		}
+		//下面都是类的方法，等同于挂在prototype下
+		say(){
+			alert(this.name);
+		}
+		runing(){
+			alert('我会跑');
+		}
+	}
+	
+
+
+	
+	var p = new Person('谢东乾');
+	var p2 = new Person('赖晴');
+//	console.log(p)
+	p2.say();
+	p2.runing();
+	console.log(p.say == p2.say);
+	
+</script>
+	
+</body>
+</html>

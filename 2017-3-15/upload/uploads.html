@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="css/demo.css">
+<script src="../jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="uploads4.js" type="text/javascript" charset="utf-8"></script>
+<style type="text/css">
+#bar{
+	height:4px;
+}
+#bar div{
+	height:4px;
+	background-color:#77B6FF;
+	width:0;
+}
+</style>
+</head>
+<body>
+	<section id="box">
+		<div id="bar">
+			<div></div>
+		</div>
+		<header>
+			<input type="file" name="" id="file">
+			<a href="javascript:;">上传</a>
+		</header>
+		<div class="drag">
+			<span>请将图片拖拽至此处</span>
+		</div>
+		<div class="preview">
+			<ul id="ul">
+				
+			</ul>
+		</div>
+		<a href="javascript:;" id="upload">确认上传</a>
+	</section>
+<script type="text/javascript">
+	
+	/*
+		1.上传
+		2.显示上传的图片
+		3.删除功能
+		4.拖拽
+		5.上传的进度
+		
+	*/
+	var u = $('#box').uploads({
+		fileEle:$('#file'),
+		btn:$('#upload'),
+		url:'php/post_file.php',
+		viewFn:function(flie){
+			//flie转成图片
+			u.fileReader(flie,function(data){ //data就是图片的源码
+				$(`<li title="${flie.name}">
+					${flie.name}
+					<input type="button" value="X" >
+					<img src="${data}">
+					</li>
+				`).appendTo($('#ul')).click(function(){
+					u.removeArr($(this).attr('title'));
+					$(this).remove();
+				});
+			});
+			//console.log(flie)
+		},
+		onload:function(){
+			$('#ul').html('');
+			
+			setTimeout(function(){
+				$('#bar div').css({
+					width:0,
+					opacity:1
+				})
+			},2100);
+			
+//			alert('所有图片上传完成!');
+		},
+		onprogress:function(num,length){//num:每次上传的个数，length：总个数
+			$('#bar div').animate({
+				width:600*(num/length),
+				opacity:1-(num/length)
+			});
+		},
+		dragBox:$('.drag').eq(0),
+		ondragenter:function(){
+			console.log('已经移入');
+		}
+	});
+	
+	
+</script>
+</body>
+</html>

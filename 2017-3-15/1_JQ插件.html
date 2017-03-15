@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<textarea name="" rows="4" cols="10" id="txt"></textarea>
+<script src="jquery-3.1.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*
+		插件：辅助
+		
+		组件：功能
+		
+		优点：高效、重复调用一个复杂功能或者方法，减少开发成本。
+		
+		Jq来说，插件分为
+			工具型:  $.each()   $.extend()
+			功能型:  $('li').each()   $.fn.extend();
+		
+		通过extend来扩展插件
+		
+		$.extend({
+			fnName:function(){
+				
+			}
+		});
+		
+		
+		$.fn.extend({
+			fnName:function(){
+				
+			}
+		});
+
+	*/
+	
+	var str = '     123456      '
+	$.extend({
+		trimLeft:function(str){
+			return str.replace(/^\s+/,'');
+		},
+		trimRight:function(str){
+			return str.replace(/\s+$/,'');
+		},
+		trimTo:function(str){
+			return $.trimRight($.trimLeft(str));
+		}
+	});
+	
+	
+	var l = $.trimLeft(str);
+	var r = $.trimRight(str);
+	
+//	console.log($.trimTo(str));
+
+
+	
+	$.fn.extend({
+		scrollHeight:function(){
+			return this[0].scrollHeight;
+		}
+	});
+	
+
+	$(document).click(function(){
+		console.log($('#txt').scrollHeight());
+	});
+
+	
+	
+	
+	
+	
+</script>	
+</body>
+</html>

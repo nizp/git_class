@@ -1,0 +1,37 @@
+参数配置：
+	fileInput:file控件
+	dragDrop:拖拽感应区
+	upLoad:上传按钮
+	url:ajax上传地址
+	onselect:本地文件被选中时执行
+	ondelete:选中文件被删除时执行
+	ondragover:文件拖入感应区时执行
+	ondragleave:文件离开感应区时执行
+	ondrop:文件在感应区松开时
+	onupload:文件开始上传时执行
+	onprogress:文件上传过程中执行
+	onsuccess:文件上传成功执行
+	onfailure:文件上传失败执行
+	oncomplete:文件列表上传完毕执行	
+	fileFilter:文件类型过滤方法
+属性：
+	filesData:文件数据
+	filesUploadIndex:上传进度	
+功能方法：
+	init:初始化
+	fileHandie:文件处理	
+	deleteFile:删除对应文件方法
+	filePreview:文件预览
+	select:选中文件
+	preview:预览处理
+	upload:上传处理
+	dragover:文件拖入感应区处理
+	dragleave:文件脱离感应区处理
+	progress:上传过程处理
+	success:上传成功处理
+	failure:失败处理
+	complete:上传完成处理
+
+
+
+
