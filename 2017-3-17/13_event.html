@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div style="width:50px;height:50px;background:red" id="div"></div>
+  <script type="text/javascript">
+    /*
+      高版本浏览器下，事件函数的第一个参数就是event对象。
+      在低版本下（或者chrome），在全局有个event对象,只要某个事件触发，event就会有本次触发的细节。
+      chrome默认为undefined，低版本默认为null;
+      ff只认ev  || window.event
+     */
+    // console.log(event);
+    
+    div.onclick = function(abc){
+      var e =  window.event || abc;
+      console.log(e);
+    }
+  </script>
+  </body>
+</html>

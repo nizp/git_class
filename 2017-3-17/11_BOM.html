@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body style="height:3000px">
+    <div id="div" style="width:50px;height:50px;background:red">
+      
+    </div>
+  <script type="text/javascript">
+  /*
+    innerWidth、clientWidth
+    window.innerWidth/window.innerHeight 在IE9以下浏览器不兼容。
+    最好用document.documentElement.clientWidth
+    
+    
+    window.pageXOffset/window.pageYOffset：IE9以下浏览器不支持
+    解决：
+        document.body.scrollTop : chrome
+        document.documentElement.scrollTop : 别的浏览器
+      
+    内容高度obj.scrollHeight
+    
+  */
+    // console.log(window.innerWidth);
+    // console.log(document.documentElement.clientWidth);
+    document.documentElement.onclick = function(){
+      // alert(1);
+      // console.log(11)
+      console.log(  document.documentElement.scrollTop )
+      // console.log(window.pageYOffset);
+    }
+  </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script type="text/javascript">
+    /*
+      forEach
+        IE9以下浏览器不兼容。
+      
+     */
+    var arr = [1,2,3,5,6];
+    
+    Array.prototype.forEach = function(callback,that){
+      that = that?that:window;
+      for(var i=0;i<this.length;i++){
+        callback.call(that,this[i],i,this);
+      }
+    }
+    
+    arr.forEach(function(e,i,all){
+      console.log(this)
+      // console.log(e,i,all);
+    },document);
+    
+    
+    
+    
+    
+  </script>
+  </body>
+</html>

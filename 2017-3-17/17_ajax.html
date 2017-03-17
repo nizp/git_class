@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div style="width:50px;height:50px;background:red" id="div"></div>
+    <script type="text/javascript">
+      /*
+        在IE6下，可以使用微软专门的插件
+        var ajax = new ActiveXObject('Microsoft.XMLHTTP');
+        别的浏览器都用new XMLHttpRequest()
+       */
+      div.onclick = function(){
+        var ajax = new XMLHttpRequest();
+        ajax.open('get','php/get.php?user=leo',false);
+        ajax.send();
+        console.log(ajax.responseText);
+      }
+    </script>
+  </body>
+</html>

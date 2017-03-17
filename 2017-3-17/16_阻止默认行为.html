@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    dsdsadsadsdsads
+  <img src="1.jpg" width="100"  id="img">
+  <script type="text/javascript">
+    /*
+      addEventListener -> ev.preventDefault()
+      addEvent -> return false;
+      
+      event.cancelBubble=true：所有浏览器都兼容，但是不是标准
+      event.stopPropagation():不兼容低版本，浏览器，但是为标准
+     */
+    document.onmousedown = function(){
+      return false;
+    }
+    // document.attachEvent('onmousedown',function(){
+    //   return false;
+    // });
+    // document.addEventListener('mousedown',function(){
+    //   return false;
+    // });
+    
+  </script>
+  </body>
+</html>

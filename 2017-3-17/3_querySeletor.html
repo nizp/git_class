@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<ul id="ul">
+		<li class="li"></li>
+		<li class="li"></li>
+		<li class="li"></li>
+		<li class="li"></li>
+		<li class="li"></li>
+		<li class="li"></li>
+		<li class="li"></li>
+	</ul>
+<script type="text/javascript">
+	/*
+		querySelector()  IE7以上浏览器才兼容
+		
+		querySelectorAll() IE7以上浏览器才兼容
+		
+		/*
+			tagName
+			id
+		
+			first-child
+			input[:button]
+		
+		
+		IE9以上浏览器才兼容。
+	*/
+	
+	var ul = document.getElementById('ul');
+	var lis = ul.querySelectorAll('.li');
+	
+	console.log(lis)
+	
+	
+</script>
+</body>
+</html>

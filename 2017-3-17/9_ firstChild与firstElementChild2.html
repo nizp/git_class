@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul id="ul">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  <script type="text/javascript">
+    /*
+        firstElementChild:
+          高版本浏览器专用，获取第一个元素子节点。
+        firstChild：
+          所有浏览器都兼容:
+          但是，在高版本下为获取第一个子节点（3,8,9。。）。
+          而在低版本下，第一个元素子节点。
+          
+        别的与他特性一样：
+          lastElementChild/lastChild;
+          previousElementSibling/previousSibling
+          nextElementSibling / nextSibling
+    */
+    
+    var ul = document.getElementById('ul');
+    var firstEle = ul.firstElementChild || ul.firstChild;
+    var lastEle = ul.lastElementChild || ul.lastChild;
+    var prev = lastEle.previousElementSibling || lastEle.previousSibling
+    //var next = lastEle.nextElementSibling || lastEle.nextSibling
+    firstEle.style.background = 'red';
+    lastEle.style.background = 'yellow';
+    prev.style.background = 'blue';
+    // next(lastEle).style.background = 'pink';
+    // console.log()
+    if(next(lastEle)){
+      alert('真');
+    }else{
+      alert('假');
+    }
+    //
+    
+    function first(obj){
+      if(!obj || !obj.firstChild)return null;
+      if(obj.firstElementChild){
+        return obj.firstElementChild;
+      }
+      if(obj.firstChild.nodeType == 1){
+        return obj.firstChild;
+      }
+      return null;
+    }
+    
+    
+    function next(obj){
+      if(!obj || !obj.nextSibling)return null;
+      if(obj.nextElementSibling){
+        return obj.nextElementSibling;
+      }
+      if(obj.nextSibling.nodeType == 1){
+        return obj.nextSibling;
+      }
+      return null;
+    }
+    
+    
+   
+  </script>
+  </body>
+</html>

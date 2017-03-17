@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <div style="width:50px;height:50px;background:red" id="div"></div>
+  <script type="text/javascript">
+    /*
+      绑定：
+      在IE9下使用attachEvent,带on，并且没有捕获，只有冒泡。
+      this,默认指向window，那么通过call来改变this的指向。
+      解绑:
+      detachEvent
+     */
+  //div.addEventListener('click',fn1);
+    div.attachEvent('onclick',fn2);
+    function fn2(ev){
+      fn1.call(div,ev);
+    }
+    function fn1(){
+      console.log(this);
+      alert(1);
+      div.detachEvent('onclick',fn2);
+    }
+  
+  </script>
+  </body>
+</html>

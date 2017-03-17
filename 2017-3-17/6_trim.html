@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  /*
+      trim在IE9以下浏览器不兼容。
+      解决：
+        正则style
+   */
+    var str = '    eq321           ';
+   //const tirm = (str) => str.replace(/^\s+|\s+$/g,'');
+    function tirm(str){
+      return str.replace(/^\s+|\s+$/g,'')
+    }
+    console.log(tirm(str));
+    // console.log(str.trim());
+    
+  </script>
+  </body>
+</html>
