@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		在ES6中{}就叫块
+		块级作用域指一个变量或者函数只在该区域才起作用。
+		
+		使用的时候，let被{}所包裹，不能重复命名（包括函数中当前域下的参数）
+		如果函数中的参数名字与函数内的名字一样，那么可以使用{}将let的变量
+		锁在这个{}的域中，就不会报错了。
+		
+		
+		function (a){
+			let a = 20;//会报错
+		}
+		
+		function (a){
+			{
+				let a = 20;
+			}
+		}
+		
+	*/
+	
+//	{
+//		let a = 20;
+//		{
+//			let b = 30;
+//			console.log(a);
+//		}
+//		console.log(b);
+//	}
+//	console.log(a);
+
+	var a = [];
+	for (let i = 0; i < 10; i++) {
+	  a[i] = function () {
+	    console.log(i);
+	  };
+	}
+	/*
+		for (let i = 0; i < 10; i++) {
+		  a[0] = function () {
+		    console.log(0);
+		  };
+		} 
+		
+		for (let i = 1; i < 10; i++) {
+		  a[1] = function () {
+		    console.log(1);
+		  };
+		} 
+		
+		for (let i = 2; i < 10; i++) {
+		  a[2] = function () {
+		    console.log(2);
+		  };
+		} 
+	*/
+	
+	//a[8]();
+	
+	
+//	for (let i = 0; i < 3; i++) {
+//	  let i = 'abc';
+//	  console.log(i);
+//	}
+
+//	if (true) {
+////	  let tmp;
+////	  alert(tmp);
+//	  //tmp = 'abc';  //window.tmp ,一旦加了let,tmp变成了块级数据。
+//	}
+//	console.log(tmp);
+
+//	if (true) {
+////	  tmp = 'abc';
+////	  console.log(tmp);
+////	  let tmp; 
+////	  console.log(tmp); 
+////	  tmp = 123;
+////	  console.log(tmp); 
+//	}
+
+	//参数名也跟let的名字一样，那么就会报错。
+	function func(arg) {
+//	  var arg1
+	  let arg; 
+
+	  {
+	  	let arg; 
+	  }
+	}
+	func(5);
+
+
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

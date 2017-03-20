@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script type="text/javascript">
+    /*
+      给对象添加一个遍历接口：
+        需要在对象下添加一个Symbol.iterator的方法，
+        这个方法需要返回一个对象，
+        对象下有个方法叫next
+        next需要返回一个对象
+        这个对象有2个值：
+          value:传什么都行，
+          done：（布尔值）true 终止循环，false开启循环。
+     */
+    let obj = {
+      name:'leo',
+      age:999
+    }
+    
+    
+    Object.prototype[Symbol.iterator] = function(){
+      let keys = Object.keys(this);
+      let index = 0;
+      const len = keys.length;
+      return {
+        next(){
+          if(index < len){
+            return {
+              value:{
+                key:keys[index],
+                val:obj[keys[index++]]
+              },
+              done:false
+            }
+          }else{
+            return {
+              value:null,
+              done:true
+            }
+          }
+        }
+      }
+    }
+    // obj[Symbol.iterator] = function(){
+    //   let keys = Object.keys(obj);//将对象的key值存到数组中[name,age]
+    //   let index = 0;
+    //   const len = keys.length;
+    //   // console.log(keys)
+    //   return {
+    //     next(){
+    //       if(index < len){
+    //         return {
+    //           // value:obj[keys[index++]],//obj[[name,age][1]]
+    //           //obj[name]  obj[age]
+    //           value:{
+    //             key:keys[index],
+    //             val:obj[keys[index++]]
+    //           },
+    //           done:false//循环
+    //         }
+    //       }else{
+    //         return {
+    //           value:null,
+    //           done:true//终止循环
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+    
+    console.dir(obj)
+    
+    for(var {val,key} of obj){
+      console.log(key,val);
+    }
+    
+    // for(var i of obj){
+    //   console.log(i);
+    // }
+    
+  </script>
+  </body>
+</html>

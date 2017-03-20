@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	let str = 'a1ca2ca3ca4ca5ca6c';
+	
+	/*
+		标准写法的正则，第一个参数，可以为字符串也可以为正则，第二个参数，一样是修饰符。 
+	*/
+	
+//	let re = new RegExp('a\\wc','g');
+	
+	let re = new RegExp(/a\wc/,'g');
+	
+	console.log(str.match(re));
+	
+	
+//	console.log(str.match(/a\wc/g));
+	
+	
+	
+</script>
+</body>
+</html>

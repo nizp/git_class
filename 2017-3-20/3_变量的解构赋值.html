@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+<style>
+#div{
+	width: 100px;
+	height: 100px;
+	background: red;
+	top:0;
+	left:20px;
+}
+</style>
+</head>
+<body>
+	<div id="div"></div>
+<script type="text/javascript">
+	
+/*	什么是解构赋值
+	ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
+	
+	数组解构：
+		把数组中的某个值，对应解析
+		var [b,a] = [a,b] ;
+	
+	对象解构:
+		把对象中对应的值，解析出来
+		
+		var {a,b} = {a:10,b:5} ->  a=10,b=5
+		
+		要取别名(用:,  解构出来的值:取的别名)：
+			var {a:aa,b:bb} = {a:10,b:5}  aa=10,bb=5
+*/
+
+//	var a = 10;
+
+//	let [a,b,c] = [1,2,3];
+	
+	//let [a,b,c] = [1,2]; //因为没有对应的c，所以c为undefined
+	
+//	console.log(a,b,c);
+
+//	var a = 10;
+//	var b = 5;
+//	
+//	var [b,a] = [a,b];
+//	
+////	var c = a;
+////	a = b;
+////	b = c;
+////	
+//	console.log(a,b);
+
+
+//let [foo, [[bar], baz]] = [1, [[2], 3]];
+
+//let [foo, [bar, baz]] = [1, [[2], 3]];
+
+//let [a, b] = [bar, baz];
+
+//console.log([bar, baz]);
+//console.log(a[0],b);
+
+
+//let [x, , y] = [1, 2, 3];
+
+//console.log(x,y);
+
+
+//let [foo] = [];
+
+//let [bar, foo] = [1];
+
+//console.log(foo);//undefined;
+
+
+//console.log(foo,bar,baz);
+
+
+/*
+	注意：
+		数字不能解构
+		布尔值也不能解构
+		NaN也不能解构
+		undefined
+		null
+		格式错误也不能解构。
+*/
+//let [foo] = 1;
+//let [foo] = true;
+//let [foo] = NaN;
+//let [foo] = undefined;
+//let [foo] = null;
+//let [foo] = {foo:123};
+//console.log(foo);
+
+
+//有配置走配置，没配置走默认。
+//let [foo = true] = [];
+//console.log(foo);
+
+
+//let [x, y = 'b'] = ['a'];
+//let [x, y = 'b'] = ['a', undefined];
+//console.log(x,y);
+
+//let [x = 1] = [null]; //null也算配置。
+//console.log(x);
+
+//function f() {
+//console.log('aaa');
+//}
+//
+//let [x = f()] = [];
+//
+//console.log(x);
+
+
+//let [x = 1, y = x] = [];     
+//let [x = 1, y = x] = [2];   
+//let [x = 1, y = x] = [1, 2]; 
+//let [x = y, y = 1] = []; //优先观察数组第一项，如果第一项默认的状态，等于第二项以上的默认值，一旦发现第一个解构的内容为undefined，那么就报错
+
+//let [x=z,y=3,z=1] = [];
+
+//console.log(x);
+
+
+//	function f() {
+//	  console.log('aaa');
+//	  return 123;
+//	}
+//	
+//	let [x = f()] = [1];
+//	
+//	console.log(x);
+	
+//	let x;
+//	if ([1][0] === undefined) {
+//	  x = f();
+//	} else {
+//	  x = [1][0];
+//	}
+
+
+
+
+
+/******************************对象解构*******************************/
+	
+	/*
+		{a,b} 
+	*/
+	
+//	let {name,age} = {
+//		name:'教主',
+//		age:30
+//	}
+//	
+//	console.log(name,age);
+
+	let data = {
+		name:'教主',
+		age:30
+	}
+	
+//	let {age} = data; 
+//	console.log(age);
+
+	
+	//let {age:a} = data; //a是将age的名字改变成a，访问a就等同于访问age,如果换了名字，想访问原来的名字，是会报错的。
+//	let b = 10;  重名就会报错。
+//	console.log(a);
+
+
+	//var div = document.getElementById('div');
+	
+//	var l = getComputedStyle(div).left;
+//	var t = getComputedStyle(div).top;
+//	var w = getComputedStyle(div).width;
+//	var h = getComputedStyle(div).height;
+	
+	//let {left:l,top:t,width:w,height:h} = getComputedStyle(div);
+	
+	//console.log(l,t,w,h);
+	
+//	let baz;
+//	let {bar: baz} = {bar: 1};  //报错
+	
+	
+//	let foo = 2;
+//	({foo} = {foo: 1}); //相当于foo之前的值被下面的代码给覆盖了。
+//	console.log(foo);
+
+//	let obj = {
+//	  p: [
+//	    'Hello',
+//	    { y: 'World' }
+//	  ]
+//	};
+//
+//	let {p:[x,{y}]} = obj;
+	
+	
+//	console.log(x,y);
+
+	var node = {
+	  loc: {
+	    start: {
+	      line: 1,
+	      column: 5
+	    }
+	  }
+	};
+
+	
+//	let {loc:{start:{line}}} = node; //支持多次解构。
+//	
+//	console.log({start:{line}});
+	
+	
+	
+//	let obj = {
+//		name:'momo',
+//		ing:'吃',
+//		food:['早点','午饭','晚饭']
+//	}
+//	
+//	let {name,ing:img,food:[a,b,c]} = obj;
+//	
+//	console.log(name+img+a+b+c);
+
+//	let obj = {};
+//	let arr = [];
+
+//	({ foo: obj.prop, bar: arr[0] } = { foo: 123, bar: true });
+	
+	
+//	var obj = {x:2};
+//	
+//	var {x = 3} = obj;
+//	
+//	console.log(x);
+	
+	
+//	var x = 3;
+	
+	
+//	var {x, y = 5} = {x: 1};
+	
+//	var {x:y = 3} = {};
+
+//	var {x:y = 3} = {x: 5};
+	
+	
+//	let {x:y,y=1} = {}; //let 不能有重复的名字。 var就不存在这个情况。
+//	console.log(y);
+	
+/**************************字符串解构************************************/	
+	
+//const [a, b, c, d, e] = 'hello';
+//
+//console.log(a, b, c, d, e);
+	
+/*************************函数解构************************************/
+	
+	
+	
+//	function fn(a=0,b=0){
+//		console.log(a+b);
+//	}
+//	
+//	fn(2,3);
+
+
+//	function fn(a=1,b=1,...x){  //函数解构...x，...+x的方式只能放在函数的最后一个参数中
+//		console.log(a+b+x);
+//	}
+//	
+//	fn(2,3,4,5);
+	
+	//let [head, ...a] = [1, 2, 3, 4];
+	
+//	var arr = [1,2,3,4,5,6,7,8];
+//	
+//	let [head,bb,...a] = arr;
+	
+	
+
+	console.log(a);//
+
+
+	
+	
+	
+	
+	
+
+	
+	
+	
+
+	
+</script>
+</body>
+</html>

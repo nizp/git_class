@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title></title>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+<script type="text/javascript">
+	/*
+		数组：
+			默认有遍历接口，Symbol.iterator，只要有遍历接口就能使用for of循环
+			可以循环数据与类数组。
+			
+			在使用的时候，可以用数组实例的keys()方法，找key值
+			也可以通过entries来遍历key，vlue。
+			使用的时候请使用解构赋值的方式去操作。
+			
+			注意的是：
+				object默认没有遍历接口，所以不能使用for of
+				
+				
+	*/
+	let obj = {
+		name:'jiaozhu',
+		age:10
+	}
+	
+	let arr = [6,2,3,4,5];
+	// console.dir(arr);
+	// for(var i of obj){
+	// 	console.log(i);
+	// }
+	
+	
+	// for(var [key,val] of arr.entries()){
+	// 	console.log(key,val);
+	// }
+ 	
+	// for(var [,val] of arr.entries()){
+	// 	console.log(val);
+	// }
+
+	
+	// let lis = document.getElementsByTagName('li');
+	// console.dir(lis);
+	// for(var i of lis){
+	// 	i.style.background = 'red';
+	// }
+	//
+
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

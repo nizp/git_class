@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script type="text/javascript">
+    /*
+      boolean
+      num
+      object
+      null
+      undefined
+      string
+      Symbol  -> 唯一。
+      
+      ES5的对象属性名都是字符串，这容易造成属性名的冲突。
+      比如，你使用了一个他人提供的对象，
+      但又想为这个对象添加新的方法（mixin模式），
+      新方法的名字就有可能与现有方法产生冲突。
+      如果有一种机制，保证每个属性的名字都是独一无二的就好了，
+      这样就从根本上防止属性名的冲突。这就是ES6引入Symbol的原因。
+      
+    */
+    // let s = Symbol('123');
+    // let s1 = Symbol('123');
+    // console.log(s == s1);
+    
+    let obj = {
+      name:'永生',
+      age:80,
+      fn(){
+        alert(1)
+      }
+    }
+    obj[Symbol.fn] = function(){
+      alert(2);
+    }
+    console.log(obj[Symbol.fn]);
+    
+    
+    
+    
+    
+    
+  </script>
+  </body>
+</html>

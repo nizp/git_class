@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script type="text/javascript">
+    /*
+        Object.is(比较的左值,比较的右值)
+          在所有环境中，只要两个值是一样的，它们就应该相等
+        判断NaN等不等于NaN
+        Object.is(NaN,NaN)
+        
+        Object.assign(target [,source1 ... sourceN])
+          浅拷贝
+          注意：如果目标对象与源对象有同名属性，或多个源对象有同名属性，
+          则后面的属性会覆盖前面的属性。
+          
+        Object.getPrototypeOf(实例化对象);
+        返回实例化对象的构造函数，如果构造函数的constructor被修改，
+        那么一样不准确，需要手动还原constructor指向。
+        
+        Object.setPrototypeOf(object,prototype)
+        用来设置一个对象的prototype对象
+        
+        __proto__:
+          用来读取或设置当前对象的prototype对象。
+        	例如：var obj = {
+        	    __proto__:super
+        	}
+
+        
+     */
+    
+    // let obj = {
+    //   fn:function(){
+    //     alert(1);
+    //   }
+    // }
+    
+    // let obj = {
+    //   fn(){
+    //     alert(1);
+    //   }
+    // }
+    //
+    // obj.fn();
+    
+    // function fn(){
+    //   var a = 0;
+    //   var b = 2;
+    //   return {
+    //     x:a,
+    //     y:b
+    //   }
+    // }
+    
+    // function fn(){
+    //   var a = 0;
+    //   var b = 2;
+    //   return {
+    //     a,b
+    //   }
+    // }
+    // let obj = fn();
+    // console.log(obj)
+    //
+    
+    	// let sex= '男';
+      // let get = 'get';
+      // let person= {
+      //   	name:'momo',
+      //   	[sex]: false,
+      //    	['a'+'ge']: 37,
+      // 	  [get+'name'](){
+      // 		  alert(this.name);
+      //     }
+      // }
+      // person.getname();
+  //   let num = 1;
+  //   let obj = {
+  //     // num['1']:1,
+  //     // num['2']:2,
+  //     // num['3']:3
+  //     ['num'+[1]]:1,
+  //     ['num'+[2]]:2,
+  //     ['num'+[3]]:3
+  //   }
+  //  console.log(obj['num'+num]);
+    
+    // console.log(NaN == NaN);
+    // console.log(Object.is(0,0));
+    
+    let obj = {
+      name:'小红',
+      age:1000,
+      arr:[1,2,3]
+    }
+    
+    let obj2 = {
+      name:'小黑',
+      job:'前端开发'
+    }
+    
+    let obj3 = Object.assign({},obj2,obj);
+    // obj2.age = 2000;
+    // obj2.arr.push(4);
+    // console.log(obj3);
+    
+  
+  function fn1(){};
+  fn1.prototype = {};
+  fn1.prototype.constructor = fn1;
+  fn1.prototype.say = function(){
+    alert(123);
+  }
+  let f = new fn1;
+  // console.log(f.constructor);
+  // console.log( Object.getPrototypeOf(f) );
+  
+  let json = {
+    name:'123',
+    __proto__:fn1
+  }
+  console.log(json.__proto__)
+  
+  
+  
+  // Object.setPrototypeOf(json,fn1.prototype);
+  // console.log(json.name)
+  // json.say();
+   
+  // Object.setPrototypeOf(json,Array.prototype);
+  
+  // json.push(5);
+  //console.log(json)
+  
+  
+  
+  
+    
+    
+    
+  </script>
+  </body>
+</html>
