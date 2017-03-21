@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	alert(typeof Symbol()); //symbol
+//	let obj = {
+//		"name" : "leo",
+//		null:'123'
+//	}
+//	console.log(obj[null])
+	
+//	var m = new Map(); //创建Map
+//	var o = {p: 'Hello World'};
+
+	
+	/*
+		
+		
+		{key:value}
+		
+		
+		var map = new Map([])
+		
+		map.set:
+			添加key与value
+			m.set(key,value);
+		
+		map.get:
+			获取value值
+			m.get(o) 返回一个value值
+		
+		map.has:
+			有没有这个key
+		
+		map.delete(key)
+			删除对应键值对
+			
+		map.clear()
+			清除所有成员
+		
+		它自身有forEach((val,i,all)=>{})
+		
+		想遍历的时候拿到map，key，value
+		
+		map.keys()
+			遍历map的key值
+		
+		map.values()
+			遍历map的value值
+		
+		map.entries()
+			遍历map的key和value值
+		
+	*/
+	
+//	var m = new Map([
+//		['name','leo'],
+//		['age',23]
+//	]);
+//	
+////	console.log(m.has('sex'));
+//	
+//	console.log(m.get('name'));
+
+	
+	var items = [
+	  ['name', '张三'],
+	  ['title', 'Author']
+	];
+	var map = new Map();
+	
+	items.forEach(function([key, value]){
+		map.set(key, value);
+	})
+	
+	//items.forEach(([key, value]) => map.set(key, value));
+	
+	
+	//遍历key
+//	for(var i of map.keys()){
+//		console.log(i);
+//	}
+	
+	//遍历value
+//	for(var v of map.values()){
+//		console.log(v);
+//	}
+
+	//key和value都遍历
+//	for(var [k,v] of map.entries()){
+//		console.log(k,v);
+//	}
+	
+	
+//	map.forEach((e)=>{
+//		console.log(e);
+//	})
+	
+	
+	//map转数组
+	let myMap = new Map().set(true, 7).set({foo: 3}, ['abc']);
+	
+	console.log([...myMap]);
+	
+//	function strMapToObj(strMap) {
+//	  let obj = Object.create(null);
+//	  for (let [k,v] of strMap) {
+//	    obj[k] = v;
+//	  }
+//	  return obj;
+//	}
+//	
+//	let myMap = new Map().set('yes', true).set('no', false);
+//	strMapToObj(myMap)
+//	// { yes: true, no: false }
+	
+	
+	
+	
+	
+	
+//	m.set(o,{
+//		name:'leo'
+//	});
+//	
+//	console.log(m)
+	
+	//console.log(m.get(o)) // "content"
+	
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		Symbol:唯一 
+	*/
+	
+//	function fn(){
+//		
+//	}
+	
+//	let obj = {
+//		get(){
+//			alert(1)
+//		},
+//		fn(){
+//			alert(2);
+//		}
+//	}
+//	
+//	
+//	obj[Symbol.get] = function(){
+//		alert('呵呵哒');
+//	}
+//
+////	obj.fn();
+//	obj[Symbol.get]();
+
+	
+	
+//	let obj = {
+//		fn(){
+////			console.log(1);
+//			return 1;
+//		}
+//	}
+//	
+//	let obj2 = {
+//		fn(){
+//			console.log(2);
+//		}
+//	}
+//	
+//	let obj3 = {
+//		getfn(){
+//			return (2+this.fn());
+//		},
+//		__proto__:obj,
+//		
+//	}
+//	
+//	console.log(obj3.getfn())
+
+	
+	
+	
+	let obj = {
+		name:'momo',
+		sex:false
+	}
+	
+	/*
+		Object.keys(obj); 
+	*/
+	
+//	var keys = Object.keys(obj);
+//	
+//	console.log(keys);
+//	
+	
+	
+	obj[Symbol.iterator] = function(){
+		var keys = Object.keys(obj);
+		var index = 0;
+		var len = keys.length;
+		return {
+			next(){
+				if(index < len){//1 < 2
+					return {
+						value:{
+							k:keys[index],
+							v:obj[keys[index++]]
+						},
+						done:false
+					}
+				}else{
+					return {
+						value:undefined,
+						done:true
+					}
+				}
+			}
+		}
+	}
+	
+	
+	for(var {k,v} of obj){
+		console.log(k,v)
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

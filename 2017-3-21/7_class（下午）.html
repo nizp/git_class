@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		 
+	*/
+	
+//	class Person{
+//		constructor(name,age){
+//			this.name = name;
+//			this.age = age;
+//		}
+//		say(){
+//			alert(this.name);
+//		}
+//	}
+
+//	let p1 = new class{
+//		constructor(name) {
+//		   this.name = name;
+//		}
+//
+//		sayName() {
+//		    console.log(this.name);
+//		}
+//	}('郭荣');
+//	
+//	
+	
+	
+	
+	
+	
+	
+	
+	class Fn{
+		constructor(name){
+			this.name = name;
+			//修改某个函数的this指向并且不执行。
+//			this.say = this.say.bind(this);
+		}
+		say(){
+//			console.log(this);
+			alert(this.name);
+		}
+	}
+	
+	/*
+		在解构的时候，解构出来的函数this会被修改为undefined，所以需要使用bind()来绑定构造函数的this。 
+	*/
+	
+	let p = new Fn('刘宇');
+	let {say} = p;
+	say();
+//	console.log(say)
+//	p.say();
+	
+	
+	
+	
+	
+	
+//	
+//	c.click(document);
+	
+	
+</script>
+</body>
+</html>

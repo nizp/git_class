@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		super这个关键字
+			既可以当作函数使用，也可以当作对象使用。
+	*/
+	
+	class Peron{
+		constructor(name){
+			this.name = name;
+		}
+		say(){
+			alert(this.name);
+		}
+	}
+	
+	/*
+		class 子类 extends 父类 {
+			constructor(){
+				super(name);//调用父类
+			}
+		}
+	*/
+	
+	class Peron2 extends Peron{
+		constructor(name,age){
+
+			//如果有继承，那么设置属性***（一定要放在super下面）****，不然会报错
+//			this.name = name; //报错。
+//			super(name);
+			this.age = age;
+		}
+		run(){
+			alert(123);
+		}
+		say(){
+//			super(name); //如果没有把super放到子类那一层中，就会报错。
+			alert(111122223333);
+		}
+	}
+	let p2 = new Peron2('元芳');
+	let p1 = new Peron('元芳');
+	p2.say();
+	p1.say();
+	
+	
+	
+	
+</script>
+</body>
+</html>

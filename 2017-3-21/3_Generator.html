@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+//	function* helloWorldGenerator() {
+//	  yield 'hello';
+//	  yield 'world';
+//	  return 'ending';
+//	}
+//
+//	var hw = helloWorldGenerator();
+//	
+//	console.log(hw.next());
+//	console.log(hw.next());
+//	console.log(hw.next());
+//	console.log(hw.next());//undefined
+	
+//	console.log(hw)
+
+	
+//	function* fn(){
+//		let keys = Object.keys(this);
+//		for (let i of keys) {
+//		    yield [i, this[i]];
+//		}
+//	}
+//	
+
+
+	/*
+		1.对象没有遍历接口，用不了for of
+		2.给对象添加一个遍历接口
+		3.（1）使用了一个迭代器，去添加一个遍历接口。
+			{
+				Symbol.iterator = function(){
+					return {
+						next:function(){
+							return {
+								value:xx,
+								done:true(flase)
+							}
+						}
+					}
+				}
+			}
+			
+		(2):
+			Generator:
+				封装好的迭代器。
+			
+			function* fn(){
+				yield 'hello';
+				yield 'hello';
+			}
+	*/
+	
+//	function* fn(){
+//		yield 'hello';
+//		yield 'word';
+//	}
+//	
+//	let ddq = fn();
+//	console.log(ddq.next());
+//	console.log(ddq.next());
+	
+//	console.log();
+	
+	
+	
+	
+	let obj = {
+		name:'momo',
+		sex:false
+	}
+	
+	function* fn(){
+		let keys = Object.keys(this);
+		//i:name,age  obj[name] = 'momo'
+		for(var i of keys){
+			yield [i,this[i]]
+		}
+		//console.log(keys);
+	}
+	obj[Symbol.iterator] = fn;
+
+	for(let [key,val] of obj){
+		console.log(key,val);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	obj[Symbol.iterator] = fn;
+//	
+//	for(let [key,val] of obj){
+//		console.log(key,val)
+//	}
+	
+	
+	
+	
+	
+	
+</script>
+</body>
+</html>

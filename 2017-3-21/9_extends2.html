@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		super这个关键字
+			既可以当作函数使用，也可以当作对象使用。
+		
+		当作函数:
+			调用父类
+			super(name);
+			
+		对象使用:
+			//获取父类的属性或者方法。
+			let say = super().say;
+			
+	*/
+	
+	class Person{
+		constructor(name){
+			this.name = name;
+		}
+		say(){
+			alert(this.name);
+		}
+	}
+	
+	class child extends Person{
+		constructor(name){
+			console.log(super().say)
+		}
+	}
+	
+	let p2 = new child;
+
+	
+</script>
+</body>
+</html>

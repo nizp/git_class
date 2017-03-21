@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		let const {}
+		
+		解构赋值：
+			1.数组的解构赋值
+			2.对象的解构赋值
+			3.函数的解构赋值
+			4.字符串的解构赋值
+		
+	*/
+	
+	
+//	var a = 10;
+//	var b = 5;
+	
+//	var [b,a] = [a,b];
+//	console.log(a,b);
+	
+//	let [x=y,y=2] = [];
+//	let [x] = true;
+//	console.log(x,y);
+
+//	var arr = [1,2,3,4,5,6];
+//	
+//	let arr2 = [...arr];
+//	console.log(arr2);
+
+	
+//	let obj = {
+//		name:'123',
+//		age:20
+//	}
+//	
+//	let {name:n,age:a} = obj;
+	
+//	let obj = {
+//		list:{
+//			val:'你好',
+//			val2:'世界'
+//		},
+//		name:'qq'
+//	}
+//	
+//	let {list:{val:v1,val2:v2},name:n} = obj;
+//	
+//	console.log(n+'说:'+v1+v2);
+
+//	let obj = {a:2}
+//	
+//	let {a:b} = obj;
+//	console.log(a);
+
+//	var {x, y = 5} = {x: 1};
+//	var {x:y = 3} = {};
+//	console.log(y);
+	
+	function fn1(a=3,b=5,...list){
+//		console.log(...list);
+		let resault = 0;
+		for(let i of list){
+			resault += i;
+		}
+		console.log(a+b+resault);
+	}
+	fn1(10,10,1,2,3,4,5);
+
+	
+
+	
+//	console.log(n,a);
+//	console.log(name,age)
+	
+	
+	
+	
+	
+	
+	
+	
+//	function fn(a){
+//		{
+//			let a = 10;
+//		}
+//	}
+//	fn();
+	
+	
+</script>
+</body>
+</html>

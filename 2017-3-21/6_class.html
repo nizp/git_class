@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	/*
+		 
+	*/
+	
+	class Person{
+		constructor(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		say(){
+			alert(this.name);
+		}
+	}
+	
+	//可以写多个方法。
+	Object.assign(Person.prototype,{
+	  fn1(){
+	  	alert(this.age);
+	  },
+	  toValue(){
+	  	
+	  }
+	});
+	
+	
+	
+	let p1 = new Person('默默',23);
+	p1.fn1();
+	//p1.say();
+	
+	
+</script>
+</body>
+</html>
