@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    
+  <div class="box"></div>
+  <script>
+    /*
+    
+    css-loader 配合 style-loader
+    就是为了把css编译打包到生产环境中
+
+====================================================
+
+    extract-text-webpack-plugin：
+      插件：把打包后的css文件，通过link方式注入到html中
+    
+    1.引入模块
+      const cssModule = require("extract-text-webpack-plugin");
+    2.配置这个模块
+      {
+       test: /\.css$/,
+       use: cssModule.extract({
+         fallback: "style-loader",
+         use: "css-loader"
+       })
+     }
+     3.在plugins中添加
+    plugins:[
+      cssModule('1.css')
+      ->1.css的意思就是编译后的文件叫这个名字
+      注意:这个目录是跟output，path路径走的。
+    ]
+    
+  ====================================================
+    html-webpack-plugin（插件）
+    给build目录中添加一个html页面，有了这个页面，可以自动注入js和css
+    
+    1.引入
+      const html = require('html-webpack-plugin');
+    2.配置模块
+      直接配置到插件中即可
+    plugins:[
+      new html({
+        //编译后的文件放在哪里
+        注意：默认还是以output的path为路径，
+        所以小技巧：
+          ../xx.html    这样就能跳出src目录
+        filename: '../index.html',
+        
+        模板：以当前目录的index.html为模板进行编译。
+        template: 'index.html'
+      })
+    ]
+    */
+  </script>
+  </body>
+</html>

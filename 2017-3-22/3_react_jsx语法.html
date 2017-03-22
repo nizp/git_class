@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .active{
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script src="src/class/react.js" charset="utf-8"></script>
+    <script src="src/class/react-dom.js" charset="utf-8"></script>
+    <script src="src/class/browser.min.js" charset="utf-8"></script>
+    <script type="text/babel">
+      // let H = React.createElement('h1',{className:'active'},'你好!世界!');
+      
+      /*
+        如果只引react和react-dom，必须要用createElement写法来写，不方便
+        
+        正常的开发中都是使用jsx语法来写的。
+        如何使用jsx语法呢？
+        1.引入browser.js
+        2.凡是使用了jsx语法的，都要放在text/babel中。
+        
+        规范：
+          1.创建一个组件：
+            声明一个组件名 = React.createClass({
+              render:function(){
+                return (
+                  顶层只能有一个标签，在这个标签内可以套若干个标签
+                  <div>
+                    <h1 className="active"></h1>
+                    <p></p>
+                  </div>
+                );
+              }
+           })
+           
+          class全部写成className
+          如果碰到了input之类的单标签，必须闭合
+          组件开头大写。
+          
+          2.渲染组件
+          ReactDOM.render(渲染哪个组件,插入到哪个元素中,渲染完毕之后的回调)
+          
+          注意：ReactDOM.render函数中不要有;号
+          
+       */
+      
+      let H = React.createClass({
+        render:function(){
+          return (
+            <div>
+              <h1 className="active">我们来学习你啦!</h1>
+              <p>你们报错了!呵呵!(改了)</p>
+              <input type="text" />
+            </div>
+          )
+        }
+      })
+      ReactDOM.render(
+        <H />,
+        document.getElementById('box')
+      )
+    </script>
+  </body>
+</html>

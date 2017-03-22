@@ -1,0 +1,35 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\soft\\node\\node.exe',
+1 verbose cli   'D:\\soft\\node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'nizp' ]
+2 info using npm@4.1.2
+3 info using node@v7.7.3
+4 verbose run-script [ 'prenizp', 'nizp', 'postnizp' ]
+5 info lifecycle nizp@1.0.0~prenizp: nizp@1.0.0
+6 silly lifecycle nizp@1.0.0~prenizp: no script for prenizp, continuing
+7 info lifecycle nizp@1.0.0~nizp: nizp@1.0.0
+8 verbose lifecycle nizp@1.0.0~nizp: unsafe-perm in lifecycle true
+9 verbose lifecycle nizp@1.0.0~nizp: PATH: D:\soft\node\node_modules\npm\bin\node-gyp-bin;D:\class\2016-11-14\2016-11-14\2017-3-22\node_modules\.bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\soft\node\;C:\Users\水帘洞\AppData\Local\Microsoft\WindowsApps;C:\Users\水帘洞\AppData\Local\atom\bin;C:\Users\水帘洞\AppData\Roaming\npm
+10 verbose lifecycle nizp@1.0.0~nizp: CWD: D:\class\2016-11-14\2016-11-14\2017-3-22
+11 silly lifecycle nizp@1.0.0~nizp: Args: [ '/d /s /c', 'webpack -w' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at exports._errnoException (util.js:1033:11)
+12 verbose stack     at process.kill (internal/process.js:188:13)
+12 verbose stack     at process.listener (D:\soft\node\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:95:15)
+12 verbose stack     at emitNone (events.js:86:13)
+12 verbose stack     at process.emit (events.js:188:7)
+12 verbose stack     at processEmit (D:\soft\node\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:155:32)
+12 verbose stack     at Signal.wrap.onsignal (internal/process.js:215:44)
+13 verbose cwd D:\class\2016-11-14\2016-11-14\2017-3-22
+14 error Windows_NT 10.0.14393
+15 error argv "D:\\soft\\node\\node.exe" "D:\\soft\\node\\node_modules\\npm\\bin\\npm-cli.js" "run" "nizp"
+16 error node v7.7.3
+17 error npm  v4.1.2
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
