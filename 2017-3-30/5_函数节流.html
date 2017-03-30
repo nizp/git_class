@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <div style="width:100px;height:100px;background:red">
+    
+  </div>
+<script type="text/javascript">
+  /*
+    函数节流：
+        优化性能的一种解决方案。
+        但是会丢失中间的数据。
+    
+    开个定时器，每次触发函数的时候，关闭上次的定时器，当不调用这个函数的
+    时候，延迟执行。
+      
+  */
+  
+  function jl(fn,time){
+    var timer = null;
+    return function(){
+      var _this = this;
+      clearTimeout(timer);
+      timer = setTimeout(function(){
+        fn.call(_this);
+      },time);
+    }
+  }
+
+  document.onmousemove = jl(fn1,500);
+  
+  function fn1(ev){
+    console.log(1);
+  }
+ 
+</script>
+</body>
+</html>

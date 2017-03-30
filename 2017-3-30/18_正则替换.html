@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  var str = 'hello my name is {name}，my age is {age}';
+  var obj = {name:'john',age:28}
+  /*把str里面的｛name｝和｛age｝替换为obj里面的属性*/
+  str = str.replace(/{(\w+)}/g,function($0,$1){
+    return obj[$1]
+  })
+  console.log(str)
+  </script>
+  </body>
+</html>

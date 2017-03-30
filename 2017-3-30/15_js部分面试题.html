@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  <script type="text/javascript">
+    /*
+      1.typeof 有哪些数据类型：
+        string，number，boolean，object，function，symbol，undefined
+      
+      2.举例3种强制类型转换和2种隐士类型转换？
+        
+        parseInt()
+        parseFloat()
+        Number()
+        
+        2 - '1'
+        如果+在第一位，那么会将字符串转成数字
+        如果前后都有内容，字符串链接。
+        
+      3.split('')和join的区别
+        split：
+          以括号中的内容为分隔符，一个把字符串分割成数组
+        
+        join：
+          以括号中的内容为链接，把数组转成字符串
+          
+      4.事件绑定与普通事件有什么区别
+      绑定：
+        同一个元素的同一个事件可以绑定多个函数，触发这个事件时会依次调用绑定函数
+        有冒泡有捕获
+        事件名不带on
+        阻止默认行为：ev.preventDefault()
+      
+      5.IE的事件绑定与别的事件绑定的区别
+        attachEvent
+        addEventListener
+      6.
+      
+        open('get','xxx.php?user=leo')
+        open('post','xxx.php')
+        enCodeURI()
+        send('user=leo')
+        
+      7.写一个b继承a的方法
+      
+      8.闭包是什么，有什么特性，对页面有什么影响
+      
+      class a {
+        constructor(name){
+        
+        }
+      }
+      
+      class b extends a{
+        constructor(name){
+          super(name)
+        }
+      }
+        
+     */
+    
+    // var s = '10';
+    // console.log(+s);
+    //
+    // var str = '123456';
+    // console.log(str.split('').join()); //11
+    
+    // var arr = [1,2,3];
+    //
+    // var a = arr.push(arr.pop()); //arr = [1,2,3]  a= 3
+    //
+    // //[4,1,2,3,3]
+    // arr.unshift(arr.push(a));
+    //
+    // console.log(arr);
+    
+    
+    // class a {
+    //   constructor(name){
+    //     this.name = name;
+    //   }
+    //   say(){
+    //     alert(this.name);
+    //   }
+    // }
+    //
+    // class b extends a{
+    //   constructor(name){
+    //     super(name)
+    //   }
+    // }
+    //
+    // const d = new b('momo');
+    // const x = new a('yy');
+    // d.say = function(){
+    //   alert(123);
+    // }
+    // d.say();
+    // x.say();
+    
+    
+    //function fn(){}
+    
+    // function fn(){
+    //   window.a = 10;
+    // }
+    // fn();
+    // alert(a);
+    
+    // function fn(){
+    //   var a = 10;
+    //   return function(){
+    //     a++;
+    //     alert(a);
+    //   }
+    // }
+    
+    //var b = fn();
+    // b();
+    // b();
+    // fn()();
+    // fn()();
+    
+//     var name = "The Window";
+// 　　var object = {
+// 　　　　name : "My Object",
+// 　　　　getNameFunc : function(){
+//           //this  object
+//           // alert(this.name)
+// 　　　　　　return function(){
+// 　　　　　　　　return this.name;
+// 　　　　　　};
+// 　　　　}
+// 　　};
+// 　　alert(object.getNameFunc()());
+// 　　
+      
+      
+//    var name = "The Window";
+// 　　var object = {
+// 　　　　name : "My Object",
+// 　　　　getNameFunc : function(){
+// 　　　　　　var that = this;
+// 　　　　　　return function(){
+// 　　　　　　　　return that.name;
+// 　　　　　　};
+// 　　　　}
+// 　　};
+// 　　alert(object.getNameFunc()());
+    
+    // function a(){
+    //   var c = 10;
+    //   return function(){
+    //     alert(c);
+    //   }
+    // }
+    //
+    // var d = a();
+    // console.dir(d);
+    //
+    
+    // var list = document.getElementsByTagName('li');
+    // var num = 0;
+    // var timer = setInterval(function(){
+    //   (function(num){
+    //     list[num].onclick = function(){
+    //       alert(num);
+    //     }
+    //   })(num);
+    //   num++;
+    //   if(num > 3){
+    //     clearInterval(timer);
+    //   }
+    // },30);
+    //
+    
+    /*
+        valueOf:
+        将内置对象的new出来的结果，转化为简写形式
+    */
+    
+    
+    String.prototype.valueOf = function () {
+      alert(1);
+    };
+    
+  //  var a = '1'//new String('12');
+    //console.log(a)
+      
+
+    // alert('10' == 10);
+    //http://blog.csdn.net/cct418/article/details/50889987
+    // var arr = [1,2,3];
+    // arr.toString = function () {
+    //     alert("你调用了toString函数");
+    // }
+    // alert(arr.valueOf());
+    
+    
+    
+    
+    
+  
+    
+    
+    
+     
+    
+    
+  </script>
+    
+  </body>
+</html>

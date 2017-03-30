@@ -55,7 +55,7 @@
 				return obj.currentStyle[attr];
 			}
 		}else{
-			// console.log(111)
+			console.log(111)
 			getStyle = function(){
 				return getComputedStyle(obj)[attr];
 			}
@@ -64,24 +64,24 @@
 	}
 	var w = getStyle(div1,'width');
 	
-	// setInterval(()=>{
-	// 	var w = getStyle(div1,'width');
-	// 	console.log( w );
-	// },30);
+	setInterval(()=>{
+		var w = getStyle(div1,'width');
+		console.log( w );
+	},30);
 	// console.log(w)
 	
 	
 	
 	
 	
-	function getStyle(obj,attr){
-		if(obj.currentStyle){
-			return obj.currentStyle[attr];
-		}else{
-			console.log(111)
-			return getComputedStyle(obj)[attr];
-		}
-	}
+	// function getStyle(obj,attr){
+	// 	if(obj.currentStyle){
+	// 		return obj.currentStyle[attr];
+	// 	}else{
+	// 		console.log(111)
+	// 		return getComputedStyle(obj)[attr];
+	// 	}
+	// }
 	
 	
 	

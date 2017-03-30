@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script type="text/javascript">
+    /*
+    4、实现一个函数clone，
+		  可以对JavaScript中的5种主要的数据类型
+      （包括Number、String、Object、Array、Boolean）进行值复制
+     */
+    
+    function clone(data){
+      return JSON.parse(JSON.stringify(data));
+    }
+    
+    var data = {
+      num:10,
+      str:'123456',
+      arr:[1,2,3,[1,2]],
+      bool:false
+    }
+
+    var data2 = clone(data);
+    data2.arr.push(4);
+    
+    console.log(data);
+    
+    
+    
+    
+    
+    
+    
+  </script>
+  </body>
+</html>

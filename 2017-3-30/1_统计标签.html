@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <ul>
+    <li></li>
+    <li></li>
+  </ul>
+<script type="text/javascript">
+  /*
+    1、不用jquery等框架/库，
+    查找一个页面上有多少种标签，每种标签的个数，伪代码实现亦可
+   */
+  let list = document.getElementsByTagName('*');
+  let obj = {};
+  
+  for(var i=0;i<list.length;i++){
+    if(obj[list[i].tagName]){
+      obj[list[i].tagName]++;
+    }else{
+      obj[list[i].tagName] = 1;
+    }
+  }
+  console.log(obj);
+  
+  
+  
+   
+   
+  
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script type="text/javascript">
+  // var fn = function() {
+  //   this.name = 'nizp';
+  // };
+  // fn.prototype.sayname = function(){
+  //   //window
+  //   console.log(this)
+  //    //alert(this.name)
+  // }
+  // fn.prototype.waitsay = function(){
+  //     // console.log(this.sayname);
+  //     setTimeout(this.sayname);
+  // }
+  // var a = new fn();
+  // a.waitsay();
+  
+  
+  var obj={
+		name:"as",
+		get:function(){
+			return?this.name
+		}
+	};
+	var newObj = obj.get();
+	console.log(newObj) //报错
+   
+  
+  </script>
+  </body>
+</html>
